@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api.anthropic.com)",
+      "PowerShell($binPath = \"C:\\\\Users\\\\Besar\\\\.claude\\\\projects\\\\W--code-v01-a\\\\55d862a0-6a4f-473a-a31d-65ba324c25c0\\\\tool-results\\\\webfetch-1778306280288-9w3dqm.bin\"; $outDir = \"C:\\\\Users\\\\Besar\\\\.claude\\\\projects\\\\W--code-v01-a\\\\55d862a0-6a4f-473a-a31d-65ba324c25c0\\\\tool-results\\\\design-extract\"; New-Item -ItemType Directory -Path $outDir -Force | Out-Null; Copy-Item $binPath \"$outDir\\\\design.tar.gz\"; Set-Location $outDir; tar -xzf design.tar.gz; Get-ChildItem -Recurse | Select-Object FullName, Length)",
+      "mcp__Claude_Preview__preview_start",
+      "PowerShell(claude mcp add --scope project --transport http supabase \"https://mcp.supabase.com/mcp?project_ref=pmkiunjdkibhjabnyeyl\")"
+    ]
+  }
+}

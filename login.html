@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>V01 — Sign In</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  body{display:flex;align-items:center;justify-content:center;min-height:100vh}
+  .login-card{width:420px;max-width:92vw;border:1px solid var(--line);padding:48px 40px}
+  .login-card .logo{font-family:var(--display);font-weight:700;font-size:38px;letter-spacing:.02em;margin-bottom:6px}
+  .login-card .sub{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-mute);margin-bottom:36px}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--fg-mute);margin-bottom:8px;font-weight:400}
+  .field input{width:100%;background:transparent;border:1px solid var(--line);padding:13px 14px;font-family:var(--mono);font-size:13px;color:var(--fg);outline:none;transition:border-color .15s;color-scheme:dark}
+  .field input:focus{border-color:var(--fg)}
+  .login-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:12px;padding:15px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;background:var(--fg);color:#0b0d0e;border:1px solid var(--fg);cursor:pointer;margin-top:24px;transition:background .2s}
+  .login-btn:hover{background:#fff}
+  .login-btn:disabled{opacity:.5;cursor:not-allowed}
+  .err{font-family:var(--mono);font-size:11px;color:#e08a76;margin-top:14px;letter-spacing:.04em;min-height:18px}
+  .back{display:block;text-align:center;margin-top:24px;font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-mute)}
+  .back:hover{color:var(--fg)}
+</style>
+</head>
+<body>
+
+<div class="login-card">
+  <div class="logo">V01</div>
+  <div class="sub">Studio Console · Sign In</div>
+
+  <form id="login-form">
+    <div class="field">
+      <label>Email</label>
+      <input type="email" id="email" placeholder="you@v01.studio" required autocomplete="email" />
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password" />
+    </div>
+    <button type="submit" class="login-btn" id="submit-btn">
+      <span id="btn-text">Sign In</span>
+    </button>
+    <div class="err" id="error"></div>
+  </form>
+
+  <a class="back" href="index.html">&larr; Back to site</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+  const SUPABASE_URL = 'https://pmkiunjdkibhjabnyeyl.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_EbhbY5qX8DRA6mc4aif18Q_dQtnuRWP';
+  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  // If already logged in, redirect to admin
+  sb.auth.getSession().then(({ data: { session } }) => {
+    if (session) window.location.href = 'admin.html';
+  });
+
+  document.getElementById('login-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    const errEl = document.getElementById('error');
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+
+    btn.disabled = true;
+    document.getElementById('btn-text').textContent = 'Signing in…';
+    errEl.textContent = '';
+
+    const { error } = await sb.auth.signInWithPassword({ email, password });
+
+    if (error) {
+      errEl.textContent = error.message;
+      btn.disabled = false;
+      document.getElementById('btn-text').textContent = 'Sign In';
+    } else {
+      window.location.href = 'admin.html';
+    }
+  });
+</script>
+</body>
+</html>

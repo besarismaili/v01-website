@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>V01 — Careers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* manifesto */
+  .manifesto{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:start}
+  .manifesto h2{font-family:var(--display);font-weight:600;font-size:42px;line-height:.95;margin:0 0 14px;text-transform:uppercase}
+  .manifesto p{font-family:var(--mono);font-size:14px;line-height:1.7;color:var(--fg);margin:0 0 16px}
+  .manifesto p strong{color:var(--fg);font-weight:500}
+  .manifesto p em{color:var(--fg-dim);font-style:normal}
+  .pull{font-family:var(--display);font-weight:500;font-size:30px;line-height:1.1;letter-spacing:.005em;margin:24px 0;padding:24px 28px;border-left:2px solid var(--fg);background:linear-gradient(180deg,rgba(255,255,255,0.022),rgba(255,255,255,0));text-transform:uppercase;text-wrap:balance}
+
+  /* hero double image */
+  .car-hero{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;padding:0 0 0;align-items:stretch}
+  .car-hero .ph{aspect-ratio:16/10;width:100%}
+  .car-hero .ph.tall{aspect-ratio:4/5}
+
+  /* metrics */
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .metric{padding:36px 24px;border-right:1px solid var(--line)}
+  .metric:last-child{border-right:none}
+  .metric .num{font-family:var(--display);font-weight:600;font-size:64px;line-height:.9;margin:0 0 10px}
+  .metric .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-mute)}
+  .metric .desc{font-family:var(--mono);font-size:11.5px;color:var(--fg-dim);margin-top:8px;max-width:30ch;line-height:1.5}
+
+  /* values */
+  .values{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .val{padding:32px 26px 34px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:14px;min-height:260px}
+  .val:nth-child(3n){border-right:none}
+  .val .num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--fg-mute)}
+  .val h3{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:.02em;margin:6px 0 0;text-transform:uppercase}
+  .val p{font-family:var(--mono);font-size:12.5px;line-height:1.6;color:var(--fg-dim);margin:0}
+
+  /* roles list */
+  .filters{display:flex;gap:8px;flex-wrap:wrap;padding:0 0 22px}
+  .filter{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg);padding:10px 16px;border:1px solid var(--line);background:transparent;cursor:pointer}
+  .filter.active{background:var(--fg);color:#0b0d0e;border-color:var(--fg)}
+  .filter:hover:not(.active){border-color:var(--fg-dim)}
+
+  .roles{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+  .role{display:grid;grid-template-columns:60px 1.6fr 1fr 1fr 1fr 32px;gap:24px;align-items:center;padding:24px 4px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .2s ease}
+  .role:hover{background:rgba(255,255,255,0.02)}
+  .role .num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--fg-mute)}
+  .role h3{font-family:var(--display);font-weight:600;font-size:24px;letter-spacing:.02em;margin:0;text-transform:uppercase}
+  .role .meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-dim)}
+  .role .arr{font-family:var(--mono);font-size:14px;color:var(--fg-mute);justify-self:end}
+  .role.sub{display:none;background:rgba(255,255,255,0.015);border-bottom:1px solid var(--line)}
+  .role.sub.open{display:block;padding:24px 4px 32px}
+  .role.sub .inner{display:grid;grid-template-columns:60px 1fr 1fr;gap:24px;padding:0 4px}
+  .role.sub h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-mute);margin:0 0 12px;font-weight:400}
+  .role.sub p,.role.sub li{font-family:var(--mono);font-size:12.5px;line-height:1.65;color:var(--fg-dim);margin:0 0 8px}
+  .role.sub ul{list-style:none;padding:0;margin:0}
+  .role.sub li{display:flex;gap:10px;align-items:flex-start;padding:5px 0}
+  .role.sub li::before{content:'';width:10px;height:1px;background:var(--fg-dim);display:inline-block;margin-top:9px;flex-shrink:0}
+  .role.sub .apply{margin-top:18px;display:inline-flex;align-items:center;gap:14px;padding:14px 20px;border:1px solid var(--fg);font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;background:var(--fg);color:#0b0d0e}
+
+  /* benefits grid */
+  .benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .ben{padding:24px 22px;border:1px solid var(--line);min-height:200px;display:flex;flex-direction:column;gap:14px}
+  .ben .ic{width:30px;height:30px;color:var(--fg-dim)}
+  .ben h4{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:.02em;margin:0;text-transform:uppercase}
+  .ben p{font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--fg-dim);margin:0}
+
+  /* process */
+  .proc{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .step{padding:30px 22px 32px;border-right:1px solid var(--line);min-height:220px;display:flex;flex-direction:column;gap:10px}
+  .step:last-child{border-right:none}
+  .step .num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--fg-mute)}
+  .step h4{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:.04em;margin:6px 0 4px;text-transform:uppercase}
+  .step p{font-family:var(--mono);font-size:11.5px;line-height:1.6;color:var(--fg-dim);margin:0 0 6px}
+  .step .when{margin-top:auto;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-mute);padding-top:14px;border-top:1px solid var(--line-2)}
+
+  /* testimonials */
+  .testi{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .t{padding:28px 26px;border:1px solid var(--line);min-height:280px;display:flex;flex-direction:column;justify-content:space-between;gap:18px}
+  .t blockquote{font-family:var(--display);font-weight:500;font-size:22px;line-height:1.2;letter-spacing:.005em;margin:0;text-transform:uppercase;text-wrap:balance}
+  .t cite{font-style:normal;display:flex;gap:14px;align-items:center}
+  .t cite .av{width:42px;height:42px;border:1px solid var(--line);background:repeating-linear-gradient(135deg,rgba(255,255,255,0.02) 0 8px,rgba(255,255,255,0.05) 8px 16px),#1a1c1d}
+  .t cite .who{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--fg)}
+  .t cite .role{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-mute);margin-top:4px;display:block}
+
+  /* studios */
+  .studios{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .studio{display:flex;flex-direction:column}
+  .studio .ph{aspect-ratio:4/3;width:100%;margin-bottom:16px}
+  .studio h4{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:.02em;margin:0 0 4px;text-transform:uppercase}
+  .studio .meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-mute);margin-bottom:10px}
+  .studio p{font-family:var(--mono);font-size:12px;color:var(--fg-dim);margin:0;line-height:1.55;max-width:36ch}
+
+  /* faq */
+  .faq{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+  .faq-item{display:flex;justify-content:space-between;align-items:center;padding:22px 4px;border-top:1px solid var(--line);font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--fg);cursor:pointer}
+  .faq-item:hover{color:#fff}
+  .faq-item .plus{font-family:var(--mono);color:var(--fg-dim);font-size:14px}
+
+  .end-cta{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:end;padding:90px 0 80px;border-top:1px solid var(--line)}
+  .end-cta h2{font-family:var(--display);font-weight:600;font-size:64px;line-height:.95;margin:0 0 18px;text-transform:uppercase}
+  .end-cta p{font-family:var(--mono);font-size:13px;color:var(--fg-dim);margin:0 0 30px;max-width:38ch}
+  .end-cta .ph{aspect-ratio:16/9}
+
+  @media (max-width:980px){
+    .manifesto,.car-hero,.end-cta{grid-template-columns:1fr}
+    .metrics,.values{grid-template-columns:1fr 1fr}
+    .role{grid-template-columns:60px 1fr 32px}
+    .role .meta:nth-child(3),.role .meta:nth-child(4),.role .meta:nth-child(5){display:none}
+    .role.sub .inner{grid-template-columns:1fr}
+    .benefits{grid-template-columns:1fr 1fr}
+    .proc{grid-template-columns:1fr 1fr}
+    .step:nth-child(2n){border-right:none}
+    .testi,.studios{grid-template-columns:1fr}
+    .faq{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body data-page="">
+<div data-mount="nav"></div>
+
+<section class="wrap page-head">
+  <div class="breadcrumb"><a href="index.html">V01</a><span>/</span><a href="about.html">About</a><span>/</span><span>Careers</span></div>
+  <h1>Make the<br/>next thing<br/>with us.</h1>
+  <p class="lede">V01 hires filmmakers who care about frames and engineers who care about taste. We're a small studio building a long body of work — and the people we hire shape every part of it.</p>
+  <div class="page-meta">
+    <div class="pm"><h5>Open Roles</h5><p>09 / Across 4 disciplines</p></div>
+    <div class="pm"><h5>Team Size</h5><p>42 people</p></div>
+    <div class="pm"><h5>Studios</h5><p>Los Angeles · London</p></div>
+    <div class="pm"><h5>Working</h5><p>Hybrid · Remote-friendly</p></div>
+  </div>
+</section>
+
+<section class="wrap sec">
+  <div class="car-hero">
+    <div class="ph" data-label="STUDIO INTERIOR — REVIEW ROOM"><span class="ph-mid">[ STUDIO INTERIOR ]</span></div>
+    <div class="ph tall" data-label="ARTIST AT WORKSTATION"><span class="ph-mid">[ ARTIST AT WORK ]</span></div>
+  </div>
+</section>
+
+<section class="wrap sec">
+  <div class="manifesto">
+    <div>
+      <div class="eyebrow" style="margin-bottom:14px">Why Work Here</div>
+      <h2>You'll touch<br/>the frame.</h2>
+    </div>
+    <div>
+      <p>Most studios silo their people. The director never sees the ML pipeline. The TD never sees the cut. The artist gets a brief and a deadline and that's it.</p>
+      <p>V01 is built the other way. <strong>Everyone at the studio gets close to the frame</strong> — the engineers ship inside real productions, the directors get to shape the tools, the artists get to break what doesn't work and rebuild it.</p>
+      <div class="pull">"Small team. Wide remit. Real frames on real screens."</div>
+      <p>If you want to do the work of three jobs, mostly because you can't help yourself, this is probably the place. <em>Bring taste. We'll bring the rest.</em></p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap sec">
+  <div class="metrics">
+    <div class="metric"><div class="num">42</div><div class="lbl">People</div><div class="desc">Across creative, lab, production, and operations.</div></div>
+    <div class="metric"><div class="num">4.6 yrs</div><div class="lbl">Median Tenure</div><div class="desc">People stay because the work compounds.</div></div>
+    <div class="metric"><div class="num">100%</div><div class="lbl">Health Coverage</div><div class="desc">Medical, dental, vision · fully covered.</div></div>
+    <div class="metric"><div class="num">21</div><div class="lbl">Awards Shipped</div><div class="desc">Cannes · D&amp;AD · Ciclope · UKMVA · VES.</div></div>
+  </div>
+</section>
+
+<section class="wrap sec">
+  <div class="sec-head"><div class="sec-title">How We Hire</div></div>
+  <div class="values">
+    <div class="val">
+      <div class="num">01</div>
+      <h3>Taste, Then Skill</h3>
+      <p>Skill we can sharpen. Taste is harder. We hire for an eye, an ear, and a point of view — then we put real shots in front of you.</p>
+    </div>
+    <div class="val">
+      <div class="num">02</div>
+      <h3>Generalists Welcome</h3>
+      <p>If your résumé doesn't fit a single role we still want to hear from you. The best people we've hired draw on three or four disciplines.</p>
+    </div>
+    <div class="val">
+      <div class="num">03</div>
+      <h3>Show The Work</h3>
+      <p>Reels, GitHubs, journals, side projects, weird experiments — show us what you're already making, even if it's unfinished.</p>
+    </div>
+    <div class="val">
+      <div class="num">04</div>
+      <h3>No Take-Home Theater</h3>
+      <p>We don't ask for unpaid spec work. If we go deep on a problem together, we pay for your time.</p>
+    </div>
+    <div class="val">
+      <div class="num">05</div>
+      <h3>Real Decisions, Fast</h3>
+      <p>Two-week process from intro to offer. You'll meet the people you'd actually work with, on day one.</p>
+    </div>
+    <div class="val">
+      <div class="num">06</div>
+      <h3>Fit Goes Both Ways</h3>
+      <p>You'll spend time with the lab, the studio, and at least one director or supe. We want you to know what you're walking into.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap sec">
+  <div class="sec-head">
+    <div class="sec-title">Open Roles · 09</div>
+    <div class="sec-title">Updated Apr 28, 2026</div>
+  </div>
+  <div class="filters">
+    <button class="filter active">All Disciplines</button>
+    <button class="filter">Creative</button>
+    <button class="filter">Lab / Engineering</button>
+    <button class="filter">Production</button>
+    <button class="filter">Operations</button>
+  </div>
+  <div class="roles" id="roles">
+
+    <div class="role" data-row>
+      <div class="num">01</div>
+      <h3>Senior Director, Brand Films</h3>
+      <div class="meta">Creative</div>
+      <div class="meta">Los Angeles</div>
+      <div class="meta">Full-Time</div>
+      <div class="arr">+</div>
+    </div>
+    <div class="role sub">
+      <div class="inner">
+        <div></div>
+        <div>
+          <h4>About the Role</h4>
+          <p>Lead director on brand and commercial work, shaping treatments, overseeing shoots, and driving final cuts. You'll work with the lab on previz and finishing, and with our EP on production planning.</p>
+          <h4 style="margin-top:18px">Who You Are</h4>
+          <ul>
+            <li>5+ years directing commercials, brand films, or shorts</li>
+            <li>Reel that demonstrates a strong, distinct visual point of view</li>
+            <li>Comfortable working with virtual production and AI-native pipelines</li>
+            <li>Able to lead a hybrid crew, on-set and in-studio</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Day-to-Day</h4>
+          <ul>
+            <li>Develop treatments and visual directions for incoming briefs</li>
+            <li>Direct shoots — virtual stage, live action, or hybrid</li>
+            <li>Lead review sessions with VFX supes and finishing</li>
+            <li>Shape the studio's creative voice across slate</li>
+          </ul>
+          <a href="access.html" class="apply"><span>Apply for this Role</span><span>→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="role" data-row>
+      <div class="num">02</div>
+      <h3>VFX Supervisor</h3>
+      <div class="meta">Creative</div>
+      <div class="meta">Los Angeles</div>
+      <div class="meta">Full-Time</div>
+      <div class="arr">+</div>
+    </div>
+    <div class="role sub">
+      <div class="inner">
+        <div></div>
+        <div>
+          <h4>About the Role</h4>
+          <p>Own the visual effects bar across one or two productions at a time. You'll partner with directors from previz through final, supervise comp and finishing, and help define what "Hollywood-level" means in our pipeline.</p>
+          <h4 style="margin-top:18px">Who You Are</h4>
+          <ul>
+            <li>10+ years feature or premium broadcast VFX</li>
+            <li>Deep Nuke, plus working knowledge of Houdini and Resolve</li>
+            <li>Strong taste — frames first, technique second</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Day-to-Day</h4>
+          <ul>
+            <li>Bid VFX scope across incoming projects</li>
+            <li>Run dailies, supe shoots, and review every shot</li>
+            <li>Work with the lab on AI-assisted comp tooling</li>
+          </ul>
+          <a href="access.html" class="apply"><span>Apply for this Role</span><span>→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="role" data-row>
+      <div class="num">03</div>
+      <h3>Senior ML Research Engineer</h3>
+      <div class="meta">Lab</div>
+      <div class="meta">Los Angeles · Hybrid</div>
+      <div class="meta">Full-Time</div>
+      <div class="arr">+</div>
+    </div>
+    <div class="role sub">
+      <div class="inner">
+        <div></div>
+        <div>
+          <h4>About the Role</h4>
+          <p>Push the state-of-the-art on Atlas Models — our owned-data character, environment, and texture stack. Train, fine-tune, evaluate, and ship. Your work goes into productions, not papers.</p>
+          <h4 style="margin-top:18px">Who You Are</h4>
+          <ul>
+            <li>Strong background in diffusion or related generative models</li>
+            <li>Comfortable with PyTorch, distributed training, and inference optimization</li>
+            <li>Care about how outputs look, not just how they score</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Day-to-Day</h4>
+          <ul>
+            <li>Train and fine-tune image and video models on owned datasets</li>
+            <li>Build evaluation harnesses with VFX supes and directors</li>
+            <li>Ship models into Stack Compositor and Previz Engine</li>
+          </ul>
+          <a href="access.html" class="apply"><span>Apply for this Role</span><span>→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="role" data-row>
+      <div class="num">04</div>
+      <h3>Pipeline TD</h3>
+      <div class="meta">Lab</div>
+      <div class="meta">Los Angeles · Hybrid</div>
+      <div class="meta">Full-Time</div>
+      <div class="arr">+</div>
+    </div>
+    <div class="role sub">
+      <div class="inner">
+        <div></div>
+        <div>
+          <h4>About the Role</h4>
+          <p>The connective tissue between artists and engineers. You'll build, maintain, and extend Ledger Pipeline — V01's asset versioning and shot tracking spine.</p>
+          <h4 style="margin-top:18px">Who You Are</h4>
+          <ul>
+            <li>Python, USD, and a deep grasp of VFX pipelines</li>
+            <li>Have shipped a pipeline at a feature or commercial studio</li>
+            <li>Can talk to artists, engineers, and producers in their own language</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Day-to-Day</h4>
+          <ul>
+            <li>Own Ledger Pipeline and adjacent production tools</li>
+            <li>Pair with VFX supes and TDs on per-show needs</li>
+            <li>Shape conventions across DCCs (Nuke, Houdini, Maya, Resolve)</li>
+          </ul>
+          <a href="access.html" class="apply"><span>Apply for this Role</span><span>→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="role" data-row>
+      <div class="num">05</div>
+      <h3>Senior Compositor</h3>
+      <div class="meta">Creative</div>
+      <div class="meta">Los Angeles</div>
+      <div class="meta">Full-Time / Project</div>
+      <div class="arr">+</div>
+    </div>
+    <div class="role sub">
+      <div class="inner">
+        <div></div>
+        <div>
+          <h4>About the Role</h4>
+          <p>Hero-shot compositing across commercials, brand films, and select VFX/post engagements. You'll work in Stack Compositor and Nuke 15, with full autonomy on shots assigned to you.</p>
+        </div>
+        <div>
+          <h4>Day-to-Day</h4>
+          <ul>
+            <li>Final composites on assigned shots from plate to delivery</li>
+            <li>Drive look continuity across sequences</li>
+            <li>Pair with the lab on tooling improvements</li>
+          </ul>
+          <a href="access.html" class="apply"><span>Apply for this Role</span><span>→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="role" data-row>
+      <div class="num">06</div>
+      <h3>Producer · Commercials</h3>
+      <div class="meta">Production</div>
+      <div class="meta">Los Angeles</div>
+      <div class="meta">Full-Time</div>
+      <div class="arr">+</div>
+    </div>
+    <div class="role sub">
+      <div class="inner">
+        <div></div>
+        <div>
+          <h4>About the Role</h4>
+          <p>Run brand and commercial productions from sketch to delivery — schedules, budgets, crews, vendors, and clients. You'll work directly with our EP and the lead director on each project.</p>
+        </div>
+        <div>
+          <h4>Day-to-Day</h4>
+          <ul>
+            <li>Bid and bid-protect commercial work end-to-end</li>
+            <li>Run shoots — physical, virtual, or hybrid</li>
+            <li>Own client relationships through the project lifecycle</li>
+          </ul>
+          <a href="access.html" class="apply"><span>Apply for this Role</span><span>→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="role" data-row>
+      <div class="num">07</div>
+      <h3>Virtual Production Supervisor</h3>
+      <div class="meta">Production</div>
+      <div class="meta">Los Angeles</div>
+      <div class="meta">Full-Time</div>
+      <div class="arr">+</div>
+    </div>
+    <div class="role sub">
+      <div class="inner">
+        <div></div>
+        <div>
+          <h4>About the Role</h4>
+          <p>Lead our virtual production stage — Unreal-based scenes, camera tracking, real-time AI lookdev, and on-set integration with Live Capture.</p>
+        </div>
+        <div>
+          <h4>Day-to-Day</h4>
+          <ul>
+            <li>Build virtual sets in UE 5.5 alongside the art team</li>
+            <li>Run camera tracking and on-set previz</li>
+            <li>Interface with the lab on Live Capture improvements</li>
+          </ul>
+          <a href="access.html" class="apply"><span>Apply for this Role</span><span>→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="role" data-row>
+      <div class="num">08</div>
+      <h3>Brand Designer</h3>
+      <div class="meta">Creative</div>
+      <div class="meta">Los Angeles · Hybrid</div>
+      <div class="meta">Full-Time</div>
+      <div class="arr">+</div>
+    </div>
+    <div class="role sub">
+      <div class="inner">
+        <div></div>
+        <div>
+          <h4>About the Role</h4>
+          <p>Visual identity, marketing, and case studies for V01 itself. You'll own how we look and read across web, social, decks, and printed work.</p>
+        </div>
+        <div>
+          <h4>Day-to-Day</h4>
+          <ul>
+            <li>Run the V01 brand system across every surface</li>
+            <li>Design case studies, decks, and event materials</li>
+            <li>Partner with marketing on launches and campaigns</li>
+          </ul>
+          <a href="access.html" class="apply"><span>Apply for this Role</span><span>→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="role" data-row>
+      <div class="num">09</div>
+      <h3>People Operations Lead</h3>
+      <div class="meta">Operations</div>
+      <div class="meta">Los Angeles</div>
+      <div class="meta">Full-Time</div>
+      <div class="arr">+</div>
+    </div>
+    <div class="role sub">
+      <div class="inner">
+        <div></div>
+        <div>
+          <h4>About the Role</h4>
+          <p>Hiring, onboarding, growth, and the daily operations that make a 42-person studio feel like a 12-person one. Reports to the Head of Operations.</p>
+        </div>
+        <div>
+          <h4>Day-to-Day</h4>
+          <ul>
+            <li>Run hiring across every discipline at V01</li>
+            <li>Lead onboarding and first-90-days for every new hire</li>
+            <li>Own performance, growth, and feedback systems</li>
+          </ul>
+          <a href="access.html" class="apply"><span>Apply for this Role</span><span>→</span></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="wrap sec">
+  <div class="sec-head"><div class="sec-title">Benefits &amp; Practice</div></div>
+  <div class="benefits">
+    <div class="ben">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
+      <h4>Health, Fully Covered</h4>
+      <p>Medical, dental, vision · 100% covered for you and dependents.</p>
+    </div>
+    <div class="ben">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></svg>
+      <h4>Real Time Off</h4>
+      <p>Unlimited PTO with a 4-week minimum. Studio closes 2 weeks in December.</p>
+    </div>
+    <div class="ben">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="6" width="18" height="3"/><rect x="3" y="11" width="18" height="3"/><rect x="3" y="16" width="18" height="3"/></svg>
+      <h4>401(k) · 4% Match</h4>
+      <p>Vests immediately. We'll never claw it back.</p>
+    </div>
+    <div class="ben">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M5 7l7 5 7-5M5 12l7 5 7-5M5 17l7 5 7-5"/></svg>
+      <h4>Tools Stipend</h4>
+      <p>$2,500 / yr for software, hardware, and reference. No approvals.</p>
+    </div>
+    <div class="ben">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="9" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+      <h4>Parental Leave</h4>
+      <p>16 weeks paid for any new parent. Phased return on your terms.</p>
+    </div>
+    <div class="ben">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg>
+      <h4>Learning Budget</h4>
+      <p>$3,000 / yr for courses, conferences, and travel for craft.</p>
+    </div>
+    <div class="ben">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18"/><path d="M3 9h18M9 3v18"/></svg>
+      <h4>Side Projects</h4>
+      <p>Time and tools to make your own work. We want you weirder.</p>
+    </div>
+    <div class="ben">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 010 18M12 3a13 13 0 000 18"/></svg>
+      <h4>Hybrid · Remote-Friendly</h4>
+      <p>Most roles 3 days in-studio. Some fully remote — flagged on the role.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap sec">
+  <div class="sec-head"><div class="sec-title">The Process</div></div>
+  <div class="proc">
+    <div class="step"><div class="num">01</div><h4>Apply</h4><p>Send your reel, GitHub, or portfolio with a short note about what you want to make.</p><div class="when">~ 5 minutes</div></div>
+    <div class="step"><div class="num">02</div><h4>Intro Call</h4><p>30-min chat with people ops and your future hiring manager.</p><div class="when">Within 1 week</div></div>
+    <div class="step"><div class="num">03</div><h4>Craft Conversation</h4><p>Deep dive on your work. We walk through real frames, real shots, real code.</p><div class="when">Week 1–2</div></div>
+    <div class="step"><div class="num">04</div><h4>Studio Day</h4><p>Half a day in the studio (or video equivalent). Meet the team. Pair on a real problem — paid.</p><div class="when">Week 2</div></div>
+    <div class="step"><div class="num">05</div><h4>Decision</h4><p>Reference checks, offer, or honest feedback either way. No silence.</p><div class="when">Week 2–3</div></div>
+  </div>
+</section>
+
+<section class="wrap sec">
+  <div class="sec-head"><div class="sec-title">From the Team</div></div>
+  <div class="testi">
+    <div class="t">
+      <blockquote>"I came in to comp one show. I stayed because I got to shape the tools I'm using next year."</blockquote>
+      <cite><div class="av"></div><div><div class="who">Idris Khoury</div><span class="role">VFX Supervisor · 3 yrs</span></div></cite>
+    </div>
+    <div class="t">
+      <blockquote>"Everything I ship goes into a frame within weeks. That's the bar."</blockquote>
+      <cite><div class="av"></div><div><div class="who">Sora Lin</div><span class="role">Head of AI Systems · 2 yrs</span></div></cite>
+    </div>
+    <div class="t">
+      <blockquote>"It's the first studio where the EP, the TD, and the director all read the same brief."</blockquote>
+      <cite><div class="av"></div><div><div class="who">Elliot Pace</div><span class="role">Executive Producer · 4 yrs</span></div></cite>
+    </div>
+  </div>
+</section>
+
+<section class="wrap sec">
+  <div class="sec-head"><div class="sec-title">Where We Work</div></div>
+  <div class="studios">
+    <div class="studio">
+      <div class="ph" data-label="LA STUDIO — STAGE"><span class="ph-mid">[ STUDIO LA ]</span></div>
+      <h4>Los Angeles · HQ</h4>
+      <div class="meta">Boyle Heights · 1804 N. Mission Rd</div>
+      <p>Production stages, virtual capture, finishing suites, and the lab. Most full-time roles are LA-based.</p>
+    </div>
+    <div class="studio">
+      <div class="ph" data-label="LONDON STUDIO"><span class="ph-mid">[ STUDIO LDN ]</span></div>
+      <h4>London · Satellite</h4>
+      <div class="meta">Hackney Wick · Unit 4, Wallis Rd</div>
+      <p>Post, finishing, and EU production support. Smaller team, tight craft community.</p>
+    </div>
+    <div class="studio">
+      <div class="ph" data-label="DISTRIBUTED — REMOTE"><span class="ph-mid">[ REMOTE ]</span></div>
+      <h4>Distributed</h4>
+      <div class="meta">Worldwide · Async-Friendly</div>
+      <p>Select roles in the lab and finishing are fully remote. Travel for shoots and milestones.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap sec">
+  <div class="sec-head"><div class="sec-title">Common Questions</div></div>
+  <div class="faq">
+    <div class="faq-item"><span>Do you sponsor visas?</span><span class="plus">+</span></div>
+    <div class="faq-item"><span>Are remote roles available?</span><span class="plus">+</span></div>
+    <div class="faq-item"><span>Do you take freelancers and contractors?</span><span class="plus">+</span></div>
+    <div class="faq-item"><span>Can I apply if my background is non-traditional?</span><span class="plus">+</span></div>
+    <div class="faq-item"><span>Is salary range published with the role?</span><span class="plus">+</span></div>
+    <div class="faq-item"><span>What does compensation look like?</span><span class="plus">+</span></div>
+    <div class="faq-item"><span>Will my work be used to train models?</span><span class="plus">+</span></div>
+    <div class="faq-item"><span>Do interns and apprentices get paid?</span><span class="plus">+</span></div>
+  </div>
+</section>
+
+<section class="wrap end-cta">
+  <div>
+    <h2>Don't see<br/>your role?</h2>
+    <p>If your background sits between disciplines, send us a note anyway. We hire when we meet the right person, not just when there's an open req.</p>
+    <div class="ctas">
+      <a class="btn primary" href="mailto:careers@v01.studio"><span>careers@v01.studio</span><span class="arr">→</span></a>
+      <a class="btn" href="about.html"><span>About the Studio</span><span class="arr">→</span></a>
+    </div>
+  </div>
+  <div class="ph" data-label="STUDIO TEAM — END FRAME"><span class="ph-mid">[ TEAM IMAGE ]</span></div>
+</section>
+
+<div data-mount="footer"></div>
+<script src="site.js"></script>
+<script>
+  // Expandable role rows
+  const rows = document.querySelectorAll('.role[data-row]');
+  rows.forEach(row => {
+    row.addEventListener('click', () => {
+      const sub = row.nextElementSibling;
+      if (!sub || !sub.classList.contains('sub')) return;
+      const wasOpen = sub.classList.contains('open');
+      // close others
+      document.querySelectorAll('.role.sub.open').forEach(s => s.classList.remove('open'));
+      document.querySelectorAll('.role[data-row] .arr').forEach(a => a.textContent = '+');
+      if (!wasOpen) {
+        sub.classList.add('open');
+        row.querySelector('.arr').textContent = '−';
+      }
+    });
+  });
+</script>
+</body>
+</html>
