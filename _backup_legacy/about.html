@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>V01 — About</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* manifesto */
+  .manifesto{display:grid;grid-template-columns:1fr 1.4fr;gap:36px;align-items:start}
+  .manifesto h2{font-family:var(--display);font-weight:600;font-size:42px;line-height:.95;margin:0 0 14px;text-transform:uppercase}
+  .manifesto p{font-family:var(--mono);font-size:14px;line-height:1.7;color:var(--fg);margin:0 0 18px}
+  .manifesto p strong{color:var(--fg);font-weight:500}
+  .manifesto p em{color:var(--fg-dim);font-style:normal}
+
+  /* values */
+  .values{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .val{padding:36px 26px 38px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:14px;min-height:300px}
+  .val:last-child{border-right:none}
+  .val .num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--fg-mute)}
+  .val h3{font-family:var(--display);font-weight:600;font-size:28px;letter-spacing:.02em;margin:6px 0 0;text-transform:uppercase}
+  .val p{font-family:var(--mono);font-size:13px;line-height:1.65;color:var(--fg-dim);margin:0}
+
+  /* team grid */
+  .team{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .person .ph{aspect-ratio:4/5;width:100%;margin-bottom:14px}
+  .person h4{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:.02em;margin:0 0 4px;text-transform:uppercase}
+  .person .role{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-mute);margin-bottom:8px}
+  .person .bio{font-family:var(--mono);font-size:11.5px;color:var(--fg-dim);line-height:1.55;margin:0}
+
+  /* timeline horizontal */
+  .history{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .hist{padding:30px 22px;border-right:1px solid var(--line);min-height:200px}
+  .hist:last-child{border-right:none}
+  .hist .yr{font-family:var(--display);font-weight:600;font-size:34px;line-height:1;margin:0 0 14px}
+  .hist .ev{font-family:var(--mono);font-size:11.5px;color:var(--fg-dim);line-height:1.55;margin:0}
+
+  /* recognition */
+  .rec{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+  .rec-item{padding:24px 22px 26px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:120px;display:flex;flex-direction:column;justify-content:space-between}
+  .rec-item:nth-child(3n){border-right:none}
+  .rec-item .award{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:.02em;text-transform:uppercase;margin:0 0 6px}
+  .rec-item .meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-mute)}
+  .rec-item .yr{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--fg-mute);align-self:flex-end}
+  .rec-item .top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+
+  /* studios */
+  .studios{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .studio{display:grid;grid-template-columns:1fr 1.2fr;gap:18px;border:1px solid var(--line);padding:0;align-items:stretch}
+  .studio .ph{aspect-ratio:4/5;width:100%}
+  .studio .body{padding:24px 22px;display:flex;flex-direction:column;justify-content:center;gap:8px}
+  .studio h4{font-family:var(--display);font-weight:600;font-size:24px;letter-spacing:.02em;margin:0;text-transform:uppercase}
+  .studio .city{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-mute)}
+  .studio .lines{font-family:var(--mono);font-size:11.5px;line-height:1.55;color:var(--fg-dim);margin:8px 0 0}
+
+  /* press marquee */
+  .press{display:grid;grid-template-columns:repeat(6,1fr);gap:24px;align-items:center;padding:34px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .press .item{font-family:var(--display);font-weight:500;font-size:18px;letter-spacing:.06em;text-transform:uppercase;text-align:center;color:var(--fg);opacity:.78}
+
+  .end-cta{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:end;padding:90px 0 80px;border-top:1px solid var(--line)}
+  .end-cta h2{font-family:var(--display);font-weight:600;font-size:64px;line-height:.95;margin:0 0 18px;text-transform:uppercase}
+  .end-cta p{font-family:var(--mono);font-size:13px;color:var(--fg-dim);margin:0 0 30px;max-width:38ch}
+  .end-cta .ph{aspect-ratio:16/9}
+
+  @media (max-width:980px){
+    .manifesto,.studios,.end-cta{grid-template-columns:1fr}
+    .values,.history{grid-template-columns:1fr 1fr}
+    .val:nth-child(3n),.hist:nth-child(5n){border-right:1px solid var(--line)}
+    .val:nth-child(2n),.hist:nth-child(2n){border-right:none}
+    .team,.rec,.press{grid-template-columns:1fr 1fr}
+  }
+</style>
+</head>
+<body data-page="about">
+<div data-mount="nav"></div>
+
+<section class="wrap page-head">
+  <div class="breadcrumb"><span>V01</span><span>/</span><span>About</span></div>
+  <h1>A studio<br/>for what's next.</h1>
+  <p class="lede">V01 is an AI / VFX creative studio building cinematic work for brands, artists, and storytellers. We're filmmakers who build systems, and engineers who care about frames.</p>
+  <div class="page-meta">
+    <div class="pm"><h5>Founded</h5><p>2023 / Los Angeles</p></div>
+    <div class="pm"><h5>Team</h5><p>42 across 4 disciplines</p></div>
+    <div class="pm"><h5>Studios</h5><p>Los Angeles · London</p></div>
+    <div class="pm"><h5>Working</h5><p>Worldwide</p></div>
+  </div>
+</section>
+
+<section class="wrap sec">
+  <div class="manifesto">
+    <div>
+      <div class="eyebrow" style="margin-bottom:14px">Manifesto</div>
+      <h2>Craft over<br/>shortcuts.</h2>
+    </div>
+    <div>
+      <p>V01 was built on a simple idea: <strong>the systems should serve the work — not the other way around</strong>.</p>
+      <p>We make commercials, films, music videos, and VFX. The AI and pipelines we build inside the studio exist to help us tell better stories, faster, with more control. They are tools. The work is the point.</p>
+      <p>We hire filmmakers who care about frames and engineers who care about taste. We train on data we own or have license to. We finish to broadcast standards, every time.</p>
+      <p><em>Cinematic storytelling. Visual craft. Emotional impact. Built for what's next.</em></p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap sec">
+  <div class="sec-head"><div class="sec-title">What We Believe</div></div>
+  <div class="values">
+    <div class="val">
+      <div class="num">01</div>
+      <h3>The Frame is the Product</h3>
+      <p>We're not in the business of selling tools or showing off models. The output is a finished frame, on screen, in front of an audience.</p>
+    </div>
+    <div class="val">
+      <div class="num">02</div>
+      <h3>Human Direction, Always</h3>
+      <p>Directors and artists drive every decision. AI accelerates them. It does not replace taste, story, or judgment.</p>
+    </div>
+    <div class="val">
+      <div class="num">03</div>
+      <h3>Owned Data, No Shortcuts</h3>
+      <p>Our models train on licensed, owned, or fully synthetic data. Provenance is a feature, not a footnote.</p>
+    </div>
+    <div class="val">
+      <div class="num">04</div>
+      <h3>Iterate in Public</h3>
+      <p>We share what we learn from real productions — what shipped, what didn't, what we're still figuring out.</p>
+    </div>
+    <div class="val">
+      <div class="num">05</div>
+      <h3>Hollywood Standards</h3>
+      <p>Compositing, finishing, and delivery built to the same bar feature pipelines hold themselves to.</p>
+    </div>
+    <div class="val">
+      <div class="num">06</div>
+      <h3>Long-Term Partners</h3>
+      <p>We say no to fit-for-the-moment work. We build relationships with people we want to make a body of work with.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap sec">
+  <div class="sec-head"><div class="sec-title">Leadership</div></div>
+  <div class="team">
+    <div class="person">
+      <div class="ph" data-label="PORTRAIT — DIRECTOR"><span class="ph-mid">[ PORTRAIT ]</span></div>
+      <h4>Mara Voss</h4>
+      <div class="role">Founder · Director</div>
+      <p class="bio">Filmmaker. Previously directed commercials and shorts at independent studios across LA and London.</p>
+    </div>
+    <div class="person">
+      <div class="ph" data-label="PORTRAIT — VFX SUP"><span class="ph-mid">[ PORTRAIT ]</span></div>
+      <h4>Idris Khoury</h4>
+      <div class="role">VFX Supervisor</div>
+      <p class="bio">Twenty years across feature films and broadcast. Leads compositing and finishing.</p>
+    </div>
+    <div class="person">
+      <div class="ph" data-label="PORTRAIT — HEAD OF AI"><span class="ph-mid">[ PORTRAIT ]</span></div>
+      <h4>Sora Lin</h4>
+      <div class="role">Head of AI Systems</div>
+      <p class="bio">ML researcher turned production engineer. Owns the lab and the data posture.</p>
+    </div>
+    <div class="person">
+      <div class="ph" data-label="PORTRAIT — EP"><span class="ph-mid">[ PORTRAIT ]</span></div>
+      <h4>Elliot Pace</h4>
+      <div class="role">Executive Producer</div>
+      <p class="bio">Production from sketch to delivery. Runs the studio's project flow and partnerships.</p>
+    </div>
+    <div class="person">
+      <div class="ph" data-label="PORTRAIT — CD"><span class="ph-mid">[ PORTRAIT ]</span></div>
+      <h4>June Aoki</h4>
+      <div class="role">Creative Director</div>
+      <p class="bio">Worldbuilding, look development, and visual identity for every campaign.</p>
+    </div>
+    <div class="person">
+      <div class="ph" data-label="PORTRAIT — TD"><span class="ph-mid">[ PORTRAIT ]</span></div>
+      <h4>Theo Marlow</h4>
+      <div class="role">Pipeline TD Lead</div>
+      <p class="bio">Designs the connective tissue between the creative and engineering sides of the studio.</p>
+    </div>
+    <div class="person">
+      <div class="ph" data-label="PORTRAIT — STORY"><span class="ph-mid">[ PORTRAIT ]</span></div>
+      <h4>Nadia Reyes</h4>
+      <div class="role">Head of Story</div>
+      <p class="bio">Treatments, scripts, and narrative development across short and long form.</p>
+    </div>
+    <div class="person">
+      <div class="ph" data-label="PORTRAIT — OPS"><span class="ph-mid">[ PORTRAIT ]</span></div>
+      <h4>Felix Quan</h4>
+      <div class="role">Head of Operations</div>
+      <p class="bio">Studio operations, hiring, finance, and the unglamorous things that keep work shipping.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap sec">
+  <div class="sec-head"><div class="sec-title">Studio History</div></div>
+  <div class="history">
+    <div class="hist"><div class="yr">2023</div><p class="ev">Studio founded in Los Angeles. First three commercial campaigns ship.</p></div>
+    <div class="hist"><div class="yr">2024</div><p class="ev">Lab spun up. Atlas Models v1 enters production. London satellite opens.</p></div>
+    <div class="hist"><div class="yr">2025</div><p class="ev">First feature-quality VFX pass delivered. Stack Compositor goes live.</p></div>
+    <div class="hist"><div class="yr">2026</div><p class="ev">Echoes of Tomorrow ships. Worldgrid research begins. SOC 2 Type II certified.</p></div>
+    <div class="hist"><div class="yr">Next</div><p class="ev">Original short-form slate, in development with select partner studios.</p></div>
+  </div>
+</section>
+
+<section class="wrap sec">
+  <div class="sec-head"><div class="sec-title">Recognition</div></div>
+  <div class="rec">
+    <div class="rec-item"><div class="top"><div class="award">Cannes Lions · Bronze</div><div class="yr">2026</div></div><div class="meta">Echoes of Tomorrow · Brand Film</div></div>
+    <div class="rec-item"><div class="top"><div class="award">Ciclope · Best AI</div><div class="yr">2026</div></div><div class="meta">Carrier-9 · Commercial</div></div>
+    <div class="rec-item"><div class="top"><div class="award">SXSW · Selected</div><div class="yr">2026</div></div><div class="meta">The Light Between · Short</div></div>
+    <div class="rec-item"><div class="top"><div class="award">UKMVA · Best VFX</div><div class="yr">2025</div></div><div class="meta">Halflight · Music Video</div></div>
+    <div class="rec-item"><div class="top"><div class="award">D&amp;AD · Wood Pencil</div><div class="yr">2025</div></div><div class="meta">Signal Lost · Brand Film</div></div>
+    <div class="rec-item"><div class="top"><div class="award">VES · Nominated</div><div class="yr">2025</div></div><div class="meta">Outpost 7 · VFX / Series</div></div>
+  </div>
+</section>
+
+<section class="wrap sec">
+  <div class="sec-head"><div class="sec-title">Press</div></div>
+  <div class="press">
+    <div class="item">CINEFRAME</div>
+    <div class="item">FAST CO.</div>
+    <div class="item">SHOTLIST</div>
+    <div class="item">THE DRUM</div>
+    <div class="item">LITTLE BLACK</div>
+    <div class="item">FILM SCHOOL</div>
+  </div>
+</section>
+
+<section class="wrap sec">
+  <div class="sec-head"><div class="sec-title">Studios</div></div>
+  <div class="studios">
+    <div class="studio">
+      <div class="ph" data-label="LA STUDIO — STAGE"><span class="ph-mid">[ STUDIO LA ]</span></div>
+      <div class="body">
+        <h4>Los Angeles</h4>
+        <div class="city">HQ · Boyle Heights</div>
+        <p class="lines">Production stages, virtual capture, and the lab. Open by appointment.</p>
+        <p class="lines">1804 N. Mission Rd<br/>Los Angeles, CA 90033</p>
+      </div>
+    </div>
+    <div class="studio">
+      <div class="ph" data-label="LONDON STUDIO — INTERIOR"><span class="ph-mid">[ STUDIO LDN ]</span></div>
+      <div class="body">
+        <h4>London</h4>
+        <div class="city">Satellite · Hackney Wick</div>
+        <p class="lines">Post, finishing, and EU production support.</p>
+        <p class="lines">Unit 4, Wallis Rd<br/>London E9 5LH</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap end-cta">
+  <div>
+    <h2>Working<br/>worldwide.</h2>
+    <p>We collaborate with directors, brands, agencies, and studios across every timezone. If you're making something ambitious, we should talk.</p>
+    <div class="ctas">
+      <a class="btn primary" href="access.html"><span>Start a Project</span><span class="arr">→</span></a>
+      <a class="btn" href="work.html"><span>See the Work</span><span class="arr">→</span></a>
+    </div>
+  </div>
+  <div class="ph" data-label="STUDIO EXTERIOR — LA"><span class="ph-mid">[ STUDIO EXTERIOR ]</span></div>
+</section>
+
+<div data-mount="footer"></div>
+<script src="site.js"></script>
+</body>
+</html>

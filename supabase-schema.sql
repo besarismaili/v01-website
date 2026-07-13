@@ -19,6 +19,15 @@ create table if not exists projects (
   tags        text[] default '{}',
   summary     text default '',
   hero_url    text default '',
+  thumbnail   text default '',
+  video_url   text default '',
+  source_url  text default '',
+  gallery_urls text[] default '{}',
+  case_study  jsonb not null default '{}'::jsonb,
+  sort_order  int not null default 100,
+  credit_type text not null default 'V01 Work',
+  studio      text default '',
+  role        text default '',
   created_at  timestamptz default now(),
   updated_at  timestamptz default now()
 );

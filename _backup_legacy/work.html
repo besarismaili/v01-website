@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>V01 — Work</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* filters */
+  .filters{display:flex;gap:8px;flex-wrap:wrap;padding:24px 0 6px;border-top:1px solid var(--line)}
+  .filter{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg);padding:10px 16px;border:1px solid var(--line);background:transparent;cursor:pointer}
+  .filter.active{background:var(--fg);color:#0b0d0e;border-color:var(--fg)}
+  .filter:hover:not(.active){border-color:var(--fg-dim)}
+
+  /* featured */
+  .featured{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;padding:40px 0 0;border-top:1px solid var(--line);margin-top:24px}
+  .featured .ph{aspect-ratio:16/10;width:100%}
+  .feat-meta{display:flex;flex-direction:column;justify-content:space-between;padding:6px 4px}
+  .feat-meta .num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--fg-mute);margin-bottom:14px}
+  .feat-meta h2{font-family:var(--display);font-weight:600;font-size:56px;line-height:.95;margin:0 0 14px;text-transform:uppercase}
+  .feat-meta .tags{display:flex;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-mute);margin-bottom:18px}
+  .feat-meta p{font-family:var(--mono);font-size:13px;line-height:1.65;color:var(--fg-dim);margin:0 0 22px;max-width:42ch}
+
+  /* grid */
+  .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .work-card{display:flex;flex-direction:column}
+  .work-card .ph{aspect-ratio:4/3;width:100%;margin-bottom:16px}
+  .work-card .row{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:6px}
+  .work-card h3{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:.02em;margin:0;text-transform:uppercase}
+  .work-card .yr{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--fg-mute)}
+  .work-card .meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-dim);margin-bottom:12px}
+  .work-card .link{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;display:flex;justify-content:space-between;padding-top:12px;border-top:1px solid var(--line-2)}
+
+  /* category strip */
+  .cat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:54px 0 0}
+  .cat{padding:34px 24px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+  .cat:last-child{border-right:none}
+  .cat .num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--fg-mute)}
+  .cat h4{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:.02em;margin:6px 0 10px;text-transform:uppercase}
+  .cat .count{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--fg-dim)}
+
+  /* end CTA */
+  .end-cta{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:end;padding:90px 0 80px;border-top:1px solid var(--line)}
+  .end-cta h2{font-family:var(--display);font-weight:600;font-size:64px;line-height:.95;margin:0 0 18px;text-transform:uppercase}
+  .end-cta p{font-family:var(--mono);font-size:13px;color:var(--fg-dim);margin:0 0 30px;max-width:38ch}
+  .end-cta .ph{aspect-ratio:16/9}
+  @media (max-width:980px){
+    .featured,.end-cta{grid-template-columns:1fr}
+    .work-grid,.cat-strip{grid-template-columns:1fr 1fr}
+    .feat-meta h2,.end-cta h2{font-size:44px}
+  }
+</style>
+</head>
+<body data-page="work">
+<div data-mount="nav"></div>
+
+<section class="wrap page-head">
+  <div class="breadcrumb"><span>V01</span><span>/</span><span>Work</span></div>
+  <h1>Selected<br/>Work.</h1>
+  <p class="lede">A portfolio of cinematic commercials, films, music videos, and VFX work — built at the intersection of AI-native craft and Hollywood-level finishing.</p>
+  <div class="page-meta">
+    <div class="pm"><h5>Total Projects</h5><p>54 / Released</p></div>
+    <div class="pm"><h5>Categories</h5><p>Commercials · Films · Music · VFX</p></div>
+    <div class="pm"><h5>Recognition</h5><p>21 awards · 8 festivals</p></div>
+    <div class="pm"><h5>Active Region</h5><p>Worldwide / Montreal HQ</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="filters">
+    <button class="filter active">All</button>
+    <button class="filter">Commercials</button>
+    <button class="filter">Films</button>
+    <button class="filter">Music Videos</button>
+    <button class="filter">VFX / Post</button>
+    <button class="filter">Founder Credits</button>
+    <button class="filter">2026</button>
+    <button class="filter">2025</button>
+    <button class="filter">2024</button>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="featured" id="featured-project"></div>
+</section>
+
+<section class="wrap sec">
+  <div class="sec-head">
+    <div class="sec-title">All Projects</div>
+    <div class="sec-title">Sort: Recent ↓</div>
+  </div>
+  <div class="work-grid" id="work-grid"></div>
+</section>
+
+<section class="wrap">
+  <div class="cat-strip" id="cat-strip"></div>
+</section>
+
+<section class="wrap end-cta">
+  <div>
+    <h2>Got a brief?<br/>Let's talk.</h2>
+    <p>Send us a creative direction, a script, or just a feeling. We'll come back with a way to make it.</p>
+    <div class="ctas">
+      <a class="btn primary" href="access.html"><span>Start a Project</span><span class="arr">→</span></a>
+      <a class="btn" href="lab.html"><span>See the Lab</span><span class="arr">→</span></a>
+    </div>
+  </div>
+  <div class="ph" data-label="STUDIO REEL — END FRAME"><span class="ph-mid">[ REEL FRAME ]</span></div>
+</section>
+
+<div data-mount="footer"></div>
+<script src="site.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/data.js"></script>
+<script>
+(async function(){
+  let allProjects = await V01.getPublishedProjects();
+  const featured = await V01.getFeaturedProject();
+  const counts = await V01.getCategoryCounts();
+
+  // separate V01 work from founder credits
+  const v01Work = allProjects.filter(p => p.credit_type !== 'Founder Prior Work');
+  const founderWork = allProjects.filter(p => p.credit_type === 'Founder Prior Work');
+
+  // --- Page meta ---
+  const totalEl = document.querySelector('.page-meta .pm:first-child p');
+  if (totalEl) totalEl.textContent = v01Work.length + ' / Released';
+
+  // --- Featured ---
+  const featEl = document.getElementById('featured-project');
+  function showFeatured(show) {
+    if (!featEl) return;
+    if (!show || !featured) { featEl.style.display = 'none'; return; }
+    featEl.style.display = '';
+    featEl.innerHTML = `
+      ${featured.thumbnail
+        ? `<img src="${featured.thumbnail}" style="width:100%;aspect-ratio:16/10;object-fit:cover" />`
+        : `<div class="ph" data-label="FEATURED — ${featured.title.toUpperCase()}"><span class="ph-mid">[ FEATURED ]</span></div>`}
+      <div class="feat-meta">
+        <div>
+          <div class="num">Featured · ${featured.year}</div>
+          <h2>${featured.title}</h2>
+          <div class="tags"><span>${featured.category}</span><span>·</span><span>${featured.runtime}</span></div>
+          <p>${featured.summary || ''}</p>
+        </div>
+        <a class="btn" href="case-study.html#${featured.id}"><span>View Case Study</span><span class="arr">→</span></a>
+      </div>`;
+  }
+  showFeatured(true);
+
+  // --- Project grid ---
+  function renderGrid(projects, isFounder) {
+    const grid = document.getElementById('work-grid');
+    if (!grid) return;
+    const list = (!isFounder && featured) ? projects.filter(p => p.id !== featured.id) : projects;
+    grid.innerHTML = list.map(p => {
+      const isFC = p.credit_type === 'Founder Prior Work';
+      const meta = isFC ? `${p.role || 'Compositor'} · ${p.studio || ''}` : `${p.category} · ${p.runtime || '—'}`;
+      const linkLabel = isFC ? 'View Credit' : 'View Case Study';
+      return `
+      <article class="work-card">
+        <a href="case-study.html#${p.id}" style="color:inherit;text-decoration:none">
+          ${p.thumbnail
+            ? `<img src="${p.thumbnail}" class="ph" style="aspect-ratio:4/3;width:100%;object-fit:cover;margin-bottom:16px" />`
+            : `<div class="ph" data-label="STILL — ${p.title.toUpperCase()}" style="aspect-ratio:4/3;width:100%;margin-bottom:16px"><span class="ph-mid">[ STILL ]</span></div>`}
+          <div class="row"><h3>${p.title}</h3><span class="yr">${p.year}</span></div>
+          <div class="meta">${meta}</div>
+          <div class="link"><span>${linkLabel}</span><span>→</span></div>
+        </a>
+      </article>`;
+    }).join('');
+  }
+  renderGrid(v01Work, false);
+
+  // --- Section title ---
+  const secTitle = document.querySelector('#work-grid')?.closest('.sec')?.querySelector('.sec-title');
+
+  // --- Filters ---
+  const filterBtns = document.querySelectorAll('.filter');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const label = btn.textContent.trim();
+      if (label === 'All') {
+        showFeatured(true);
+        if (secTitle) secTitle.textContent = 'All Projects';
+        renderGrid(v01Work, false);
+      } else if (label === 'Founder Credits') {
+        showFeatured(false);
+        if (secTitle) secTitle.textContent = 'Founder Film Credits';
+        renderGrid(founderWork, true);
+      } else if (/^\d{4}$/.test(label)) {
+        showFeatured(false);
+        if (secTitle) secTitle.textContent = label + ' Projects';
+        renderGrid(v01Work.filter(p => p.year === parseInt(label)), false);
+      } else {
+        showFeatured(false);
+        const catMap = { 'Commercials': 'Commercial', 'Films': 'Short Film', 'Music Videos': 'Music Video', 'VFX / Post': 'VFX / Post' };
+        const cat = catMap[label] || label;
+        if (secTitle) secTitle.textContent = label;
+        renderGrid(v01Work.filter(p => p.category === cat), false);
+      }
+    });
+  });
+
+  // --- Category strip ---
+  const stripEl = document.getElementById('cat-strip');
+  if (stripEl) {
+    const cats = [
+      { num: '01', label: 'Commercials', key: 'Commercial' },
+      { num: '02', label: 'Films / Shorts', key: 'Short Film' },
+      { num: '03', label: 'Music Videos', key: 'Music Video' },
+      { num: '04', label: 'VFX / Post', key: 'VFX / Post' },
+    ];
+    // also count Brand Film under Commercials
+    const brandCount = counts['Brand Film'] || 0;
+    stripEl.innerHTML = cats.map(c => {
+      let count = counts[c.key] || 0;
+      if (c.key === 'Commercial') count += brandCount;
+      return `<div class="cat"><div class="num">${c.num}</div><h4>${c.label}</h4><div class="count">${String(count).padStart(2,'0')} projects</div></div>`;
+    }).join('');
+  }
+})();
+</script>
+</body>
+</html>
