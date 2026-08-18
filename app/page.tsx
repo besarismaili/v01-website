@@ -1,9 +1,11 @@
 import Link from "next/link";
 import "./page.css";
 import { getSelectedWork, getFounderCredits } from "@/lib/supabase";
+import { solaProject } from "@/lib/sola";
 
 export default async function Home() {
-  const projects = await getSelectedWork(5);
+  const cmsProjects = await getSelectedWork(4);
+  const projects = [solaProject, ...cmsProjects.filter((p) => p.id !== solaProject.id)].slice(0, 5);
   const founderCredits = await getFounderCredits();
 
   return (
@@ -93,7 +95,7 @@ export default async function Home() {
         <div className="sw-grid">
           {projects.map(p => (
             <article className="sw-card" key={p.id}>
-              <Link href={`/case-study/${p.id}`} style={{ color: "inherit", textDecoration: "none" }}>
+              <Link href={"href" in p && p.href ? p.href : `/case-study/${p.id}`} style={{ color: "inherit", textDecoration: "none" }}>
                 <img src={p.hero_url || p.thumbnail || "/images/work/echoes-of-tomorrow.png"} className="sw-img" style={{ aspectRatio: "4/4.6", width: "100%", objectFit: "cover", marginBottom: "14px" }} alt={p.title} />
                 <h4>{p.title}</h4>
                 <div className="sw-meta">{p.category}</div>

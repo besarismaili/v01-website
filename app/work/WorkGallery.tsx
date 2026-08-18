@@ -135,7 +135,7 @@ export default function WorkGallery({
                   </div>
                   <p>{displayFeatured.summary || ""}</p>
                 </div>
-                <Link className="btn" href={`/case-study/${displayFeatured.id}`}>
+                <Link className="btn" href={displayFeatured.href || `/case-study/${displayFeatured.id}`}>
                   <span>View Case Study</span>
                   <span className="arr">&rarr;</span>
                 </Link>
@@ -157,7 +157,7 @@ export default function WorkGallery({
             const linkLabel = isFC ? "View Credit" : "View Case Study";
             return (
               <article className="work-card" key={p.id}>
-                <Link href={`/case-study/${p.id}`} style={{ color: "inherit", textDecoration: "none" }}>
+                <Link href={p.href || `/case-study/${p.id}`} style={{ color: "inherit", textDecoration: "none" }}>
                   <img src={p.hero_url || p.thumbnail || "/images/work/echoes-of-tomorrow.png"} className="ph" style={{ aspectRatio: "4/3", width: "100%", objectFit: "cover", marginBottom: "16px" }} alt={p.title} />
                   <div className="row">
                     <h3>{p.title}</h3>

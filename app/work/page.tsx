@@ -1,4 +1,5 @@
-import { getPublishedProjects, getFeaturedProject, getCategoryCounts } from "@/lib/supabase";
+import { getPublishedProjects, getCategoryCounts } from "@/lib/supabase";
+import { solaProject } from "@/lib/sola";
 import WorkGallery from "./WorkGallery";
 
 export const metadata = {
@@ -7,9 +8,11 @@ export const metadata = {
 };
 
 export default async function WorkPage() {
-  const allProjects = await getPublishedProjects();
-  const featured = await getFeaturedProject();
+  const cmsProjects = await getPublishedProjects();
+  const allProjects = [solaProject, ...cmsProjects.filter((p) => p.id !== solaProject.id)];
+  const featured = solaProject;
   const counts = await getCategoryCounts();
+  counts["Commercial"] = (counts["Commercial"] || 0) + 1;
 
   return (
     <main data-page="work">
