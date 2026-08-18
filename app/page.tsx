@@ -2,10 +2,13 @@ import Link from "next/link";
 import "./page.css";
 import { getSelectedWork, getFounderCredits } from "@/lib/supabase";
 import { solaProject } from "@/lib/sola";
+import { tbcbProject, tsvcProject } from "@/lib/studio-work";
 
 export default async function Home() {
-  const cmsProjects = await getSelectedWork(4);
-  const projects = [solaProject, ...cmsProjects.filter((p) => p.id !== solaProject.id)].slice(0, 5);
+  const cmsProjects = await getSelectedWork(2);
+  const studio = [solaProject, tbcbProject, tsvcProject];
+  const studioIds = new Set(studio.map((p) => p.id));
+  const projects = [...studio, ...cmsProjects.filter((p) => !studioIds.has(p.id))].slice(0, 5);
   const founderCredits = await getFounderCredits();
 
   return (

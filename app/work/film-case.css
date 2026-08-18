@@ -1,0 +1,44 @@
+.film-hero {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #050505;
+  border: 1px solid var(--line);
+}
+
+.film-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.film-still {
+  margin: 0;
+}
+
+.film-still:first-child {
+  grid-column: 1 / -1;
+}
+
+.film-still img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: 1px solid var(--line);
+}
+
+.film-still figcaption {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fg-mute);
+  margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+  .film-gallery {
+    grid-template-columns: 1fr;
+  }
+}
