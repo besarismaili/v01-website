@@ -1,11 +1,10 @@
 import Link from "next/link";
 import "./page.css";
 import { getFounderCredits } from "@/lib/supabase";
-import { solaProject } from "@/lib/sola";
-import { tbcbProject, tsvcProject, tdbgProject } from "@/lib/studio-work";
+import { studioProjects } from "@/lib/studio-work";
 
 export default async function Home() {
-  const projects = [solaProject, tbcbProject, tsvcProject, tdbgProject];
+  const projects = studioProjects;
   const founderCredits = await getFounderCredits();
 
   return (
@@ -50,6 +49,8 @@ export default async function Home() {
           <div className="partner alt">SHIFT</div>
           <div className="partner">SIEBERT</div>
           <div className="partner alt">TOML</div>
+          <div className="partner">BEIGE FLAG</div>
+          <div className="partner alt">BEKI CARS</div>
         </div>
       </section>
 

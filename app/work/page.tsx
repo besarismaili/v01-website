@@ -1,5 +1,5 @@
 import { solaProject } from "@/lib/sola";
-import { tbcbProject, tsvcProject, tdbgProject } from "@/lib/studio-work";
+import { studioProjects } from "@/lib/studio-work";
 import WorkGallery from "./WorkGallery";
 
 export const metadata = {
@@ -7,17 +7,15 @@ export const metadata = {
   description: "A portfolio of cinematic commercials, films, music videos, and VFX work.",
 };
 
-const studio = [solaProject, tbcbProject, tsvcProject, tdbgProject];
-
 export default async function WorkPage() {
   const featured = solaProject;
   const counts: Record<string, number> = {
-    Commercial: studio.length,
+    Commercial: studioProjects.length,
   };
 
   return (
     <main data-page="work">
-      <WorkGallery allProjects={studio} featured={featured} counts={counts} />
+      <WorkGallery allProjects={studioProjects} featured={featured} counts={counts} />
     </main>
   );
 }

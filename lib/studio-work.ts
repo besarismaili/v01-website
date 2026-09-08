@@ -137,4 +137,85 @@ export const tdbgProject: StudioProject = {
   deliverables: "30-second film.",
 };
 
-export const studioProjects = [solaProject, tbcbProject, tsvcProject, tdbgProject];
+export const mismatchProject: StudioProject = {
+  id: "mismatch",
+  href: "/work/mismatch",
+  title: "The Perfect Mismatch",
+  client: "Beige Flag",
+  agency: "Beige Flag",
+  category: "Commercial",
+  year: 2026,
+  runtime: "01:15",
+  status: "Published",
+  director: "Besar Ismaili",
+  summary:
+    "A quirky AI-generated ad for Beige Flag: a lost argyle sock crosses the city and finds its perfect mismatch in a stained food container. Made in three days.",
+  headline: "A love story for the wonderfully imperfect.",
+  overview:
+    "A character-led spot for the Beige Flag dating app, built around an unlikely pair of discarded objects. Conceived, generated, and finished as an agile AI-native production — taking character design, choreography, world integration, and finishing from prompt to master in seventy-two hours.",
+  brief:
+    "Make a distinctive, funny dating-app ad with a memorable visual hook and a production window measured in days.",
+  approach:
+    "The film was generated and finished as a compact AI-native production, moving from concept and character design through animation, edit, sound, and final grade in three days.",
+  pull: "A lost argyle sock crosses the city and finds its perfect mismatch.",
+  hero_url: "/images/work/mismatch/hero.jpg",
+  thumbnail: "/images/work/mismatch/hero.jpg",
+  video_url: "/videos/work/mismatch/hero.mp4",
+  gallery: [
+    { src: "/images/work/mismatch/hero.jpg", alt: "The argyle sock and plastic container leaning together on the park bench", caption: "The perfect mismatch" },
+    { src: "/images/work/mismatch/still-01.jpg", alt: "Laundromat floor where the lost sock begins its journey", caption: "Left behind" },
+    { src: "/images/work/mismatch/still-02.jpg", alt: "Argyle sock hopping along a busy city sidewalk", caption: "Across the city" },
+    { src: "/images/work/mismatch/still-03.jpg", alt: "Corgi sniffing the curious green argyle sock", caption: "An inquisitive encounter" },
+    { src: "/images/work/mismatch/still-04.jpg", alt: "Wet sock resting on a park bench in the rain", caption: "Weathering the storm" },
+    { src: "/images/work/mismatch/still-05.jpg", alt: "Stained takeout container glowing in the sunset light", caption: "Golden hour companion" },
+  ],
+  credit_type: "V01 Work",
+  role: "Creative Direction, AI Production, VFX & Finish",
+  deliverables: "75-second hero film, social master, campaign stills.",
+};
+
+export const dreamProject: StudioProject = {
+  id: "dream",
+  href: "/work/dream",
+  title: "A Dream in Your Hand",
+  client: "Beki Cars",
+  agency: "",
+  category: "Commercial",
+  year: 2025,
+  runtime: "00:55",
+  status: "Published",
+  director: "Besar Ismaili",
+  summary:
+    "A camera-free brand film for Beki Cars about a lifelong dream made tangible through a 100% generative AI workflow.",
+  headline: "A lifelong dream, made without a camera.",
+  overview:
+    "An emotionally resonant automotive film created for Beki Cars using a fully generative workflow. A child’s toy car transforms into reality, guided by hand across the mountains, roads, and cities of Kosovo before landing in the driveway.",
+  brief:
+    "Turn the feeling of a dream car into a human story without a conventional shoot.",
+  approach:
+    "A 100% generative production spanning treatment, visual development, motion, compositing, edit, and finish. Forced-perspective scale and tactile interaction connect childhood imagination to the real vehicle.",
+  pull: "A lifelong dream made tangible through a camera-free generative workflow.",
+  hero_url: "/images/work/dream/hero.jpg",
+  thumbnail: "/images/work/dream/hero.jpg",
+  video_url: "/videos/work/dream/hero.mp4",
+  gallery: [
+    { src: "/images/work/dream/hero.jpg", alt: "Forced perspective hand guiding the black Mercedes G-Class along mountain roads", caption: "Guided by imagination" },
+    { src: "/images/work/dream/still-01.jpg", alt: "Child playing on bedroom floor surrounded by toy cars in warm afternoon light", caption: "Every dream begins small" },
+    { src: "/images/work/dream/still-02.jpg", alt: "Child's finger pushing miniature black G-Class toy forward", caption: "Hands-on focus" },
+    { src: "/images/work/dream/still-03.jpg", alt: "Hand steering the vehicle through a scenic snowy mountain pass", caption: "Winter crossing" },
+    { src: "/images/work/dream/still-05.jpg", alt: "Guiding the G-Class through the streets of Prishtina at golden hour", caption: "Golden hour in Prishtina" },
+    { src: "/images/work/dream/still-06.jpg", alt: "Real Mercedes G-Class parked in the driveway at dusk", caption: "Arrival" },
+  ],
+  credit_type: "V01 Work",
+  role: "Creative Direction, AI Production, VFX & Finish",
+  deliverables: "55-second hero film, digital master, campaign stills.",
+};
+
+export const studioProjects = [
+  solaProject,
+  tbcbProject,
+  tsvcProject,
+  tdbgProject,
+  mismatchProject,
+  dreamProject,
+];
