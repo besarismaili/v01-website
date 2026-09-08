@@ -241,7 +241,7 @@ export default function AccessPage() {
             <Link className="btn" href="/work"><span>See the Work</span><span className="arr">&rarr;</span></Link>
           </div>
         </div>
-        <img className="media-img" src="/images/work/room-24.png" alt="V01 studio interior" />
+        <img className="media-img" src="/images/work/tsvc/hero.jpg" alt="V01 studio interior" />
       </section>
     </main>
   );

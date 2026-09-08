@@ -1,6 +1,5 @@
-import { getPublishedProjects, getCategoryCounts } from "@/lib/supabase";
 import { solaProject } from "@/lib/sola";
-import { tbcbProject, tsvcProject } from "@/lib/studio-work";
+import { tbcbProject, tsvcProject, tdbgProject } from "@/lib/studio-work";
 import WorkGallery from "./WorkGallery";
 
 export const metadata = {
@@ -8,19 +7,17 @@ export const metadata = {
   description: "A portfolio of cinematic commercials, films, music videos, and VFX work.",
 };
 
-const studio = [solaProject, tbcbProject, tsvcProject];
+const studio = [solaProject, tbcbProject, tsvcProject, tdbgProject];
 
 export default async function WorkPage() {
-  const cmsProjects = await getPublishedProjects();
-  const studioIds = new Set(studio.map((p) => p.id));
-  const allProjects = [...studio, ...cmsProjects.filter((p) => !studioIds.has(p.id))];
   const featured = solaProject;
-  const counts = await getCategoryCounts();
-  counts["Commercial"] = (counts["Commercial"] || 0) + studio.length;
+  const counts: Record<string, number> = {
+    Commercial: studio.length,
+  };
 
   return (
     <main data-page="work">
-      <WorkGallery allProjects={allProjects} featured={featured} counts={counts} />
+      <WorkGallery allProjects={studio} featured={featured} counts={counts} />
     </main>
   );
 }

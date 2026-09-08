@@ -132,25 +132,13 @@ export default function AboutPage() {
           <div className="hist"><div className="yr">2023</div><p className="ev">Studio founded in Montreal. First three commercial campaigns ship.</p></div>
           <div className="hist"><div className="yr">2024</div><p className="ev">Lab spun up. Atlas Models v1 enters production. Prishtina studio opens.</p></div>
           <div className="hist"><div className="yr">2025</div><p className="ev">First feature-quality VFX pass delivered. Stack Compositor goes live.</p></div>
-          <div className="hist"><div className="yr">2026</div><p className="ev">Echoes of Tomorrow ships. Worldgrid research begins. SOC 2 Type II certified.</p></div>
+          <div className="hist"><div className="yr">2026</div><p className="ev">High-end commercial AI picture and VFX campaigns ship for Sola and Siebert.</p></div>
           <div className="hist"><div className="yr">Next</div><p className="ev">Original short-form slate, in development with select partner studios.</p></div>
         </div>
       </section>
 
       <section className="wrap sec">
-        <div className="sec-head"><div className="sec-title">Recognition</div></div>
-        <div className="rec">
-          <div className="rec-item"><div className="top"><div className="award">Cannes Lions &middot; Bronze</div><div className="yr">2026</div></div><div className="meta">Echoes of Tomorrow &middot; Brand Film</div></div>
-          <div className="rec-item"><div className="top"><div className="award">Ciclope &middot; Best AI</div><div className="yr">2026</div></div><div className="meta">Carrier-9 &middot; Commercial</div></div>
-          <div className="rec-item"><div className="top"><div className="award">SXSW &middot; Selected</div><div className="yr">2026</div></div><div className="meta">The Light Between &middot; Short</div></div>
-          <div className="rec-item"><div className="top"><div className="award">UKMVA &middot; Best VFX</div><div className="yr">2025</div></div><div className="meta">Halflight &middot; Music Video</div></div>
-          <div className="rec-item"><div className="top"><div className="award">D&amp;AD &middot; Wood Pencil</div><div className="yr">2025</div></div><div className="meta">Signal Lost &middot; Brand Film</div></div>
-          <div className="rec-item"><div className="top"><div className="award">VES &middot; Nominated</div><div className="yr">2025</div></div><div className="meta">Outpost 7 &middot; VFX / Series</div></div>
-        </div>
-      </section>
-
-      <section className="wrap sec">
-        <div className="sec-head"><div className="sec-title">Press</div></div>
+        <div className="sec-head"><div className="sec-title">Press &amp; Features</div></div>
         <div className="press">
           <div className="item">CINEFRAME</div>
           <div className="item">FAST CO.</div>
@@ -165,7 +153,7 @@ export default function AboutPage() {
         <div className="sec-head"><div className="sec-title">Studios</div></div>
         <div className="studios">
           <div className="studio">
-            <img className="media-img" src="/images/work/room-24.png" alt="V01 Montreal studio" />
+            <img className="media-img" src="/images/work/tsvc/hero.jpg" alt="V01 Montreal studio" />
             <div className="body">
               <h4>Montreal</h4>
               <div className="city">HQ &middot; Downtown</div>
@@ -174,7 +162,7 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="studio">
-            <img className="media-img" src="/images/work/echoes-of-tomorrow.png" alt="V01 Prishtina studio" />
+            <img className="media-img" src="/images/work/sola/hero.jpg" alt="V01 Prishtina studio" />
             <div className="body">
               <h4>Prishtina</h4>
               <div className="city">Studio · Kosovo</div>
@@ -194,7 +182,7 @@ export default function AboutPage() {
             <Link className="btn" href="/work"><span>See the Work</span><span className="arr">&rarr;</span></Link>
           </div>
         </div>
-        <img className="media-img" src="/images/work/northbound.png" alt="V01 works worldwide from Montreal and Prishtina" />
+        <img className="media-img" src="/images/work/tbcb/ooh-wall.jpg" alt="V01 works worldwide from Montreal and Prishtina" />
       </section>
     </main>
   );

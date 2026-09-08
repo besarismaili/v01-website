@@ -1,14 +1,11 @@
 import Link from "next/link";
 import "./page.css";
-import { getSelectedWork, getFounderCredits } from "@/lib/supabase";
+import { getFounderCredits } from "@/lib/supabase";
 import { solaProject } from "@/lib/sola";
-import { tbcbProject, tsvcProject } from "@/lib/studio-work";
+import { tbcbProject, tsvcProject, tdbgProject } from "@/lib/studio-work";
 
 export default async function Home() {
-  const cmsProjects = await getSelectedWork(2);
-  const studio = [solaProject, tbcbProject, tsvcProject];
-  const studioIds = new Set(studio.map((p) => p.id));
-  const projects = [...studio, ...cmsProjects.filter((p) => !studioIds.has(p.id))].slice(0, 5);
+  const projects = [solaProject, tbcbProject, tsvcProject, tdbgProject];
   const founderCredits = await getFounderCredits();
 
   return (
@@ -42,20 +39,17 @@ export default async function Home() {
           </div>
         </div>
         <div className="hero-right">
-          <img className="hero-img media-img" src="/images/work/echoes-of-tomorrow.png" alt="Cinematic memory architecture from Echoes of Tomorrow" />
+          <img className="hero-img media-img" src="/images/work/sola/hero.jpg" alt="Sola commercial key visual" />
         </div>
       </section>
 
       <section className="wrap partners">
         <div className="eyebrow">Trusted By Visionary Partners</div>
         <div className="partners-row">
-          <div className="partner">ATLAS<span className="sm">PICTURES</span></div>
-          <div className="partner alt">NORTHWIND</div>
-          <div className="partner">LUMEN<span className="sm">HOUSE</span></div>
-          <div className="partner alt">MERIDIAN<span className="sm">PICTURES</span></div>
-          <div className="partner">OBSCURA</div>
-          <div className="partner alt">FIELDNOTE</div>
-          <div className="partner">PARALLAX<span className="sm">FEATURES</span></div>
+          <div className="partner">SOLA</div>
+          <div className="partner alt">SHIFT</div>
+          <div className="partner">SIEBERT</div>
+          <div className="partner alt">TOML</div>
         </div>
       </section>
 
@@ -64,28 +58,28 @@ export default async function Home() {
         <div className="ww-grid">
           <article className="ww-card">
             <div className="num">01</div>
-            <img className="ww-img media-img" src="/images/work/carrier-9.png" alt="Cinematic vehicle commercial" />
+            <img className="ww-img media-img" src="/images/work/tbcb/hero.jpg" alt="Bonds, Corporate Bonds commercial hero frame" />
             <h3>Commercials / Brand Films</h3>
             <p>Cinematic campaigns and brand stories, built for culture, crafted to perform, and designed to leave a lasting mark.</p>
             <Link className="explore" href="/work"><span>Explore</span><span>&rarr;</span></Link>
           </article>
           <article className="ww-card">
             <div className="num">02</div>
-            <img className="ww-img media-img" src="/images/work/the-light-between.png" alt="Cinematic short film on a stormy coast" />
+            <img className="ww-img media-img" src="/images/work/tsvc/hero.jpg" alt="Vice City commercial hero frame" />
             <h3>Films / Short Films</h3>
             <p>Original stories, proof-of-concepts, and narrative worlds developed with cinematic precision.</p>
             <Link className="explore" href="/work"><span>Explore</span><span>&rarr;</span></Link>
           </article>
           <article className="ww-card">
             <div className="num">03</div>
-            <img className="ww-img media-img" src="/images/work/halflight.png" alt="Rain-lit music video portrait" />
-            <h3>Music Videos</h3>
-            <p>Stylized, performance-driven visuals for artists, labels, and cultural campaigns.</p>
+            <img className="ww-img media-img" src="/images/work/tdbg/hero.jpg" alt="Don’t Be That Guy commercial hero frame" />
+            <h3>Stylized Motion / Campaign</h3>
+            <p>Stylized, character-driven visuals, performance worlds, and dynamic visual campaigns.</p>
             <Link className="explore" href="/work"><span>Explore</span><span>&rarr;</span></Link>
           </article>
           <article className="ww-card">
             <div className="num">04</div>
-            <img className="ww-img media-img" src="/images/work/outpost-7.png" alt="Feature-quality visual effects shot" />
+            <img className="ww-img media-img" src="/images/work/sola/court-spin-after.jpg" alt="Sola basketball VFX finishing frame" />
             <h3>VFX / Post-Production</h3>
             <p>Hollywood-level compositing, cleanup, finishing, enhancement, and AI-assisted post workflows.</p>
             <Link className="explore" href="/work"><span>Explore</span><span>&rarr;</span></Link>
@@ -99,22 +93,13 @@ export default async function Home() {
           {projects.map(p => (
             <article className="sw-card" key={p.id}>
               <Link href={"href" in p && p.href ? p.href : `/case-study/${p.id}`} style={{ color: "inherit", textDecoration: "none" }}>
-                <img src={p.hero_url || p.thumbnail || "/images/work/echoes-of-tomorrow.png"} className="sw-img" style={{ aspectRatio: "4/4.6", width: "100%", objectFit: "cover", marginBottom: "14px" }} alt={p.title} />
+                <img src={p.hero_url || p.thumbnail || "/images/work/sola/hero.jpg"} className="sw-img" style={{ aspectRatio: "4/4.6", width: "100%", objectFit: "cover", marginBottom: "14px" }} alt={p.title} />
                 <h4>{p.title}</h4>
                 <div className="sw-meta">{p.category}</div>
                 <div className="sw-link"><span>View Case Study</span><span>&rarr;</span></div>
               </Link>
             </article>
           ))}
-          {/* Fallback if no projects exist */}
-          {projects.length === 0 && (
-            <article className="sw-card">
-              <img src="/images/work/echoes-of-tomorrow.png" className="sw-img" alt="Echoes of Tomorrow" />
-              <h4>Echoes of Tomorrow</h4>
-              <div className="sw-meta">Brand Film</div>
-              <div className="sw-link"><span>View Case Study</span><span>&rarr;</span></div>
-            </article>
-          )}
         </div>
       </section>
 
@@ -130,31 +115,33 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="wrap sec founder">
-        <div className="sec-head"><div className="sec-title">Built on Feature-Film VFX Craft</div></div>
-        <div className="founder-intro">
-          <div>
-            <h2>Feature-Film<br/>Pedigree.</h2>
+      {founderCredits && founderCredits.length > 0 && (
+        <section className="wrap sec founder">
+          <div className="sec-head"><div className="sec-title">Built on Feature-Film VFX Craft</div></div>
+          <div className="founder-intro">
+            <div>
+              <h2>Feature-Film<br/>Pedigree.</h2>
+            </div>
+            <div>
+              <p>Before V01, founder Besar Ismaili contributed as a compositor on major studio productions at leading VFX houses including MPC, Framestore, and FX3X.</p>
+              <p>That discipline now shapes how V01 approaches AI: not as a shortcut, but as a production language guided by cinematic taste, compositing craft, and final-frame quality.</p>
+            </div>
           </div>
-          <div>
-            <p>Before V01, founder Besar Ismaili contributed as a compositor on major studio productions at leading VFX houses including MPC, Framestore, and FX3X.</p>
-            <p>That discipline now shapes how V01 approaches AI: not as a shortcut, but as a production language guided by cinematic taste, compositing craft, and final-frame quality.</p>
+          <div className="fc-grid">
+            {founderCredits.map(p => (
+              <article className="fc" key={p.id}>
+                <Link href={`/case-study/${p.id}`} style={{ color: "inherit", textDecoration: "none" }}>
+                  <img src={p.hero_url || p.thumbnail || "/images/work/sola/hero.jpg"} className="fc-img" style={{ aspectRatio: "4/4.6", width: "100%", objectFit: "cover", marginBottom: "14px" }} alt={p.title} />
+                  <h4>{p.title}</h4>
+                  <div className="fc-role">{p.role || 'Compositor'} &middot; {p.studio || ''}</div>
+                  <div className="fc-link"><span>Founder Credit</span><span>&rarr;</span></div>
+                </Link>
+              </article>
+            ))}
           </div>
-        </div>
-        <div className="fc-grid">
-          {founderCredits.map(p => (
-            <article className="fc" key={p.id}>
-              <Link href={`/case-study/${p.id}`} style={{ color: "inherit", textDecoration: "none" }}>
-                <img src={p.hero_url || p.thumbnail || "/images/work/outpost-7.png"} className="fc-img" style={{ aspectRatio: "4/4.6", width: "100%", objectFit: "cover", marginBottom: "14px" }} alt={p.title} />
-                <h4>{p.title}</h4>
-                <div className="fc-role">{p.role || 'Compositor'} &middot; {p.studio || ''}</div>
-                <div className="fc-link"><span>Founder Credit</span><span>&rarr;</span></div>
-              </Link>
-            </article>
-          ))}
-        </div>
-        <div className="founder-note">Founder credits represent prior work completed through credited studio roles before V01.</div>
-      </section>
+          <div className="founder-note">Founder credits represent prior work completed through credited studio roles before V01.</div>
+        </section>
+      )}
 
       <section className="wrap sec">
         <div className="sec-head"><div className="sec-title">How We Work</div></div>
@@ -184,7 +171,7 @@ export default async function Home() {
             </ul>
             <Link className="explore-lab" href="/lab"><span>Explore the Lab</span><span>&rarr;</span></Link>
           </div>
-          <img className="lab-img media-img" src="/images/work/signal-lost.png" alt="V01 systems lab visual" />
+          <img className="lab-img media-img" src="/images/work/sola/western-after.jpg" alt="V01 systems lab visual" />
         </div>
       </section>
 
@@ -219,7 +206,7 @@ export default async function Home() {
             <Link className="btn" href="/access"><span>Request Access</span><span className="arr">&rarr;</span></Link>
           </div>
         </div>
-        <img className="big-cta-img media-img" src="/images/work/salt-and-static.png" alt="Cinematic horizon and lone figure" />
+        <img className="big-cta-img media-img" src="/images/work/tbcb/ooh-wall.jpg" alt="VERSION ONE campaign visual" />
       </section>
     </main>
   );

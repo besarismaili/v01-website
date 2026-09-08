@@ -23,7 +23,7 @@ export default function LabPage() {
 
       <section className="wrap">
         <div className="lab-hero">
-          <img className="media-img" src="/images/work/echoes-of-tomorrow.png" alt="V01 systems lab and visual reference environment" />
+          <img className="media-img" src="/images/work/sola/western-after.jpg" alt="V01 systems lab and visual reference environment" />
           <div className="stat">
             <div className="stat-grid">
               <div><div className="stat-num">14</div><div className="stat-label">Active Tools</div></div>
@@ -145,7 +145,7 @@ export default function LabPage() {
 
       <section className="wrap sec">
         <div className="wide-feature">
-          <img className="media-img" src="/images/work/room-24.png" alt="Creative technology workspace at night" />
+          <img className="media-img" src="/images/work/tsvc/still-08.jpg" alt="V01 creative technology development frame" />
           <div className="body">
             <div className="eyebrow" style={{marginBottom:"14px"}}>Inside the Lab</div>
             <h2>Built by people<br/>who ship film.</h2>
@@ -165,7 +165,7 @@ export default function LabPage() {
             <Link className="btn" href="/work"><span>See the Work</span><span className="arr">&rarr;</span></Link>
           </div>
         </div>
-        <img className="media-img" src="/images/work/outpost-7.png" alt="V01 systems lab concept frame" />
+        <img className="media-img" src="/images/work/tdbg/empty-pool.jpg" alt="V01 systems lab concept frame" />
       </section>
     </main>
   );

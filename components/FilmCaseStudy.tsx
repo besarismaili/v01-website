@@ -26,10 +26,10 @@ export default function FilmCaseStudy({ project }: { project: StudioProject }) {
             <h5>Client</h5>
             <p>{project.client}</p>
           </div>
-          <div className="c">
+          {project.agency && <div className="c">
             <h5>Agency</h5>
             <p>{project.agency}</p>
-          </div>
+          </div>}
           <div className="c">
             <h5>Category</h5>
             <p>{project.category}</p>
@@ -113,7 +113,7 @@ export default function FilmCaseStudy({ project }: { project: StudioProject }) {
             <span className="l">Contribution</span>
             <div>
               <div className="sub">
-                VERSION ONE delivered AI picture and finishing for {project.agency} on {project.client}.
+                VERSION ONE delivered AI picture and finishing{project.agency ? ` for ${project.agency}` : ""} on {project.client}.
               </div>
             </div>
           </div>

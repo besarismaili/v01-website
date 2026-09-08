@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import "./page.css";
 
-type Project = any; // We can use proper type from Supabase later
+type Project = any;
 
 export default function WorkGallery({
   allProjects,
@@ -21,10 +21,10 @@ export default function WorkGallery({
   const founderWork = allProjects.filter((p) => p.credit_type === "Founder Prior Work");
 
   const cats = [
-    { num: "01", label: "Commercials", key: "Commercial", filter: "Commercials", image: "/images/work/carrier-9.png", copy: "Character-led campaigns, product films, and AI-native spots." },
-    { num: "02", label: "Films / Shorts", key: "Short Film", filter: "Films", image: "/images/work/the-light-between.png", copy: "Narrative work built around atmosphere, performance, and world." },
-    { num: "03", label: "Music Videos", key: "Music Video", filter: "Music Videos", image: "/images/work/halflight.png", copy: "Performance worlds, visual identities, and rhythm-first storytelling." },
-    { num: "04", label: "VFX / Post", key: "VFX / Post", filter: "VFX / Post", image: "/images/work/outpost-7.png", copy: "Feature compositing, design, cleanup, integration, and final finish." },
+    { num: "01", label: "Commercials", key: "Commercial", filter: "Commercials", image: "/images/work/tbcb/hero.jpg", copy: "Character-led campaigns, product films, and AI-native spots." },
+    { num: "02", label: "Films / Shorts", key: "Short Film", filter: "Films", image: "/images/work/tsvc/hero.jpg", copy: "Narrative work built around atmosphere, performance, and world." },
+    { num: "03", label: "Music Videos", key: "Music Video", filter: "Music Videos", image: "/images/work/sola/court-spin-after.jpg", copy: "Performance worlds, visual identities, and rhythm-first storytelling." },
+    { num: "04", label: "VFX / Post", key: "VFX / Post", filter: "VFX / Post", image: "/images/work/sola/hero.jpg", copy: "Feature compositing, design, cleanup, integration, and final finish." },
   ];
   const brandCount = counts["Brand Film"] || 0;
 
@@ -60,6 +60,15 @@ export default function WorkGallery({
     ? displayProjects.filter((p) => p.id !== displayFeatured?.id)
     : displayProjects;
 
+  const categoriesInWork = Array.from(new Set(v01Work.map((p) => p.category)));
+  const yearsInWork = Array.from(new Set(v01Work.map((p) => String(p.year)))).sort().reverse();
+  const filterList = [
+    "All",
+    ...categoriesInWork,
+    ...(founderWork.length > 0 ? ["Founder Credits"] : []),
+    ...yearsInWork,
+  ];
+
   return (
     <>
       <section className="wrap page-head">
@@ -81,12 +90,8 @@ export default function WorkGallery({
             <p>{v01Work.length} / Released</p>
           </div>
           <div className="pm">
-            <h5>Categories</h5>
-            <p>Commercials &middot; Films &middot; Music &middot; VFX</p>
-          </div>
-          <div className="pm">
-            <h5>Recognition</h5>
-            <p>21 awards &middot; 8 festivals</p>
+            <h5>Focus</h5>
+            <p>Commercials &middot; AI Picture &middot; VFX Finishing</p>
           </div>
           <div className="pm">
             <h5>Active Region</h5>
@@ -97,17 +102,7 @@ export default function WorkGallery({
 
       <section className="wrap">
         <div className="filters">
-          {[
-            "All",
-            "Commercials",
-            "Films",
-            "Music Videos",
-            "VFX / Post",
-            "Founder Credits",
-            "2026",
-            "2025",
-            "2024",
-          ].map((f) => (
+          {filterList.map((f) => (
             <button
               key={f}
               className={`filter ${filter === f ? "active" : ""}`}
@@ -123,7 +118,7 @@ export default function WorkGallery({
         <div className="featured" id="featured-project" style={{ display: displayFeatured ? "" : "none" }}>
           {displayFeatured && (
             <>
-              <img src={displayFeatured.hero_url || displayFeatured.thumbnail || "/images/work/echoes-of-tomorrow.png"} style={{ width: "100%", aspectRatio: "16/10", objectFit: "cover" }} alt={displayFeatured.title} />
+              <img src={displayFeatured.hero_url || displayFeatured.thumbnail || "/images/work/sola/hero.jpg"} style={{ width: "100%", aspectRatio: "16/10", objectFit: "cover" }} alt={displayFeatured.title} />
               <div className="feat-meta">
                 <div>
                   <div className="num">Featured &middot; {displayFeatured.year}</div>
@@ -158,7 +153,7 @@ export default function WorkGallery({
             return (
               <article className="work-card" key={p.id}>
                 <Link href={p.href || `/case-study/${p.id}`} style={{ color: "inherit", textDecoration: "none" }}>
-                  <img src={p.hero_url || p.thumbnail || "/images/work/echoes-of-tomorrow.png"} className="ph" style={{ aspectRatio: "4/3", width: "100%", objectFit: "cover", marginBottom: "16px" }} alt={p.title} />
+                  <img src={p.hero_url || p.thumbnail || "/images/work/sola/hero.jpg"} className="ph" style={{ aspectRatio: "4/3", width: "100%", objectFit: "cover", marginBottom: "16px" }} alt={p.title} />
                   <div className="row">
                     <h3>{p.title}</h3>
                     <span className="yr">{p.year}</span>
@@ -211,7 +206,7 @@ export default function WorkGallery({
             </Link>
           </div>
         </div>
-        <img className="media-img" src="/images/work/room-24.png" alt="V01 studio reel frame" />
+        <img className="media-img" src="/images/work/tsvc/hero.jpg" alt="V01 studio reel frame" />
       </section>
     </>
   );

@@ -100,4 +100,41 @@ export const tsvcProject: StudioProject = {
   deliverables: "30s hero film, selected stills.",
 };
 
-export const studioProjects = [solaProject, tbcbProject, tsvcProject];
+export const tdbgProject: StudioProject = {
+  id: "tdbg",
+  href: "/work/tdbg",
+  title: "Don’t Be That Guy",
+  client: "Siebert",
+  agency: "TOML",
+  category: "Commercial",
+  year: 2026,
+  runtime: "00:30",
+  status: "Published",
+  director: "TOML / VERSION ONE",
+  summary:
+    "A toy soldier with real-world spending habits. A 30-second Siebert spot with TOML turns a rented convertible, a pool party, and disappearing cash into a blunt invitation to think longer-term.",
+  headline: "Small world. Familiar mistakes.",
+  overview:
+    "TOML brought VERSION ONE in to direct and finish the AI picture for Siebert’s Valor campaign. The spot speaks to young enlisted service members without turning financial planning into a lecture. Its lead is a green plastic army man: dressed for responsibility, still spending like a kid. VERSION ONE’s AI / VFX work brings that contradiction into a bright miniature world.",
+  brief:
+    "Make ‘Don’t Be That Guy’ feel like advice from someone who has been there. Visual humor carries the message: easy spending, a rented lifestyle, then the moment the party is over. The tone is knowing rather than judgmental.",
+  approach:
+    "The film moves from a cash-spraying close-up to a toy-scale convertible and an overhead pool party. When the water disappears, the same soldier is left on the pool floor. Keeping the plastic character and miniature setting recognizable across these changes makes the joke read as one story. Bold yellow stages the spending; the green brand close shifts the conversation toward financial planning.",
+  pull: "The pool empties. The party ends. Time for a different call.",
+  hero_url: "/images/work/tdbg/hero.jpg",
+  thumbnail: "/images/work/tdbg/hero.jpg",
+  video_url: "/videos/work/tdbg/hero.mp4",
+  gallery: [
+    { src: "/images/work/tdbg/hero.jpg", alt: "Green toy soldier with a red money gun against yellow", caption: "The call-out" },
+    { src: "/images/work/tdbg/convertible.jpg", alt: "Toy soldier driving a red convertible marked 24 Hour Car Rental", caption: "A rented lifestyle" },
+    { src: "/images/work/tdbg/pool-party.jpg", alt: "Toy soldier floating in a pool with dolls and scattered banknotes", caption: "The pool party" },
+    { src: "/images/work/tdbg/empty-pool.jpg", alt: "Toy soldier alone on the drained pool floor", caption: "The party is over" },
+    { src: "/images/work/tdbg/phone.jpg", alt: "Toy soldier looking at a phone against yellow", caption: "The long-term call" },
+    { src: "/images/work/tdbg/advisor.jpg", alt: "Toy soldier and miniature financial advisor in a split-screen phone conversation", caption: "A different conversation" },
+  ],
+  credit_type: "V01 Work",
+  role: "AI / VFX",
+  deliverables: "30-second film.",
+};
+
+export const studioProjects = [solaProject, tbcbProject, tsvcProject, tdbgProject];

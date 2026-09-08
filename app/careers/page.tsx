@@ -381,13 +381,13 @@ export default function CareersPage() {
         <div className="sec-head"><div className="sec-title">Where We Work</div></div>
         <div className="studios">
           <div className="studio">
-            <img className="media-img" src="/images/work/room-24.png" alt="V01 Montreal studio" />
+            <img className="media-img" src="/images/work/tsvc/hero.jpg" alt="V01 Montreal studio" />
             <h4>Montreal &middot; HQ</h4>
             <div className="meta">Downtown &middot; 2001 Blvd Robert-Bourassa</div>
             <p>Production stages, virtual capture, finishing suites, and the lab. Most full-time roles are Montreal-based.</p>
           </div>
           <div className="studio">
-            <img className="media-img" src="/images/work/echoes-of-tomorrow.png" alt="V01 Prishtina studio" />
+            <img className="media-img" src="/images/work/sola/hero.jpg" alt="V01 Prishtina studio" />
             <h4>Prishtina &middot; Studio</h4>
             <div className="meta">Kosovo &middot; Europe</div>
             <p>Creative development, VFX, AI systems, and production collaboration, connected directly with Montreal.</p>
