@@ -151,7 +151,7 @@ export default function SolaCaseStudy() {
           </h2>
           <p>Bring the brief. We’ll shape the world, the workflow, and the finish.</p>
           <div className="ctas">
-            <Link className="btn primary" href="/access">
+            <Link className="btn primary" href="/contact">
               <span>Start a Project</span>
               <span>→</span>
             </Link>

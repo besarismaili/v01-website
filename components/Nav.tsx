@@ -8,9 +8,8 @@ export function Nav() {
 
   const navItems = [
     { k: "work", l: "Work", h: "/work" },
-    { k: "lab", l: "Lab", h: "/lab" },
     { k: "about", l: "About", h: "/about" },
-    { k: "access", l: "Access", h: "/access" },
+    { k: "contact", l: "Contact", h: "/contact" },
   ];
 
   return (

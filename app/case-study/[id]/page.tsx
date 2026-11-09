@@ -104,7 +104,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ id: 
         </div>
       </section>
 
-      <section className="wrap end-cta"><div><h2>Make something<br/>worth replaying.</h2><p>Bring the brief. We’ll shape the world, the workflow, and the finish.</p><div className="ctas"><Link className="btn primary" href="/access"><span>Start a Project</span><span>→</span></Link><Link className="btn" href="/work"><span>All Work</span><span>→</span></Link></div></div>{image ? <img src={image} alt="" /> : <div className="ph" />}</section>
+      <section className="wrap end-cta"><div><h2>Make something<br/>worth replaying.</h2><p>Bring the brief. We’ll shape the world, the workflow, and the finish.</p><div className="ctas"><Link className="btn primary" href="/contact"><span>Start a Project</span><span>→</span></Link><Link className="btn" href="/work"><span>All Work</span><span>→</span></Link></div></div>{image ? <img src={image} alt="" /> : <div className="ph" />}</section>
     </main>
   );
 }

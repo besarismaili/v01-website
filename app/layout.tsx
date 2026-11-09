@@ -4,8 +4,8 @@ import { Footer } from "@/components/Footer";
 
 export const metadata = {
   metadataBase: new URL("https://v01.ca"),
-  title: "V01 — AI / VFX Creative Studio",
-  description: "High-End AI / VFX Commercials. Films. Music Videos.",
+  title: "V01 — AI-Native VFX Studio",
+  description: "AI-native VFX for production, not prototypes. Commercials and film sequences, finished to feature-film standards.",
 };
 
 export default function RootLayout({
