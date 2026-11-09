@@ -80,7 +80,7 @@ export default async function Home() {
           </article>
           <article className="ww-card">
             <div className="num">04</div>
-            <img className="ww-img media-img" src="/images/work/sola/court-spin-after.jpg" alt="Sola basketball VFX finishing frame" />
+            <img className="ww-img media-img" src="/images/work/sola/spin-after.jpg" alt="Sola basketball VFX finishing frame" />
             <h3>VFX / Post-Production</h3>
             <p>Hollywood-level compositing, cleanup, finishing, enhancement, and AI-assisted post workflows.</p>
             <Link className="explore" href="/work"><span>Explore</span><span>&rarr;</span></Link>

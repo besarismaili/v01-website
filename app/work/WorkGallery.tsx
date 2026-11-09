@@ -23,7 +23,7 @@ export default function WorkGallery({
   const cats = [
     { num: "01", label: "Commercials", key: "Commercial", filter: "Commercials", image: "/images/work/tbcb/hero.jpg", copy: "Character-led campaigns, product films, and AI-native spots." },
     { num: "02", label: "Films / Shorts", key: "Short Film", filter: "Films", image: "/images/work/tsvc/hero.jpg", copy: "Narrative work built around atmosphere, performance, and world." },
-    { num: "03", label: "Music Videos", key: "Music Video", filter: "Music Videos", image: "/images/work/sola/court-spin-after.jpg", copy: "Performance worlds, visual identities, and rhythm-first storytelling." },
+    { num: "03", label: "Music Videos", key: "Music Video", filter: "Music Videos", image: "/images/work/sola/spin-after.jpg", copy: "Performance worlds, visual identities, and rhythm-first storytelling." },
     { num: "04", label: "VFX / Post", key: "VFX / Post", filter: "VFX / Post", image: "/images/work/sola/hero.jpg", copy: "Feature compositing, design, cleanup, integration, and final finish." },
   ];
   const brandCount = counts["Brand Film"] || 0;
