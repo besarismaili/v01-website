@@ -31,7 +31,7 @@ export default function LoginPage() {
   };
 
   return (
-    <main data-page="login" style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <main data-page="login" style={{ minHeight: "70vh", padding: "64px 18px", display: "flex", alignItems: "center", justifyContent: "center" }}>
       <div style={{ width: "100%", maxWidth: "320px" }}>
         <div style={{ marginBottom: "32px", textAlign: "center" }}>
           <h1 style={{ fontFamily: "var(--display)", fontWeight: 600, fontSize: "42px", margin: "0 0 8px", textTransform: "uppercase" }}>V01</h1>
@@ -42,8 +42,11 @@ export default function LoginPage() {
           {error && <div style={{ padding: "12px", border: "1px solid rgba(224,138,118,0.3)", color: "#e08a76", fontSize: "12px", fontFamily: "var(--mono)" }}>{error}</div>}
 
           <div>
-            <label style={{ display: "block", fontFamily: "var(--mono)", fontSize: "10px", letterSpacing: ".28em", textTransform: "uppercase", color: "var(--fg-mute)", marginBottom: "8px" }}>Email</label>
+            <label style={{ display: "block", fontFamily: "var(--mono)", fontSize: "10px", letterSpacing: ".28em", textTransform: "uppercase", color: "var(--fg-mute)", marginBottom: "8px" }} htmlFor="login-email">Email</label>
             <input
+              id="login-email"
+              name="email"
+              autoComplete="email"
               type="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
@@ -52,8 +55,11 @@ export default function LoginPage() {
             />
           </div>
           <div>
-            <label style={{ display: "block", fontFamily: "var(--mono)", fontSize: "10px", letterSpacing: ".28em", textTransform: "uppercase", color: "var(--fg-mute)", marginBottom: "8px" }}>Password</label>
+            <label style={{ display: "block", fontFamily: "var(--mono)", fontSize: "10px", letterSpacing: ".28em", textTransform: "uppercase", color: "var(--fg-mute)", marginBottom: "8px" }} htmlFor="login-password">Password</label>
             <input
+              id="login-password"
+              name="password"
+              autoComplete="current-password"
               type="password"
               value={password}
               onChange={e => setPassword(e.target.value)}

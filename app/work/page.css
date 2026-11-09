@@ -1,9 +1,9 @@
-main[data-page="work"] .filters{display:flex;gap:8px;flex-wrap:wrap;padding:24px 0 6px;border-top:1px solid var(--line)}
+main[data-page="work"] .filters{display:flex;gap:8px;flex-wrap:wrap;padding:24px 0 30px;border-top:1px solid var(--line)}
 main[data-page="work"] .filter{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg);padding:10px 16px;border:1px solid var(--line);background:transparent;cursor:pointer}
 main[data-page="work"] .filter.active{background:var(--fg);color:#0b0d0e;border-color:var(--fg)}
 main[data-page="work"] .filter:hover:not(.active){border-color:var(--fg-dim)}
 
-main[data-page="work"] .featured{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;padding:40px 0 0;border-top:1px solid var(--line);margin-top:24px}
+main[data-page="work"] .featured{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;padding:40px 0 0;border-top:1px solid var(--line)}
 main[data-page="work"] .featured .ph{aspect-ratio:16/10;width:100%}
 main[data-page="work"] .feat-meta{display:flex;flex-direction:column;justify-content:space-between;padding:6px 4px}
 main[data-page="work"] .feat-meta .num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--fg-mute);margin-bottom:14px}
@@ -32,7 +32,7 @@ main[data-page="work"] .cat .count{font-family:var(--mono);font-size:11px;letter
 
 
 @media (max-width:980px){
-  main[data-page="work"] .featured{grid-template-columns:1fr}
+  main[data-page="work"] .featured{grid-template-columns:1fr;padding-bottom:40px}
   main[data-page="work"] .work-grid,main[data-page="work"] .cat-strip{grid-template-columns:1fr 1fr}
   main[data-page="work"] .cat:nth-child(2n){border-right:0}
   main[data-page="work"] .cat:nth-child(-n+2){border-bottom:1px solid var(--line)}
@@ -43,7 +43,7 @@ main[data-page="work"] .cat .count{font-family:var(--mono);font-size:11px;letter
   main[data-page="work"] .work-grid,main[data-page="work"] .cat-strip{grid-template-columns:1fr}
   main[data-page="work"] .cat{border-right:0;border-bottom:1px solid var(--line)}
   main[data-page="work"] .cat p{min-height:0}
-  main[data-page="work"] .featured{padding-top:24px}
+  main[data-page="work"] .featured{padding-block:24px 32px}
   main[data-page="work"] .cat:last-child{border-bottom:0}
   main[data-page="work"] .feat-meta h2{font-size:38px}
 }

@@ -3,11 +3,11 @@ main[data-page="journal"] .journal h2{font-family:var(--display);font-weight:600
 main[data-page="journal"] .journal .lede{font-family:var(--mono);font-size:13px;line-height:1.65;color:var(--fg-dim);margin:0 0 22px;max-width:34ch}
 
 main[data-page="journal"] .timeline{display:flex;flex-direction:column}
-main[data-page="journal"] .tl{display:grid;grid-template-columns:120px max-content 1fr auto;gap:24px;align-items:start;padding:20px 0;border-top:1px solid var(--line)}
+main[data-page="journal"] .tl{display:grid;grid-template-columns:120px 100px 1fr auto;gap:24px;align-items:start;padding:20px 0;border-top:1px solid var(--line)}
 main[data-page="journal"] .tl:last-child{border-bottom:1px solid var(--line)}
 main[data-page="journal"] .timeline>.tl:first-child{border-top:0}
 main[data-page="journal"] .tl .when{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--fg-mute)}
-main[data-page="journal"] .tl .kind{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-dim);border:1px solid var(--line);padding:5px 8px;justify-self:start}
+main[data-page="journal"] .tl .kind{white-space:nowrap;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-dim);border:1px solid var(--line);padding:5px 8px;justify-self:start}
 main[data-page="journal"] .tl h4{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:.02em;margin:0 0 4px;text-transform:uppercase}
 main[data-page="journal"] .tl p{font-family:var(--mono);font-size:12px;color:var(--fg-dim);margin:0;max-width:54ch;line-height:1.55}
 main[data-page="journal"] .tl .arr{font-family:var(--mono);color:var(--fg-mute);align-self:center}

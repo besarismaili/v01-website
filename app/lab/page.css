@@ -23,10 +23,10 @@ main[data-page="lab"] .research-notes{display:grid;grid-template-columns:1fr 1.6
 main[data-page="lab"] .research-notes h2{font-family:var(--display);font-weight:600;font-size:42px;line-height:.95;margin:0 0 14px;text-transform:uppercase}
 main[data-page="lab"] .research-notes .lede{font-family:var(--mono);font-size:13px;line-height:1.65;color:var(--fg-dim);margin:0 0 22px;max-width:34ch}
 main[data-page="lab"] .timeline{display:flex;flex-direction:column}
-main[data-page="lab"] .tl{display:grid;grid-template-columns:120px max-content 1fr auto;gap:24px;align-items:start;padding:20px 0;border-top:1px solid var(--line)}
+main[data-page="lab"] .tl{display:grid;grid-template-columns:120px 100px 1fr auto;gap:24px;align-items:start;padding:20px 0;border-top:1px solid var(--line)}
 main[data-page="lab"] .tl:last-child{border-bottom:1px solid var(--line)}
 main[data-page="lab"] .tl .when{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--fg-mute)}
-main[data-page="lab"] .tl .kind{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-dim);border:1px solid var(--line);padding:5px 8px;justify-self:start}
+main[data-page="lab"] .tl .kind{white-space:nowrap;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-dim);border:1px solid var(--line);padding:5px 8px;justify-self:start}
 main[data-page="lab"] .tl h4{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:.02em;margin:0 0 4px;text-transform:uppercase}
 main[data-page="lab"] .tl p{font-family:var(--mono);font-size:12px;color:var(--fg-dim);margin:0;max-width:54ch;line-height:1.55}
 main[data-page="lab"] .tl .arr{font-family:var(--mono);color:var(--fg-mute);align-self:center}
@@ -55,6 +55,7 @@ main[data-page="lab"] .wide-feature p{font-family:var(--mono);font-size:13px;lin
 @media (max-width:600px){
   main[data-page="lab"] .tools,main[data-page="lab"] .princ{grid-template-columns:1fr}
   main[data-page="lab"] .tools .tool{border-right:none;min-height:0}
+  main[data-page="lab"] .princ .p{min-height:0}
   main[data-page="lab"] .tl{grid-template-columns:auto 1fr;gap:10px 14px}
   main[data-page="lab"] .tl>div:nth-child(3){grid-column:1 / -1}
   main[data-page="lab"] .tl .arr{display:none}

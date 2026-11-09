@@ -145,6 +145,9 @@ export default function WorkGallery({
           <div className="sec-title">{secTitle}</div>
           <div className="sec-title">Sort: Recent &darr;</div>
         </div>
+        {gridProjects.length === 0 && (
+          <p className="sec-title" style={{ margin: "0 0 26px" }}>No projects in this category yet.</p>
+        )}
         <div className="work-grid" id="work-grid">
           {gridProjects.map((p) => {
             const isFC = p.credit_type === "Founder Prior Work";
@@ -176,7 +179,7 @@ export default function WorkGallery({
             let count = counts[c.key] || 0;
             if (c.key === "Commercial") count += brandCount;
             return (
-              <button className="cat" key={c.key} onClick={() => { setFilter(c.filter); window.scrollTo({ top: 480, behavior: "smooth" }); }}>
+              <button className="cat" key={c.key} onClick={() => { setFilter(c.key); document.getElementById("work-grid")?.scrollIntoView({ behavior: "smooth", block: "start" }); }}>
                 <img src={c.image} alt={`${c.label} category`} />
                 <div className="num">{c.num}</div>
                 <h4>{c.label}</h4>

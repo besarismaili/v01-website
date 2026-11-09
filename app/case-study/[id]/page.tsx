@@ -12,7 +12,7 @@ function vimeoId(url = "") {
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const { data } = await supabase.from("projects").select("title, summary").eq("id", id).single();
-  return data ? { title: `V01 — ${data.title}`, description: data.summary || undefined } : { title: "Project Not Found" };
+  return data ? { title: `V01 — ${data.title}`, description: data.summary || undefined } : { title: "V01 — Page Not Found" };
 }
 
 export default async function CaseStudyPage({ params }: { params: Promise<{ id: string }> }) {

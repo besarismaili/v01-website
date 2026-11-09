@@ -18,9 +18,9 @@ export default async function Home() {
             <span className="lead">Films. Music Videos.</span>
           </h1>
           <p className="hero-sub">
-            V01 creates cinematic work at the intersection of<br />
-            AI, filmmaking craft, and Hollywood-level VFX.<br />
-            Our internal systems and AI-native workflows<br />
+            V01 creates cinematic work at the intersection of{" "}<br />
+            AI, filmmaking craft, and Hollywood-level VFX.{" "}<br />
+            Our internal systems and AI-native workflows{" "}<br />
             exist to serve the work — not the other way around.
           </p>
           <div className="ctas">

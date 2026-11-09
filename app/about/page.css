@@ -56,4 +56,9 @@ main[data-page="about"] .press .item{font-family:var(--display);font-weight:500;
   main[data-page="about"] .val:nth-child(n){border-right:none;border-bottom:1px solid var(--line);min-height:0}
   main[data-page="about"] .val:last-child{border-bottom:none}
   main[data-page="about"] .val h3{font-size:24px}
+  main[data-page="about"] .studio{grid-template-columns:1fr;gap:0}
+  main[data-page="about"] .studio>.media-img{aspect-ratio:16/9}
+  main[data-page="about"] .history{grid-template-columns:1fr}
+  main[data-page="about"] .hist:nth-child(n){border-right:none;border-bottom:1px solid var(--line);min-height:0;grid-column:auto}
+  main[data-page="about"] .hist:last-child{border-bottom:none}
 }
