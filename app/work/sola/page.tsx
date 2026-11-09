@@ -1,7 +1,6 @@
 import Link from "next/link";
 import WipeCompare from "@/components/WipeCompare";
 import { solaProject, solaWipes } from "@/lib/sola";
-import "../page.css";
 import "../../case-study/[id]/page.css";
 import "./page.css";
 
@@ -12,7 +11,7 @@ export const metadata = {
 
 export default function SolaCaseStudy() {
   return (
-    <main data-page="work">
+    <main data-page="case">
       <section className="wrap cs-head">
         <div className="breadcrumb">
           <Link href="/">V01</Link>

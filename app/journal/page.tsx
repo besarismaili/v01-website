@@ -21,7 +21,7 @@ export default function JournalPage() {
       </section>
 
       <section className="wrap sec">
-        <div className="timeline" style={{ borderTop: "1px solid var(--line)", paddingTop: "40px" }}>
+        <div className="timeline">
             <div className="tl"><div className="when">06 / 05 / 26</div><div className="kind">Release</div><div><h4>Stack Compositor v0.7</h4><p>Improved hair / fur matte extraction, faster temporal smoothing, and a new node-graph profiler.</p></div><div className="arr">&rarr;</div></div>
             <div className="tl"><div className="when">22 / 04 / 26</div><div className="kind">Note</div><div><h4>Atlas — Character Continuity</h4><p>Notes on training a character model that survives wardrobe and lighting changes across a 90-day shoot.</p></div><div className="arr">&rarr;</div></div>
             <div className="tl"><div className="when">11 / 04 / 26</div><div className="kind">Release</div><div><h4>Ledger Pipeline 2.0</h4><p>Full rewrite of asset versioning, with cross-project search and shot-level lineage diffs.</p></div><div className="arr">&rarr;</div></div>

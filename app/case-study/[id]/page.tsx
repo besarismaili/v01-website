@@ -37,7 +37,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ id: 
     : `Direction and finishing by ${project.director || "V01"}.`);
 
   return (
-    <main data-page="work">
+    <main data-page="case">
       <section className="wrap cs-head">
         <div className="breadcrumb"><Link href="/">V01</Link><span>/</span><Link href="/work">Work</Link><span>/</span><span>{project.title}</span></div>
         <div className="cs-meta">

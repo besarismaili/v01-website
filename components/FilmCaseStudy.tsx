@@ -1,9 +1,11 @@
 import Link from "next/link";
 import type { StudioProject } from "@/lib/studio-work";
+import "@/app/case-study/[id]/page.css";
+import "@/app/work/film-case.css";
 
 export default function FilmCaseStudy({ project }: { project: StudioProject }) {
   return (
-    <main data-page="work">
+    <main data-page="case">
       <section className="wrap cs-head">
         <div className="breadcrumb">
           <Link href="/">V01</Link>

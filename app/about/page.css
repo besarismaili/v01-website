@@ -1,56 +1,59 @@
-.manifesto{display:grid;grid-template-columns:1fr 1.4fr;gap:36px;align-items:start}
-.manifesto h2{font-family:var(--display);font-weight:600;font-size:42px;line-height:.95;margin:0 0 14px;text-transform:uppercase}
-.manifesto p{font-family:var(--mono);font-size:14px;line-height:1.7;color:var(--fg);margin:0 0 18px}
-.manifesto p strong{color:var(--fg);font-weight:500}
-.manifesto p em{color:var(--fg-dim);font-style:normal}
+main[data-page="about"] .manifesto{display:grid;grid-template-columns:1fr 1.4fr;gap:36px;align-items:start}
+main[data-page="about"] .manifesto h2{font-family:var(--display);font-weight:600;font-size:42px;line-height:.95;margin:0 0 14px;text-transform:uppercase}
+main[data-page="about"] .manifesto p{font-family:var(--mono);font-size:14px;line-height:1.7;color:var(--fg);margin:0 0 18px}
+main[data-page="about"] .manifesto p strong{color:var(--fg);font-weight:500}
+main[data-page="about"] .manifesto p em{color:var(--fg-dim);font-style:normal}
 
-.values{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.val{padding:36px 26px 38px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:14px;min-height:300px}
-.val:last-child{border-right:none}
-.val .num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--fg-mute)}
-.val h3{font-family:var(--display);font-weight:600;font-size:28px;letter-spacing:.02em;margin:6px 0 0;text-transform:uppercase}
-.val p{font-family:var(--mono);font-size:13px;line-height:1.65;color:var(--fg-dim);margin:0}
+main[data-page="about"] .values{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+main[data-page="about"] .val{padding:36px 26px 38px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:14px;min-height:300px}
+main[data-page="about"] .val:nth-child(3n){border-right:none}
+main[data-page="about"] .val .num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--fg-mute)}
+main[data-page="about"] .val h3{font-family:var(--display);font-weight:600;font-size:28px;letter-spacing:.02em;margin:6px 0 0;text-transform:uppercase}
+main[data-page="about"] .val p{font-family:var(--mono);font-size:13px;line-height:1.65;color:var(--fg-dim);margin:0}
 
-.team{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.person .ph{aspect-ratio:4/5;width:100%;margin-bottom:14px}
-.person h4{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:.02em;margin:0 0 4px;text-transform:uppercase}
-.person .role{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-mute);margin-bottom:8px}
-.person .bio{font-family:var(--mono);font-size:11.5px;color:var(--fg-dim);line-height:1.55;margin:0}
+main[data-page="about"] .team{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+main[data-page="about"] .person .ph{aspect-ratio:4/5;width:100%;margin-bottom:14px}
+main[data-page="about"] .person h4{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:.02em;margin:0 0 4px;text-transform:uppercase}
+main[data-page="about"] .person .role{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-mute);margin-bottom:8px}
+main[data-page="about"] .person .bio{font-family:var(--mono);font-size:11.5px;color:var(--fg-dim);line-height:1.55;margin:0}
 
-.history{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.hist{padding:30px 22px;border-right:1px solid var(--line);min-height:200px}
-.hist:last-child{border-right:none}
-.hist .yr{font-family:var(--display);font-weight:600;font-size:34px;line-height:1;margin:0 0 14px}
-.hist .ev{font-family:var(--mono);font-size:11.5px;color:var(--fg-dim);line-height:1.55;margin:0}
+main[data-page="about"] .history{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+main[data-page="about"] .hist{padding:30px 22px;border-right:1px solid var(--line);min-height:200px}
+main[data-page="about"] .hist:last-child{border-right:none}
+main[data-page="about"] .hist .yr{font-family:var(--display);font-weight:600;font-size:34px;line-height:1;margin:0 0 14px}
+main[data-page="about"] .hist .ev{font-family:var(--mono);font-size:11.5px;color:var(--fg-dim);line-height:1.55;margin:0}
 
-.rec{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
-.rec-item{padding:24px 22px 26px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:120px;display:flex;flex-direction:column;justify-content:space-between}
-.rec-item:nth-child(3n){border-right:none}
-.rec-item .award{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:.02em;text-transform:uppercase;margin:0 0 6px}
-.rec-item .meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-mute)}
-.rec-item .yr{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--fg-mute);align-self:flex-end}
-.rec-item .top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+main[data-page="about"] .rec{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+main[data-page="about"] .rec-item{padding:24px 22px 26px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:120px;display:flex;flex-direction:column;justify-content:space-between}
+main[data-page="about"] .rec-item:nth-child(3n){border-right:none}
+main[data-page="about"] .rec-item .award{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:.02em;text-transform:uppercase;margin:0 0 6px}
+main[data-page="about"] .rec-item .meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-mute)}
+main[data-page="about"] .rec-item .yr{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--fg-mute);align-self:flex-end}
+main[data-page="about"] .rec-item .top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
 
-.studios{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.studio{display:grid;grid-template-columns:1fr 1.2fr;gap:18px;border:1px solid var(--line);padding:0;align-items:stretch}
-.studio .ph,.studio>.media-img{aspect-ratio:4/5;width:100%}
-.studio .body{padding:24px 22px;display:flex;flex-direction:column;justify-content:center;gap:8px}
-.studio h4{font-family:var(--display);font-weight:600;font-size:24px;letter-spacing:.02em;margin:0;text-transform:uppercase}
-.studio .city{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-mute)}
-.studio .lines{font-family:var(--mono);font-size:11.5px;line-height:1.55;color:var(--fg-dim);margin:8px 0 0}
+main[data-page="about"] .studios{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+main[data-page="about"] .studio{display:grid;grid-template-columns:1fr 1.2fr;gap:18px;border:1px solid var(--line);padding:0;align-items:stretch}
+main[data-page="about"] .studio .ph,main[data-page="about"] .studio>.media-img{aspect-ratio:4/5;width:100%}
+main[data-page="about"] .studio .body{padding:24px 22px;display:flex;flex-direction:column;justify-content:center;gap:8px}
+main[data-page="about"] .studio h4{font-family:var(--display);font-weight:600;font-size:24px;letter-spacing:.02em;margin:0;text-transform:uppercase}
+main[data-page="about"] .studio .city{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-mute)}
+main[data-page="about"] .studio .lines{font-family:var(--mono);font-size:11.5px;line-height:1.55;color:var(--fg-dim);margin:8px 0 0}
 
-.press{display:grid;grid-template-columns:repeat(6,1fr);gap:24px;align-items:center;padding:34px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.press .item{font-family:var(--display);font-weight:500;font-size:18px;letter-spacing:.06em;text-transform:uppercase;text-align:center;color:var(--fg);opacity:.78}
+main[data-page="about"] .press{display:grid;grid-template-columns:repeat(6,1fr);gap:24px;align-items:center;padding:34px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+main[data-page="about"] .press .item{font-family:var(--display);font-weight:500;font-size:18px;letter-spacing:.06em;text-transform:uppercase;text-align:center;color:var(--fg);opacity:.78}
 
-.end-cta{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:end;padding:90px 0 80px;border-top:1px solid var(--line)}
-.end-cta h2{font-family:var(--display);font-weight:600;font-size:64px;line-height:.95;margin:0 0 18px;text-transform:uppercase}
-.end-cta p{font-family:var(--mono);font-size:13px;color:var(--fg-dim);margin:0 0 30px;max-width:38ch}
-.end-cta .ph,.end-cta>.media-img{aspect-ratio:16/9}
 
 @media (max-width:980px){
-  .manifesto,.studios,.end-cta{grid-template-columns:1fr}
-  .values,.history{grid-template-columns:1fr 1fr}
-  .val:nth-child(3n),.hist:nth-child(5n){border-right:1px solid var(--line)}
-  .val:nth-child(2n),.hist:nth-child(2n){border-right:none}
-  .team,.rec,.press{grid-template-columns:1fr 1fr}
+  main[data-page="about"] .manifesto,main[data-page="about"] .studios{grid-template-columns:1fr}
+  main[data-page="about"] .values,main[data-page="about"] .history{grid-template-columns:1fr 1fr}
+  main[data-page="about"] .val:nth-child(3n),main[data-page="about"] .hist:nth-child(5n){border-right:1px solid var(--line)}
+  main[data-page="about"] .val:nth-child(2n),main[data-page="about"] .hist:nth-child(2n){border-right:none}
+  main[data-page="about"] .hist:last-child:nth-child(odd){grid-column:1 / -1;border-right:none}
+  main[data-page="about"] .team,main[data-page="about"] .rec,main[data-page="about"] .press{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  main[data-page="about"] .values{grid-template-columns:1fr}
+  main[data-page="about"] .val:nth-child(n){border-right:none;border-bottom:1px solid var(--line);min-height:0}
+  main[data-page="about"] .val:last-child{border-bottom:none}
+  main[data-page="about"] .val h3{font-size:24px}
 }

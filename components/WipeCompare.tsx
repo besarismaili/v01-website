@@ -73,7 +73,11 @@ export default function WipeCompare({
     };
 
     const sync = () => {
-      if (Math.abs(b.currentTime - a.currentTime) > 0.05) {
+      if (b.seeking || !a.duration) return;
+      const drift = Math.abs(b.currentTime - a.currentTime);
+      // Only correct real drift. Small jitter and the loop wrap-around are left alone,
+      // otherwise the "before" clip is re-seeking constantly and stutters.
+      if (drift > 0.15 && drift < a.duration - 0.15) {
         b.currentTime = a.currentTime;
       }
     };

@@ -117,11 +117,11 @@ export default function LabPage() {
       </section>
 
       <section className="wrap sec">
-        <div className="research">
+        <div className="research-notes">
           <div>
             <h2>Research<br/>Notes.</h2>
             <p className="lede">A running journal of what we're building, breaking, and shipping inside the lab.</p>
-            <Link className="explore-lab" href="#"><span>Read All Notes</span><span>&rarr;</span></Link>
+            <Link className="explore-lab" href="/journal"><span>Read All Notes</span><span>&rarr;</span></Link>
           </div>
           <div className="timeline">
             <div className="tl"><div className="when">06 / 05 / 26</div><div className="kind">Release</div><div><h4>Stack Compositor v0.7</h4><p>Improved hair / fur matte extraction, faster temporal smoothing, and a new node-graph profiler.</p></div><div className="arr">&rarr;</div></div>

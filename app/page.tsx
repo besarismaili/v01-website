@@ -134,7 +134,7 @@ export default async function Home() {
                 <Link href={`/case-study/${p.id}`} style={{ color: "inherit", textDecoration: "none" }}>
                   <img src={p.hero_url || p.thumbnail || "/images/work/sola/hero.jpg"} className="fc-img" style={{ aspectRatio: "4/4.6", width: "100%", objectFit: "cover", marginBottom: "14px" }} alt={p.title} />
                   <h4>{p.title}</h4>
-                  <div className="fc-role">{p.role || 'Compositor'} &middot; {p.studio || ''}</div>
+                  <div className="fc-role">{[p.role || 'Compositor', p.studio].filter(Boolean).join(' · ')}</div>
                   <div className="fc-link"><span>Founder Credit</span><span>&rarr;</span></div>
                 </Link>
               </article>
