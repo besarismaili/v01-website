@@ -6,7 +6,6 @@ export const metadata = {
   metadataBase: new URL("https://v01.ca"),
   title: "V01 — AI / VFX Creative Studio",
   description: "High-End AI / VFX Commercials. Films. Music Videos.",
-  alternates: { canonical: "/" },
 };
 
 export default function RootLayout({
