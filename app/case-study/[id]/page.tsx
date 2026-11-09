@@ -12,7 +12,7 @@ function vimeoId(url = "") {
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const { data } = await supabase.from("projects").select("title, summary").eq("id", id).single();
-  return data ? { title: `V01 — ${data.title}`, description: data.summary || undefined } : { title: "Project Not Found" };
+  return data ? { title: `V01 — ${data.title}`, description: data.summary || undefined } : { title: "V01 — Page Not Found" };
 }
 
 export default async function CaseStudyPage({ params }: { params: Promise<{ id: string }> }) {
@@ -37,7 +37,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ id: 
     : `Direction and finishing by ${project.director || "V01"}.`);
 
   return (
-    <main data-page="work">
+    <main data-page="case">
       <section className="wrap cs-head">
         <div className="breadcrumb"><Link href="/">V01</Link><span>/</span><Link href="/work">Work</Link><span>/</span><span>{project.title}</span></div>
         <div className="cs-meta">
@@ -104,7 +104,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ id: 
         </div>
       </section>
 
-      <section className="wrap end-cta"><div><h2>Make something<br/>worth replaying.</h2><p>Bring the brief. We’ll shape the world, the workflow, and the finish.</p><div className="ctas"><Link className="btn primary" href="/access"><span>Start a Project</span><span>→</span></Link><Link className="btn" href="/work"><span>All Work</span><span>→</span></Link></div></div>{image ? <img src={image} alt="" /> : <div className="ph" />}</section>
+      <section className="wrap end-cta"><div><h2>Make something<br/>worth replaying.</h2><p>Bring the brief. We’ll shape the world, the workflow, and the finish.</p><div className="ctas"><Link className="btn primary" href="/contact"><span>Start a Project</span><span>→</span></Link><Link className="btn" href="/work"><span>All Work</span><span>→</span></Link></div></div>{image ? <img src={image} alt="" /> : <div className="ph" />}</section>
     </main>
   );
 }

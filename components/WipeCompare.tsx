@@ -34,6 +34,7 @@ export default function WipeCompare({
   const afterMedia = useRef<HTMLVideoElement>(null);
   const beforeMedia = useRef<HTMLVideoElement>(null);
   const dragging = useRef(false);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
   const labelId = useId();
 
   const setFromClientX = useCallback((clientX: number) => {
@@ -45,18 +46,43 @@ export default function WipeCompare({
   }, []);
 
   const onPointerDown = (e: React.PointerEvent) => {
+    if (e.pointerType === "touch") {
+      // Wait to see whether this is a horizontal drag or a vertical page scroll.
+      touchStart.current = { x: e.clientX, y: e.clientY };
+      return;
+    }
     dragging.current = true;
     (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
     setFromClientX(e.clientX);
   };
 
   const onPointerMove = (e: React.PointerEvent) => {
+    if (!dragging.current && touchStart.current) {
+      const dx = e.clientX - touchStart.current.x;
+      const dy = e.clientY - touchStart.current.y;
+      if (Math.abs(dx) <= 6 || Math.abs(dx) <= Math.abs(dy)) return;
+      dragging.current = true;
+      try {
+        (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+      } catch {}
+    }
     if (!dragging.current) return;
     setFromClientX(e.clientX);
   };
 
-  const onPointerUp = () => {
+  const onPointerUp = (e: React.PointerEvent) => {
+    const start = touchStart.current;
+    // A tap (no real movement) still jumps the divider to the finger.
+    if (!dragging.current && start && Math.abs(e.clientX - start.x) <= 6 && Math.abs(e.clientY - start.y) <= 6) {
+      setFromClientX(e.clientX);
+    }
     dragging.current = false;
+    touchStart.current = null;
+  };
+
+  const onPointerCancel = () => {
+    dragging.current = false;
+    touchStart.current = null;
   };
 
   useEffect(() => {
@@ -73,7 +99,12 @@ export default function WipeCompare({
     };
 
     const sync = () => {
-      if (Math.abs(b.currentTime - a.currentTime) > 0.05) {
+      if (b.seeking || !a.duration) return;
+      const drift = Math.abs(b.currentTime - a.currentTime);
+      // Only correct real drift. Small jitter is left alone, otherwise the
+      // "before" clip is re-seeking constantly and stutters. Both clips restart
+      // together on "ended" (no native loop), so they start every pass in sync.
+      if (drift > 0.1 && drift < a.duration - 0.1) {
         b.currentTime = a.currentTime;
       }
     };
@@ -107,7 +138,6 @@ export default function WipeCompare({
   const mediaProps = {
     className: "wipe-img",
     muted: true,
-    loop: true,
     playsInline: true,
     autoPlay: true,
     preload: "auto" as const,
@@ -129,7 +159,7 @@ export default function WipeCompare({
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
-        onPointerCancel={onPointerUp}
+        onPointerCancel={onPointerCancel}
       >
         {video ? (
           <video ref={afterMedia} src={after} aria-label={afterAlt} {...mediaProps} className="wipe-img wipe-after" />
