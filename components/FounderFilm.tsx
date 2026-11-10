@@ -24,13 +24,13 @@ export default function FounderFilm({ film }: { film: Film }) {
         <p className="lede">{film.summary}</p>
         <div className="cs-creds">
           <div className="c">
-            <h5>Client</h5>
-            <p>{film.client}</p>
+            <h5>Brand</h5>
+            <p>{film.brand}</p>
           </div>
-          <div className="c">
+          {film.category && <div className="c">
             <h5>Category</h5>
             <p>{film.category}</p>
-          </div>
+          </div>}
           <div className="c">
             <h5>Year</h5>
             <p>{film.year}</p>
@@ -82,7 +82,7 @@ export default function FounderFilm({ film }: { film: Film }) {
             </Link>
           </div>
         </div>
-        <img src={film.hero_url} alt="" />
+        <img src={film.hero_url} style={{ objectPosition: film.poster_position }} alt="" />
       </section>
     </main>
   );

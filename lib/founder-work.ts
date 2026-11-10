@@ -6,24 +6,28 @@ export type FounderFilm = {
   id: string;
   href: string;
   title: string;
-  client: string;
-  category: string;
+  // The brand the film is for. Not called "client": whether it was a
+  // commission isn't known.
+  brand: string;
+  category?: string;
   year: number;
   runtime: string;
   summary: string;
   vimeo_id: string;
   hero_url: string;
+  // Where the 4:3 card crop sits on the 16:9 poster (CSS object-position).
+  poster_position?: string;
 };
 
 export const inkmateFilm: FounderFilm = {
   id: "inkmate",
   href: "/work/inkmate",
   title: "Inkmate",
-  client: "Inkmate",
+  brand: "Inkmate",
   category: "Product Film",
   year: 2021,
   runtime: "00:45",
-  summary: "A 45-second black-and-white film for the Inkmate app.",
+  summary: "A 45-second film for the Inkmate app.",
   vimeo_id: "536466940",
   hero_url: "/images/work/inkmate/hero.jpg",
 };
@@ -32,13 +36,14 @@ export const klikoFilm: FounderFilm = {
   id: "kliko",
   href: "/work/kliko",
   title: "Kliko Marketplace",
-  client: "Kliko",
+  brand: "Kliko",
   category: "Product Film",
   year: 2017,
   runtime: "00:42",
   summary: "A 42-second product film for Kliko, an online marketplace for design resources: fonts, graphics, templates and add-ons.",
   vimeo_id: "248260515",
   hero_url: "/images/work/kliko/hero.jpg",
+  poster_position: "25% 50%",
 };
 
 // Newest first.
