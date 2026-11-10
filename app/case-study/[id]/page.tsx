@@ -53,7 +53,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ id: 
           <div className="c"><h5>Year</h5><p>{project.year}</p></div>
           <div className="c"><h5>Runtime</h5><p>{project.runtime || "—"}</p></div>
         </div>
-        {founder && <div className="disclaimer">{study.disclaimer || "This credit represents work completed by V01 founder Besar Ismaili before founding V01. V01 was not engaged as a vendor on this production."}</div>}
+        {founder && <div className="disclaimer">{study.disclaimer || "This credit represents work completed by V01 founder Besar Ismaili at another studio. V01 was not engaged as a vendor on this production."}</div>}
       </section>
 
       <section className="wrap cs-hero">
