@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { solaProject } from "@/lib/sola";
 import { studioProjects } from "@/lib/studio-work";
+import { founderFilms } from "@/lib/founder-work";
 import "./page.css";
 
 export const metadata = {
@@ -63,6 +64,29 @@ export default function WorkPage() {
                 <div className="meta">{[p.client, p.runtime].filter(Boolean).join(" · ")}</div>
                 <div className="link">
                   <span>View Case Study</span>
+                  <span>&rarr;</span>
+                </div>
+              </Link>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="wrap sec">
+        <div className="sec-head"><div className="sec-title">Before V01</div></div>
+        <p className="before-note">Earlier work by founder Besar Ismaili, made before V01. These are not V01 projects.</p>
+        <div className="work-grid">
+          {founderFilms.map((f) => (
+            <article className="work-card" key={f.id}>
+              <Link href={f.href} style={{ color: "inherit", textDecoration: "none" }}>
+                <img src={f.hero_url} className="ph" style={{ aspectRatio: "4/3", width: "100%", objectFit: "cover", marginBottom: "16px" }} alt={f.title} />
+                <div className="row">
+                  <h3>{f.title}</h3>
+                  <span className="yr">{f.year}</span>
+                </div>
+                <div className="meta">{[f.client, f.runtime].filter(Boolean).join(" · ")}</div>
+                <div className="link">
+                  <span>Watch the Film</span>
                   <span>&rarr;</span>
                 </div>
               </Link>

@@ -14,6 +14,7 @@ main[data-page="work"] .work-card .row{display:flex;align-items:flex-start;justi
 main[data-page="work"] .work-card h3{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:.02em;margin:0;text-transform:uppercase}
 main[data-page="work"] .work-card .yr{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--fg-mute)}
 main[data-page="work"] .work-card .meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-dim);margin-bottom:12px}
+main[data-page="work"] .before-note{font-family:var(--mono);font-size:13px;line-height:1.65;color:var(--fg-dim);margin:0 0 24px;max-width:62ch}
 main[data-page="work"] .work-card .link{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;display:flex;justify-content:space-between;padding-top:12px;border-top:1px solid var(--line-2)}
 
 
