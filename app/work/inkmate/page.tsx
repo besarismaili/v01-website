@@ -1,5 +1,5 @@
-import FounderFilm from "@/components/FounderFilm";
-import { inkmateFilm } from "@/lib/founder-work";
+import VimeoFilm from "@/components/VimeoFilm";
+import { inkmateFilm } from "@/lib/vimeo-films";
 
 export const metadata = {
   title: "V01 — Inkmate",
@@ -7,5 +7,5 @@ export const metadata = {
 };
 
 export default function InkmatePage() {
-  return <FounderFilm film={inkmateFilm} />;
+  return <VimeoFilm film={inkmateFilm} />;
 }

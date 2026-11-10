@@ -1,18 +1,18 @@
 import Link from "next/link";
 import { solaProject } from "@/lib/sola";
 import { studioProjects } from "@/lib/studio-work";
-import { founderFilms } from "@/lib/founder-work";
+import { vimeoFilms } from "@/lib/vimeo-films";
 import "./page.css";
 
 export const metadata = {
   title: "V01 — Work",
-  description: "Commercials and campaign films made with generative tools and finished to feature-film VFX standards.",
+  description: "Commercials, campaign and product films for brands and agencies. Recent work is made with generative tools and finished to feature-film VFX standards.",
 };
 
 export default function WorkPage() {
   const featured = solaProject;
   const projects = studioProjects.filter((p) => p.id !== featured.id);
-  const years = studioProjects.map((p) => p.year);
+  const years = [...studioProjects, ...vimeoFilms].map((p) => p.year);
   const yearSpan = Math.min(...years) === Math.max(...years) ? String(Math.max(...years)) : `${Math.min(...years)} – ${Math.max(...years)}`;
 
   return (
@@ -20,9 +20,9 @@ export default function WorkPage() {
       <section className="wrap page-head">
         <div className="breadcrumb"><span>V01</span><span>/</span><span>Work</span></div>
         <h1>Selected<br />Work.</h1>
-        <p className="lede">Commercials and campaign films for brands and agencies, made with generative tools and finished to feature-film VFX standards.</p>
+        <p className="lede">Commercials, campaign and product films for brands and agencies. Recent work is made with generative tools and finished to feature-film VFX standards.</p>
         <div className="page-meta">
-          <div className="pm"><h5>Projects</h5><p>{studioProjects.length} released</p></div>
+          <div className="pm"><h5>Projects</h5><p>{studioProjects.length + vimeoFilms.length} released</p></div>
           <div className="pm"><h5>Years</h5><p>{yearSpan}</p></div>
           <div className="pm"><h5>Focus</h5><p>AI Picture &middot; VFX Finishing</p></div>
         </div>
@@ -69,14 +69,7 @@ export default function WorkPage() {
               </Link>
             </article>
           ))}
-        </div>
-      </section>
-
-      <section className="wrap sec">
-        <div className="sec-head"><div className="sec-title">Before V01</div></div>
-        <p className="before-note">Earlier work by founder Besar Ismaili, made before V01. These are not V01 projects.</p>
-        <div className="work-grid">
-          {founderFilms.map((f) => (
+          {vimeoFilms.map((f) => (
             <article className="work-card" key={f.id}>
               <Link href={f.href} style={{ color: "inherit", textDecoration: "none" }}>
                 <img src={f.hero_url} className="ph" style={{ aspectRatio: "4/3", width: "100%", objectFit: "cover", objectPosition: f.poster_position, marginBottom: "16px" }} alt={f.title} />

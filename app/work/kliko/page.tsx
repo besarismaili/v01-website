@@ -1,5 +1,5 @@
-import FounderFilm from "@/components/FounderFilm";
-import { klikoFilm } from "@/lib/founder-work";
+import VimeoFilm from "@/components/VimeoFilm";
+import { klikoFilm } from "@/lib/vimeo-films";
 
 export const metadata = {
   title: "V01 — Kliko Marketplace",
@@ -7,5 +7,5 @@ export const metadata = {
 };
 
 export default function KlikoPage() {
-  return <FounderFilm film={klikoFilm} />;
+  return <VimeoFilm film={klikoFilm} />;
 }

@@ -1,8 +1,8 @@
 import Link from "next/link";
-import type { FounderFilm as Film } from "@/lib/founder-work";
+import type { VimeoFilm as Film } from "@/lib/vimeo-films";
 import "@/app/case-study/[id]/page.css";
 
-export default function FounderFilm({ film }: { film: Film }) {
+export default function VimeoFilm({ film }: { film: Film }) {
   return (
     <main data-page="case">
       <section className="wrap cs-head">
@@ -14,7 +14,7 @@ export default function FounderFilm({ film }: { film: Film }) {
           <span>{film.title}</span>
         </div>
         <div className="cs-meta">
-          <span>Before V01</span>
+          <span>{film.category}</span>
           <span className="dot">·</span>
           <span>{film.year}</span>
           <span className="dot">·</span>
@@ -27,10 +27,10 @@ export default function FounderFilm({ film }: { film: Film }) {
             <h5>Brand</h5>
             <p>{film.brand}</p>
           </div>
-          {film.category && <div className="c">
+          <div className="c">
             <h5>Category</h5>
             <p>{film.category}</p>
-          </div>}
+          </div>
           <div className="c">
             <h5>Year</h5>
             <p>{film.year}</p>
@@ -39,9 +39,10 @@ export default function FounderFilm({ film }: { film: Film }) {
             <h5>Runtime</h5>
             <p>{film.runtime}</p>
           </div>
-        </div>
-        <div className="disclaimer">
-          Earlier work by founder Besar Ismaili, made before V01. It is not a V01 project.
+          <div className="c">
+            <h5>Role</h5>
+            <p>{film.role}</p>
+          </div>
         </div>
       </section>
 
