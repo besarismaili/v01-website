@@ -7,8 +7,6 @@ import { navItems } from "@/lib/site";
 
 export function Nav() {
   const pathname = usePathname() || "/";
-  // /admin and /login keep their own chrome, so the site nav sits in the flow there.
-  const legacy = pathname.startsWith("/admin") || pathname.startsWith("/login");
   const home = pathname === "/";
 
   const [solid, setSolid] = useState(false);
@@ -19,7 +17,6 @@ export function Nav() {
 
   // Hide on scroll down after 80px, return on a solid bar when scrolling up.
   useEffect(() => {
-    if (legacy) return;
     const onScroll = () => {
       const y = window.scrollY;
       setSolid(y > 80);
@@ -29,7 +26,7 @@ export function Nav() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [legacy]);
+  }, []);
 
   // Close the mobile menu whenever the route changes.
   useEffect(() => {
@@ -56,7 +53,6 @@ export function Nav() {
 
   const cls = [
     "v-nav",
-    legacy ? "v-nav--static" : "",
     home ? "v-nav--home" : "",
     solid ? "v-nav--solid" : "",
     hidden && !open ? "v-nav--hidden" : "",

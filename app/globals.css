@@ -1,11 +1,13 @@
 /* ===== V01 — shared site styles =====
    Two layers live here:
-   1. LEGACY: the old tokens and helpers, kept only because /admin and /login
-      still use them. Do not build new pages on these.
+   1. LEGACY: tokens and helpers from the previous site. The admin and login
+      pages that used them are gone, but the base resets in this block (box
+      sizing, body, links, images) still apply to every page, so it stays.
+      Do not build new pages on the legacy classes.
    2. V01 BLUESCREEN: everything prefixed "v-" is the current public site.
 */
 
-/* ---------- 1. LEGACY (admin, login) ---------- */
+/* ---------- 1. LEGACY (base resets still in use) ---------- */
 :root{
   --bg:#0b0d0e;
   --bg-2:#0f1213;
@@ -328,8 +330,15 @@ html.js [data-reveal="wipe"].is-in{clip-path:inset(0 0 0 0)}
 .v-svc__for{margin-top:auto;align-self:stretch;padding-top:14px;border-top:1px solid var(--v-rule-light);font-family:var(--v-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--v-ink-3)}
 
 /* image cards (work page, next projects) */
+/* work grid: six columns; each card says how many it takes via --span */
+.v-work-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:40px 24px}
+.v-work-grid>*{grid-column:span var(--span,2)}
+@media (max-width:900px){.v-work-grid>*{grid-column:span 3}}
+@media (max-width:600px){.v-work-grid{gap:32px 0}.v-work-grid>*{grid-column:span 6}}
 .v-card{display:flex;flex-direction:column;gap:14px;min-width:0}
-.v-card__img{overflow:hidden;background:#1A1C23;aspect-ratio:16/9}
+.v-card__img{position:relative;overflow:hidden;background:#1A1C23;aspect-ratio:16/9}
+.v-card__img video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity var(--v-fast) ease-out}
+.v-card__img video.is-playing{opacity:1}
 .v-card__img img{width:100%;height:100%;object-fit:cover;transition:transform var(--v-base) var(--v-ease)}
 .v-card__title{font-family:var(--v-display);font-weight:700;font-size:clamp(18px,1.9vw,26px);line-height:1.12;text-transform:uppercase;overflow-wrap:anywhere}
 .v-card__meta{display:flex;flex-wrap:wrap;gap:4px 16px;font-family:var(--v-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--v-grey)}

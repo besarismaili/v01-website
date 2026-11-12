@@ -10,16 +10,7 @@
 
 .v-more-tag{padding-block:24px 28px;border-top:1px solid var(--v-rule)}
 
-/* six-column grid; each card says how many columns it takes via --span */
-.v-work-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:40px 24px}
-.v-work-grid>*{grid-column:span var(--span,2)}
-
-@media (max-width:900px){
-  .v-work-grid>*{grid-column:span 3}
-}
 @media (max-width:600px){
   .v-feat{gap:22px}
   .v-feat__body p{font-size:16px}
-  .v-work-grid{gap:32px 0}
-  .v-work-grid>*{grid-column:span 6}
 }
