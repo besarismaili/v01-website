@@ -40,3 +40,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local reel archive (see reels/README.md) - index only, media stays on disk
+/reels/*
+!/reels/README.md
