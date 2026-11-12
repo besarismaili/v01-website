@@ -5,17 +5,20 @@ import Link from "next/link";
 import Markers from "@/components/Markers";
 import { HERO_MARKERS } from "@/lib/markers";
 
-type Reel = { src: string; poster: string; posterAlt: string };
+type Reel = { src: string; loop?: string; poster: string; posterAlt: string };
 
 // Homepage hero. The reel fills the whole panel inside a thin blue border.
 // On load the panel holds as a blue plate, then the reel "keys in" (CSS in
-// app/page.css). With no reel file yet, the poster still stands in and the
-// "Play reel with sound" button is not shown.
+// app/page.css). A short silent loop plays behind the headline; "Play reel
+// with sound" swaps in the full reel. With no reel file the poster still
+// stands in and the button is not shown.
 export default function Hero({ reel, children }: { reel: Reel; children?: ReactNode }) {
   const [open, setOpen] = useState(false);
   const vid = useRef<HTMLVideoElement>(null);
   const playBtn = useRef<HTMLButtonElement>(null);
   const hasReel = !!reel.src;
+  const loopSrc = reel.loop || reel.src;
+  const hasVideo = !!loopSrc;
 
   // Expanded player: sound on, controls on, Escape or Close returns to the hero.
   useEffect(() => {
@@ -23,9 +26,10 @@ export default function Hero({ reel, children }: { reel: Reel; children?: ReactN
     const v = vid.current;
     const btn = playBtn.current;
     if (v) {
+      // React has already swapped src to the full reel; start it with sound.
       v.muted = false;
       v.controls = true;
-      v.currentTime = 0;
+      if (v.currentTime > 0) v.currentTime = 0;
       const p = v.play();
       if (p) p.catch(() => {});
     }
@@ -57,17 +61,18 @@ export default function Hero({ reel, children }: { reel: Reel; children?: ReactN
         <span className="v-hero__pin v-hero__pin--br" aria-hidden="true" />
 
         <div className={`v-hero__panel${open ? " is-open" : ""}`}>
-          {hasReel ? (
+          {hasVideo ? (
             <video
               ref={vid}
               className="v-hero__media"
-              src={reel.src}
+              src={open ? reel.src : loopSrc}
               poster={reel.poster}
               autoPlay
               muted
-              loop
+              loop={!open}
               playsInline
               preload="metadata"
+              onEnded={() => setOpen(false)}
               aria-label="V01 showreel"
             />
           ) : (

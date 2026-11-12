@@ -1,13 +1,15 @@
 // Site-wide content that is not tied to one project.
 
-// The homepage showreel. Leave `src` empty until the reel file exists: the hero
-// then shows the poster still and hides the "Play reel with sound" button.
-// To switch the reel on, put the file in public/videos and set e.g.
-//   src: "/videos/reel.mp4"
+// The homepage showreel.
+//   loop: a short silent cut that plays muted behind the headline.
+//   src:  the full reel with sound, opened by "Play reel with sound".
+// Leave `src` empty to hide the button, and `loop` empty to play the full reel
+// muted in the background instead. With both empty the hero shows the poster.
 export const reel = {
-  src: "",
-  poster: "/images/work/sola/hero.jpg",
-  posterAlt: "Sola commercial key visual",
+  src: "/videos/reel/v01-reel-2026.mp4",
+  loop: "/videos/reel/v01-reel-2026-loop.mp4",
+  poster: "/images/reel-poster.jpg",
+  posterAlt: "Aerial view of a yacht at golden hour, from the Siebert film Bonds, Corporate Bonds.",
 };
 
 export const clients = ["Sola", "Shift", "Siebert", "TOML", "Beige Flag", "Beki Cars"];
