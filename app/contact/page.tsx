@@ -1,11 +1,12 @@
 import Link from "next/link";
 import PageHead from "@/components/PageHead";
+import ContactForm from "@/components/ContactForm";
 import { pageMeta } from "@/lib/seo";
 import "./page.css";
 
 export const metadata = pageMeta({
   title: "V01 — Contact",
-  description: "Start a project with VERSION ONE. Email hello@v01.ca.",
+  description: "Start a project with VERSION ONE. Send a few lines about what you’re making and we reply within one day.",
   path: "/contact",
 });
 
@@ -33,17 +34,32 @@ export default function ContactPage() {
       <PageHead
         crumbs={[{ label: "V01", href: "/" }, { label: "Contact" }]}
         title="Start a project."
-        lede="Email a few lines about what you’re making: the project, the timeline, the deliverables and any references. We read every message."
+        lede="Send a few lines about what you’re making: the project, the timeline, the deliverables and any references. We reply within one day."
       >
-        <a className="v-mail" href="mailto:hello@v01.ca?subject=New%20project">
-          hello@v01.ca <span className="v-arr" aria-hidden="true">&rarr;</span>
-        </a>
         <dl className="v-facts">
           <div><dt>Email</dt><dd><a href="mailto:hello@v01.ca">hello@v01.ca</a></dd></div>
           <div><dt>Based</dt><dd>Montreal / Prishtina</dd></div>
           <div><dt>Working</dt><dd>Worldwide</dd></div>
         </dl>
       </PageHead>
+
+      <section className="v-sec v-sec--white" aria-label="Contact form">
+        <div className="v-wrap v-contact">
+          <ContactForm />
+          <aside className="v-contact__side">
+            <h2 className="v-tag v-tag--ink">Useful to include</h2>
+            <ul>
+              <li>What you’re making, and who it is for</li>
+              <li>The delivery date</li>
+              <li>The formats you need</li>
+              <li>Links to boards, plates or references</li>
+            </ul>
+            <p>
+              Prefer email? Write to <a href="mailto:hello@v01.ca?subject=New%20project">hello@v01.ca</a>.
+            </p>
+          </aside>
+        </div>
+      </section>
 
       <section className="v-sec v-sec--pure">
         <div className="v-wrap">

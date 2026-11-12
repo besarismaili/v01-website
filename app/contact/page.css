@@ -1,17 +1,45 @@
 /* ===== Contact ===== */
 
-/* the one big action on the page */
-.v-mail{align-self:flex-start;display:inline-flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:clamp(8px,1.4vw,20px);padding:clamp(18px,2.2vw,30px) clamp(18px,2.6vw,36px);background:var(--v-lime);color:var(--v-ink);font-family:var(--v-display);font-weight:700;font-size:clamp(20px,3.4vw,48px);line-height:1;overflow-wrap:anywhere;transition:background var(--v-fast) ease-out,transform var(--v-fast) ease-out}
-.v-mail .v-arr{display:inline-block;transition:transform var(--v-fast) ease-out}
-.v-mail:active{transform:scale(.98)}
+/* the form on the left, a short "what to include" list beside it */
+.v-contact{display:flex;flex-wrap:wrap;align-items:flex-start;gap:40px 64px}
+.v-contact>*{min-width:0}
+.v-form{flex:3 1 480px;display:flex;flex-direction:column;gap:20px}
+.v-form__row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.v-field{display:flex;flex-direction:column;gap:8px;min-width:0}
+.v-field>span{font-family:var(--v-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--v-ink)}
+.v-field em{font-style:normal;color:var(--v-ink-3)}
+.v-field input,.v-field select,.v-field textarea{width:100%;min-height:52px;padding:12px 14px;font:inherit;font-size:17px;color:var(--v-ink);background:#fff;border:2px solid var(--v-ink);border-radius:0}
+.v-field textarea{min-height:180px;resize:vertical;line-height:1.45}
+.v-field ::placeholder{color:var(--v-ink-3);opacity:1}
+.v-form :focus-visible{outline:3px solid var(--v-blue);outline-offset:2px}
+.v-form__trap{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.v-form__foot{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px}
+.v-form__send{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 28px;font:inherit;font-weight:600;font-size:17px;color:#fff;background:var(--v-blue);border:2px solid var(--v-blue);cursor:pointer;transition:background var(--v-fast) ease-out,transform var(--v-fast) ease-out}
+.v-form__send .v-arr{display:inline-block;transition:transform var(--v-fast) ease-out}
+.v-form__send:active{transform:scale(.98)}
+.v-form__send:disabled{opacity:.6;cursor:default}
 @media (hover:hover){
-  .v-mail:hover{background:#E6FF86}
-  .v-mail:hover .v-arr{transform:translateX(6px)}
+  .v-form__send:not(:disabled):hover{background:var(--v-blue-ink);border-color:var(--v-blue-ink)}
+  .v-form__send:not(:disabled):hover .v-arr{transform:translateX(6px)}
 }
+.v-form__promise{font-family:var(--v-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--v-ink-3)}
+.v-sec--white .v-form__error{padding:14px 16px;border:2px solid #B3261E;color:#8C1D18}
+.v-form__error a,.v-contact__side a{text-decoration:underline;text-underline-offset:3px;color:var(--v-ink)}
+.v-form--sent{gap:10px;padding:clamp(24px,3vw,40px);background:var(--v-lime)}
+.v-sec--white .v-form--sent p{color:var(--v-ink)}
+
+.v-contact__side{flex:1 1 280px;display:flex;flex-direction:column;gap:16px;padding-top:16px;border-top:2px solid var(--v-ink)}
+.v-contact__side .v-tag{font-weight:700;color:var(--v-ink)}
+.v-contact__side ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column}
+.v-contact__side li{padding:10px 0;border-top:1px solid var(--v-rule-light);color:var(--v-ink-2)}
+.v-contact__side li:first-child{border-top:0;padding-top:0}
 
 .v-see-work{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin-top:clamp(32px,5vw,64px);font-size:clamp(18px,1.5vw,20px)}
 
 @media (max-width:700px){
-  .v-mail{align-self:stretch;justify-content:space-between;min-height:68px}
+  .v-form__send{width:100%}
   .v-see-work .v-btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  .v-form__send,.v-form__send .v-arr{transition:none}
 }
