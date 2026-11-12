@@ -55,21 +55,31 @@
 .v-wall__media{object-fit:cover;object-position:50% 28%}
 .v-wall__scrim{background:linear-gradient(180deg,rgba(7,8,12,.45) 0%,rgba(7,8,12,.2) 30%,rgba(7,8,12,.62) 64%,var(--v-black) 100%)}
 .v-wall__label{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-bottom:12px}
+/* the posters sit edge to edge, with no space between them or between the rows */
 .v-marquee--posters{margin-top:4px}
-.v-marquee--posters+.v-marquee--posters{margin-top:24px}
-.v-marquee--posters .v-marquee__set{align-items:flex-start;gap:clamp(14px,1.6vw,24px);padding-right:clamp(14px,1.6vw,24px)}
+.v-marquee--posters+.v-marquee--posters{margin-top:0}
+.v-marquee--posters .v-marquee__set{align-items:flex-start;gap:0;padding-right:0}
 .v-marquee--rev .v-marquee__track{animation-direction:reverse}
+.v-marquee.is-held .v-marquee__track{animation-play-state:paused}
 .v-poster{flex:none;width:clamp(140px,15vw,220px)}
 /* two rows: smaller posters, so more of the wall is on screen at once */
 .v-wall--rows2 .v-poster{width:clamp(118px,11vw,172px)}
+.v-poster__btn{position:relative;display:block;width:100%;margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;text-align:left;cursor:pointer}
 .v-poster img{display:block;width:100%;aspect-ratio:2/3;object-fit:cover;background:#14161C}
-.v-poster__title{display:block;margin-top:10px;font-family:var(--v-display);font-weight:700;font-size:12px;line-height:1.3;text-transform:uppercase;color:#fff}
-.v-poster__meta{display:block;margin-top:4px;font-family:var(--v-mono);font-size:11px;line-height:1.4;letter-spacing:.06em;text-transform:uppercase;color:var(--v-grey)}
+/* a poster's details lie over it, and show on hover, keyboard focus or a tap */
+.v-poster__info{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:12px 10px;background:linear-gradient(180deg,rgba(7,8,12,.55) 0%,rgba(7,8,12,.92) 70%);opacity:0;transition:opacity var(--v-fast) ease-out}
+.v-poster.is-open .v-poster__info,.v-poster__btn:focus-visible .v-poster__info{opacity:1}
+@media (hover:hover){.v-poster__btn:hover .v-poster__info{opacity:1}}
+.v-poster__btn:focus-visible{outline-offset:-2px}
+.v-poster__title{display:block;font-family:var(--v-display);font-weight:700;font-size:12px;line-height:1.25;text-transform:uppercase;color:#fff;overflow-wrap:anywhere}
+.v-poster__meta{display:flex;flex-direction:column;gap:2px;font-family:var(--v-mono);font-size:11px;line-height:1.35;letter-spacing:.04em;text-transform:uppercase;color:var(--v-grey-2)}
+.v-poster__meta span{display:block}
 @media (prefers-reduced-motion:reduce){
   /* no drift: show each poster once, wrapped into a grid */
   .v-marquee--posters{overflow:visible;padding-inline:var(--v-pad)}
   .v-marquee--posters .v-marquee__track{width:auto}
-  .v-marquee--posters .v-marquee__set{flex-wrap:wrap;padding-right:0;row-gap:24px}
+  .v-marquee--posters .v-marquee__set{flex-wrap:wrap;padding-right:0}
+  .v-poster__info{transition:none}
   .v-marquee--posters .v-marquee__set[aria-hidden]{display:none}
 }
 .v-founder-intro{max-width:74ch;color:var(--v-grey-2);padding-bottom:28px}
