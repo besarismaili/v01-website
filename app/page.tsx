@@ -18,7 +18,7 @@ export default async function Home() {
             <span className="lead">not prototypes.</span>
           </h1>
           <p className="hero-sub">
-            V01 makes commercials and film sequences with generative tools, then composites, grades and finishes every shot to feature-film standards.
+            We make commercials and film sequences with generative tools, then composite, grade and finish every shot to feature-film standards.
           </p>
           <div className="ctas">
             <Link className="btn primary" href="/work">
@@ -90,14 +90,14 @@ export default async function Home() {
       </section>
 
       <section className="wrap sec founder">
-        <div className="sec-head"><div className="sec-title">Founder</div></div>
+        <div className="sec-head"><div className="sec-title">Background</div></div>
         <div className="founder-intro">
           <div>
             <h2>Feature-Film<br/>Pedigree.</h2>
           </div>
           <div>
-            <p>Founder Besar Ismaili has more than 15 years of feature-film VFX experience, including compositing work at MPC, Framestore and FX3X.</p>
-            <p>V01 is founder-led. Besar runs every project and brings in specialist artists when a job needs them, so the people who pitch the work are the people who finish it.</p>
+            <p>Our founder has more than 15 years of feature-film VFX experience, including compositing at MPC, Framestore and FX3X.</p>
+            <p>Our small core team runs every project and brings in specialist artists when a job needs them. The people who pitch the work are the people who finish it.</p>
           </div>
         </div>
         {founderCredits && founderCredits.length > 0 && (
@@ -114,7 +114,7 @@ export default async function Home() {
                 </article>
               ))}
             </div>
-            <div className="founder-note">Founder credits are Besar&rsquo;s own work in credited roles at other studios, not V01 projects.</div>
+            <div className="founder-note">These credits are our founder&rsquo;s own work in credited roles at other studios, not V01 projects.</div>
           </>
         )}
       </section>

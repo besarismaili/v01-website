@@ -8,7 +8,7 @@ export function Footer() {
           <div>
             <div className="foot-logo">V01</div>
             <p className="foot-about">
-              AI-native VFX for production, not prototypes. A founder-led studio working from Montreal and Prishtina.
+              AI-native VFX for production, not prototypes. A studio working from Montreal and Prishtina.
             </p>
           </div>
           <div className="foot-col">

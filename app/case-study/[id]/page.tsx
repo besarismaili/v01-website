@@ -22,7 +22,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ id: 
 
   const { data: nextProjects } = await supabase
     .from("projects")
-    .select("id, title, category, year, client, runtime, thumbnail, hero_url")
+    .select("id, title, category, year, client, runtime, thumbnail, hero_url, credit_type")
     .eq("status", "Published")
     .neq("id", id)
     .order("sort_order", { ascending: true })
@@ -53,7 +53,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ id: 
           <div className="c"><h5>Year</h5><p>{project.year}</p></div>
           <div className="c"><h5>Runtime</h5><p>{project.runtime || "—"}</p></div>
         </div>
-        {founder && <div className="disclaimer">{study.disclaimer || "This credit represents work completed by V01 founder Besar Ismaili at another studio. V01 was not engaged as a vendor on this production."}</div>}
+        {founder && <div className="disclaimer">{study.disclaimer || "This credit is our founder’s own work at another studio. V01 was not engaged as a vendor on this production."}</div>}
       </section>
 
       <section className="wrap cs-hero">
@@ -99,7 +99,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ id: 
         <div className="next-case">
           {nextProjects?.map(np => <Link key={np.id} href={`/case-study/${np.id}`} className="nc">
             {np.hero_url || np.thumbnail ? <img src={np.hero_url || np.thumbnail} alt={np.title} /> : <div className="ph"><span className="ph-mid">[ STILL ]</span></div>}
-            <div className="body"><span className="l">{np.category} · {np.year}</span><h4>{np.title}</h4><div className="meta">{np.client} · {np.runtime || "—"}</div><div className="arr"><span>View Project</span><span>→</span></div></div>
+            <div className="body"><span className="l">{np.credit_type === "Founder Prior Work" ? "Founder Credit" : np.category} · {np.year}</span><h4>{np.title}</h4><div className="meta">{np.client} · {np.runtime || "—"}</div><div className="arr"><span>View Project</span><span>→</span></div></div>
           </Link>)}
         </div>
       </section>

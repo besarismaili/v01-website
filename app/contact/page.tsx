@@ -12,13 +12,13 @@ export default function ContactPage() {
       <section className="wrap page-head">
         <div className="breadcrumb"><span>V01</span><span>/</span><span>Contact</span></div>
         <h1>Start a<br/>project.</h1>
-        <p className="lede">Email a few lines about what you&rsquo;re making: the project, the timeline, the deliverables and any references. Besar reads every message.</p>
+        <p className="lede">Email a few lines about what you&rsquo;re making: the project, the timeline, the deliverables and any references. We read every message.</p>
         <a className="mail" href="mailto:hello@v01.ca?subject=New%20project">hello@v01.ca<span className="arr">&rarr;</span></a>
         <div className="page-meta">
           <div className="pm"><h5>Email</h5><p><a href="mailto:hello@v01.ca">hello@v01.ca</a></p></div>
           <div className="pm"><h5>Based</h5><p>Montreal &middot; Prishtina</p></div>
           <div className="pm"><h5>Working</h5><p>Worldwide</p></div>
-          <div className="pm"><h5>Vimeo</h5><p><a href="https://vimeo.com/besarismaili" target="_blank" rel="noreferrer">vimeo.com/besarismaili</a></p></div>
+          <div className="pm"><h5>Social</h5><p><a href="https://vimeo.com/besarismaili" target="_blank" rel="noreferrer">Vimeo &#8599;</a></p></div>
         </div>
       </section>
 
