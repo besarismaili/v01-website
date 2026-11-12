@@ -96,7 +96,7 @@ export default async function Home() {
             <h2>Feature-Film<br/>Pedigree.</h2>
           </div>
           <div>
-            <p>Before V01, founder Besar Ismaili spent more than 15 years in feature-film VFX, including compositing work at MPC, Framestore and FX3X.</p>
+            <p>Founder Besar Ismaili has more than 15 years of feature-film VFX experience, including compositing work at MPC, Framestore and FX3X.</p>
             <p>V01 is founder-led. Besar runs every project and brings in specialist artists when a job needs them, so the people who pitch the work are the people who finish it.</p>
           </div>
         </div>
@@ -114,7 +114,7 @@ export default async function Home() {
                 </article>
               ))}
             </div>
-            <div className="founder-note">Founder credits are Besar&rsquo;s own work in credited studio roles before V01, not V01 projects.</div>
+            <div className="founder-note">Founder credits are Besar&rsquo;s own work in credited roles at other studios, not V01 projects.</div>
           </>
         )}
       </section>
