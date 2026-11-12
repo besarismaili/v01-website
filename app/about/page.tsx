@@ -1,12 +1,14 @@
 import PageHead from "@/components/PageHead";
 import Frame from "@/components/Frame";
 import EndCta from "@/components/EndCta";
+import { pageMeta } from "@/lib/seo";
 import "./page.css";
 
-export const metadata = {
+export const metadata = pageMeta({
   title: "V01 — About",
   description: "VERSION ONE is an AI-native VFX studio for commercials and film sequences. AI-native VFX for production, not prototypes.",
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

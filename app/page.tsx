@@ -3,9 +3,17 @@ import "./page.css";
 import Hero from "@/components/Hero";
 import Row from "@/components/Row";
 import EndCta from "@/components/EndCta";
-import { getFounderCredits } from "@/lib/supabase";
+import { founderCredits } from "@/lib/founder-credits";
 import { studioProjects } from "@/lib/studio-work";
 import { clients, reel } from "@/lib/site";
+import { pageMeta } from "@/lib/seo";
+
+export const metadata = pageMeta({
+  title: "V01 — AI-Native VFX Studio",
+  description:
+    "AI-native VFX for production, not prototypes. Commercials and film sequences, finished to feature-film standards.",
+  path: "/",
+});
 
 const services = [
   {
@@ -28,9 +36,8 @@ const services = [
   },
 ];
 
-export default async function Home() {
+export default function Home() {
   const projects = studioProjects;
-  const founderCredits = await getFounderCredits();
 
   return (
     <main data-v data-page="home">
@@ -88,7 +95,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {founderCredits && founderCredits.length > 0 && (
+      {founderCredits.length > 0 && (
         <section className="v-sec v-sec--tight-top" id="founder-credits">
           <div className="v-wrap">
             <div className="v-tag" data-reveal style={{ paddingBottom: 12 }}>03 / Founder film credits</div>
@@ -104,8 +111,8 @@ export default async function Home() {
                   n={i + 1}
                   href={`/case-study/${p.id}`}
                   title={p.title}
-                  meta={[p.role || "Compositor", p.studio].filter(Boolean).join(" / ")}
-                  img={p.hero_url || p.thumbnail || "/images/work/sola/hero.jpg"}
+                  meta={`${p.role} / ${p.studio}`}
+                  img={p.hero_url}
                   alt={`${p.title} film still`}
                   credit
                 />

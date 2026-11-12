@@ -5,12 +5,16 @@ import EndCta from "@/components/EndCta";
 import { solaProject } from "@/lib/sola";
 import { studioProjects } from "@/lib/studio-work";
 import { vimeoFilms } from "@/lib/vimeo-films";
+import { pageMeta } from "@/lib/seo";
 import "./page.css";
 
-export const metadata = {
+export const metadata = pageMeta({
   title: "V01 — Work",
   description: "Commercials, campaign and product films for brands and agencies. Recent work is made with generative tools and finished to feature-film VFX standards.",
-};
+  path: "/work",
+  image: solaProject.hero_url,
+  imageAlt: "Sola commercial key visual",
+});
 
 // How many of the six grid columns each card takes. The first two cards are
 // large (half width each), the rest sit three to a row, and a short last row is

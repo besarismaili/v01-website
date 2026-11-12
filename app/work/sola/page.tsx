@@ -7,12 +7,16 @@ import WipeCompare from "@/components/WipeCompare";
 import { END_MARKERS } from "@/lib/markers";
 import { solaProject, solaReel, solaWipes } from "@/lib/sola";
 import "../../case-study/[id]/page.css";
+import { pageMeta } from "@/lib/seo";
 import "./page.css";
 
-export const metadata = {
+export const metadata = pageMeta({
   title: "V01 — Sola",
   description: solaProject.summary,
-};
+  path: solaProject.href,
+  image: solaProject.hero_url,
+  imageAlt: `${solaProject.title} hero still`,
+});
 
 export default function SolaCaseStudy() {
   return (
