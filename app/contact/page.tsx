@@ -40,7 +40,6 @@ export default function ContactPage() {
           <div><dt>Email</dt><dd><a href="mailto:hello@v01.ca">hello@v01.ca</a></dd></div>
           <div><dt>Based</dt><dd>Montreal / Prishtina</dd></div>
           <div><dt>Working</dt><dd>Worldwide</dd></div>
-          <div><dt>Social</dt><dd><a href="https://vimeo.com/besarismaili" target="_blank" rel="noreferrer">Vimeo &#8599;</a></dd></div>
         </dl>
       </PageHead>
 

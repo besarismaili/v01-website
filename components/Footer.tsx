@@ -19,7 +19,6 @@ export function Footer() {
           <div className="v-footer__col">
             <h2>Contact</h2>
             <a href="mailto:hello@v01.ca">hello@v01.ca</a>
-            <a href="https://vimeo.com/besarismaili" target="_blank" rel="noreferrer">Vimeo</a>
             <span style={{ paddingTop: 10 }}>Montreal, Canada</span>
             <span>Prishtina, Kosovo</span>
           </div>
