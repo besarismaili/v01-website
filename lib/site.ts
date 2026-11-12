@@ -2,12 +2,14 @@
 
 // The homepage showreel.
 //   loop: a short silent cut that plays muted behind the headline.
+//   loopSmall: the same cut at 720p, sent to phones instead of `loop`.
 //   src:  the full reel with sound, opened by "Play reel with sound".
 // Leave `src` empty to hide the button, and `loop` empty to play the full reel
 // muted in the background instead. With both empty the hero shows the poster.
 export const reel = {
   src: "/videos/reel/v01-reel-2026.mp4",
   loop: "/videos/reel/v01-reel-2026-loop.mp4",
+  loopSmall: "/videos/reel/v01-reel-2026-loop-720.mp4",
   poster: "/images/reel-poster.jpg",
   posterAlt: "Aerial view of a yacht at golden hour, from the Siebert film Bonds, Corporate Bonds.",
 };

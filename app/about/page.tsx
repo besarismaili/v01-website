@@ -10,6 +10,17 @@ export const metadata = pageMeta({
   path: "/about",
 });
 
+// The four stages of a job, in order.
+const steps = [
+  { title: "Brief", text: "You send the script or boards, references and the delivery date." },
+  { title: "Test shot", text: "We take one shot to a finished frame, so you can judge the look before the full job starts." },
+  {
+    title: "Production",
+    text: "Every shot moves through one pipeline, where AI generation, compositing in Nuke and the grade work together. You sign off at each stage.",
+  },
+  { title: "Delivery", text: "A finished master in the formats you need." },
+];
+
 export default function AboutPage() {
   return (
     <main data-v data-page="about">
@@ -58,9 +69,24 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section className="v-sec v-sec--pure" aria-label="How a job runs">
+        <div className="v-wrap">
+          <div className="v-tag v-sec__tag" data-reveal>02 / How a job runs</div>
+          <ol className="v-steps">
+            {steps.map((s, i) => (
+              <li className="v-step" key={s.title} data-reveal style={{ "--i": i } as React.CSSProperties}>
+                <span className="v-step__n">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="v-h3">{s.title}</h3>
+                <p>{s.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
       <section className="v-sec">
         <div className="v-wrap">
-          <div className="v-tag v-sec__tag" data-reveal>02 / Studio</div>
+          <div className="v-tag v-sec__tag" data-reveal>03 / Studio</div>
           <div className="v-split">
             <h2 className="v-h2 v-split__a v-about-h" data-reveal>Small core. Specialists per job.</h2>
             <div className="v-split__b v-copy v-about-dark" data-reveal style={{ "--i": 1 } as React.CSSProperties}>

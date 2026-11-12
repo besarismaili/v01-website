@@ -219,3 +219,14 @@ export const studioProjects = [
   mismatchProject,
   dreamProject,
 ];
+
+// What the work cards say under each title: who it was for, how long it is,
+// and one fact about how it was made. Shown on the homepage and the Work page.
+export const workFacts: Record<string, { who: string; length: string; fact: string }> = {
+  sola: { who: "Sola, with Shift", length: "Multi-spot campaign", fact: "VFX and finishing on photographed plates" },
+  tbcb: { who: "Siebert Financial, with TOML", length: "30 seconds", fact: "Fully generated picture" },
+  tsvc: { who: "Siebert Financial, with TOML", length: "30 seconds", fact: "Fully generated picture" },
+  tdbg: { who: "Siebert, with TOML", length: "30 seconds", fact: "Fully generated picture" },
+  mismatch: { who: "Beige Flag", length: "75 seconds", fact: "Brief to master in three days" },
+  dream: { who: "Beki Cars", length: "55 seconds", fact: "No camera, fully generated" },
+};

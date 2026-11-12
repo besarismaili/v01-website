@@ -1,11 +1,11 @@
 import Link from "next/link";
 import "./page.css";
 import Hero from "@/components/Hero";
-import Row from "@/components/Row";
+import WorkCard from "@/components/WorkCard";
 import EndCta from "@/components/EndCta";
 import FounderWall from "@/components/FounderWall";
 import { founderCredits } from "@/lib/founder-credits";
-import { studioProjects } from "@/lib/studio-work";
+import { studioProjects, workFacts } from "@/lib/studio-work";
 import { clients, reel, founderReel } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
 
@@ -18,16 +18,16 @@ export const metadata = pageMeta({
 
 const services = [
   {
-    title: "Sequence Production",
-    text: "Commercials and film sequences taken from first frames to final master: generated, composited in Nuke, graded and delivered.",
+    title: "Commercials and Branded Films",
+    text: "Spots, campaign films and product films made in a VFX pipeline with AI built into every stage, supervised shot by shot and delivered as a finished master. The Perfect Mismatch went from brief to master in three days.",
     href: "/work",
     link: "See the work",
   },
   {
-    title: "Feasibility Sprints",
-    text: "A short test on one of your shots or scenes, so you know what AI can and can’t deliver before you commit a budget.",
+    title: "Film and Episodic Sequences",
+    text: "Environments, period reconstruction, crowds, dream sequences and missing coverage, built to cut with photographed plates and hold up to feature-film scrutiny. Every job starts with a test on one of your own shots.",
     href: "/contact",
-    link: "Ask about a sprint",
+    link: "Ask about a test shot",
   },
   {
     title: "Workflow R&D",
@@ -92,21 +92,26 @@ export default function Home() {
       <section className="v-sec">
         <div className="v-wrap">
           <div className="v-tag v-sec__tag" data-reveal>02 / Selected work</div>
-          <div className="v-rows v-rows--lead">
-            {projects.map((p, i) => (
-              <Row
-                key={p.id}
-                n={i + 1}
-                href={p.href}
-                title={p.title}
-                meta={p.category}
-                img={p.hero_url || p.thumbnail}
-                alt={`${p.title} hero still`}
-                video={"video_url" in p ? p.video_url : undefined}
-              />
-            ))}
+          <div className="v-work-grid">
+            {projects.map((p, i) => {
+              const facts = workFacts[p.id];
+              return (
+                <WorkCard
+                  key={p.id}
+                  href={p.href}
+                  title={p.title}
+                  img={p.hero_url || p.thumbnail}
+                  alt={`${p.title} hero still`}
+                  video={"video_url" in p ? p.video_url : undefined}
+                  meta={facts ? [facts.who, facts.length, facts.fact] : [p.category]}
+                  go="Case study"
+                  span={3}
+                  order={i % 2}
+                />
+              );
+            })}
           </div>
-          <div className="v-btns" style={{ paddingTop: 32 }}>
+          <div className="v-btns" style={{ paddingTop: 40 }}>
             <Link className="v-btn" href="/work">
               All work <span className="v-arr" aria-hidden="true">&rarr;</span>
             </Link>

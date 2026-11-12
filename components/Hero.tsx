@@ -5,7 +5,7 @@ import Link from "next/link";
 import Markers from "@/components/Markers";
 import { HERO_MARKERS } from "@/lib/markers";
 
-type Reel = { src: string; loop?: string; poster: string; posterAlt: string };
+type Reel = { src: string; loop?: string; loopSmall?: string; poster: string; posterAlt: string };
 
 // Homepage hero. The reel fills the whole panel inside a thin blue border.
 // On load the panel holds as a blue plate, then the reel "keys in" (CSS in
@@ -45,8 +45,15 @@ export default function Hero({ reel, children }: { reel: Reel; children?: ReactN
       if (v) {
         v.muted = true;
         v.controls = false;
-        const p = v.play();
-        if (p) p.catch(() => {});
+        // The full reel was set with the src attribute. React removes it on
+        // close, so ask the browser to choose from the loop sources again.
+        const backToLoop = () => {
+          v.load();
+          const p = v.play();
+          if (p) p.catch(() => {});
+        };
+        if (v.hasAttribute("src")) setTimeout(backToLoop, 0);
+        else backToLoop();
       }
       btn?.focus();
     };
@@ -65,7 +72,7 @@ export default function Hero({ reel, children }: { reel: Reel; children?: ReactN
             <video
               ref={vid}
               className="v-hero__media"
-              src={open ? reel.src : loopSrc}
+              src={open ? reel.src : undefined}
               poster={reel.poster}
               autoPlay
               muted
@@ -74,7 +81,12 @@ export default function Hero({ reel, children }: { reel: Reel; children?: ReactN
               preload="metadata"
               onEnded={() => setOpen(false)}
               aria-label="V01 showreel"
-            />
+            >
+              {/* The silent loop. Phones take the smaller file; the full reel
+                  replaces both through the src attribute when it is opened. */}
+              {reel.loopSmall && <source src={reel.loopSmall} media="(max-width: 760px)" type="video/mp4" />}
+              <source src={loopSrc} type="video/mp4" />
+            </video>
           ) : (
             <img className="v-hero__media" src={reel.poster} alt={reel.posterAlt} />
           )}

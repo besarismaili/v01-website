@@ -3,14 +3,15 @@ import PageHead from "@/components/PageHead";
 import Frame from "@/components/Frame";
 import EndCta from "@/components/EndCta";
 import { solaProject } from "@/lib/sola";
-import { studioProjects } from "@/lib/studio-work";
+import WorkCard from "@/components/WorkCard";
+import { studioProjects, workFacts } from "@/lib/studio-work";
 import { vimeoFilms } from "@/lib/vimeo-films";
 import { pageMeta } from "@/lib/seo";
 import "./page.css";
 
 export const metadata = pageMeta({
   title: "V01 — Work",
-  description: "Commercials, campaign and product films for brands and agencies. Recent work is made with generative tools and finished to feature-film VFX standards.",
+  description: "Commercials, campaign and product films for brands and agencies, made in a VFX pipeline with AI built in and held to feature-film standards.",
   path: "/work",
   image: solaProject.hero_url,
   imageAlt: "Sola commercial key visual",
@@ -40,46 +41,22 @@ function cardSpans(count: number): number[] {
 
 export default function WorkPage() {
   const featured = solaProject;
-  const years = [...studioProjects, ...vimeoFilms].map((p) => p.year);
+  // Recent work is the studio's current way of working; the header counts only that.
+  const years = studioProjects.map((p) => p.year);
   const yearSpan = Math.min(...years) === Math.max(...years) ? String(Math.max(...years)) : `${Math.min(...years)} – ${Math.max(...years)}`;
 
-  const cards = [
-    ...studioProjects
-      .filter((p) => p.id !== featured.id)
-      .map((p) => ({
-        id: p.id,
-        href: p.href,
-        title: p.title,
-        year: p.year,
-        client: p.client,
-        runtime: p.runtime,
-        img: p.hero_url || p.thumbnail,
-        position: undefined as string | undefined,
-        go: "Case study",
-      })),
-    ...vimeoFilms.map((f) => ({
-      id: f.id,
-      href: f.href,
-      title: f.title,
-      year: f.year,
-      client: f.brand,
-      runtime: f.runtime,
-      img: f.hero_url,
-      position: f.poster_position,
-      go: "Watch the film",
-    })),
-  ];
-  const spans = cardSpans(cards.length);
+  const recent = studioProjects.filter((p) => p.id !== featured.id);
+  const spans = cardSpans(recent.length);
 
   return (
     <main data-v data-page="work">
       <PageHead
         crumbs={[{ label: "V01", href: "/" }, { label: "Work" }]}
         title="Selected work."
-        lede="Commercials, campaign and product films for brands and agencies. Recent work is made with generative tools and finished to feature-film VFX standards."
+        lede="Commercials, campaign and product films for brands and agencies, made in a VFX pipeline with AI built in and held to feature-film standards."
       >
         <dl className="v-facts">
-          <div><dt>Projects</dt><dd>{studioProjects.length + vimeoFilms.length} released</dd></div>
+          <div><dt>Recent projects</dt><dd>{studioProjects.length}</dd></div>
           <div><dt>Years</dt><dd>{yearSpan}</dd></div>
           <div><dt>Focus</dt><dd>AI Picture / VFX Finishing</dd></div>
         </dl>
@@ -112,25 +89,44 @@ export default function WorkPage() {
         <div className="v-wrap">
           <div className="v-tag v-more-tag" data-reveal>More work</div>
           <div className="v-work-grid">
-            {cards.map((c, i) => (
-              <Link
-                key={c.id}
-                href={c.href}
-                className="v-card"
-                data-reveal
-                style={{ "--span": spans[i], "--i": i % 3 } as React.CSSProperties}
-              >
-                <span className="v-card__img">
-                  <img src={c.img} alt={`${c.title} hero still`} loading="lazy" style={c.position ? { objectPosition: c.position } : undefined} />
-                </span>
-                <span className="v-card__title">{c.title}</span>
-                <span className="v-card__meta">
-                  <span>{c.year}</span>
-                  <span>{c.client}</span>
-                  <span>{c.runtime}</span>
-                  <span className="v-card__go">{c.go} <span className="v-arr" aria-hidden="true">&rarr;</span></span>
-                </span>
-              </Link>
+            {recent.map((p, i) => {
+              const facts = workFacts[p.id];
+              return (
+                <WorkCard
+                  key={p.id}
+                  href={p.href}
+                  title={p.title}
+                  img={p.hero_url || p.thumbnail}
+                  alt={`${p.title} hero still`}
+                  video={"video_url" in p ? p.video_url : undefined}
+                  meta={facts ? [facts.who, facts.length, facts.fact] : [p.year, p.client, p.runtime]}
+                  go="Case study"
+                  span={spans[i]}
+                  order={i % 3}
+                />
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="v-sec v-sec--tight-top" aria-label="Earlier work">
+        <div className="v-wrap">
+          <div className="v-tag v-more-tag" data-reveal>Earlier work</div>
+          <div className="v-work-grid">
+            {vimeoFilms.map((f, i) => (
+              <WorkCard
+                key={f.id}
+                href={f.href}
+                title={f.title}
+                img={f.hero_url}
+                alt={`${f.title} hero still`}
+                meta={[f.year, f.brand, f.runtime]}
+                go="Watch the film"
+                span={2}
+                order={i}
+                imgPosition={f.poster_position}
+              />
             ))}
           </div>
         </div>

@@ -11,14 +11,14 @@ export const metadata = pageMeta({
 
 const ways = [
   {
-    title: "Feasibility Sprint",
-    text: "A short test on one of your shots or scenes. You see what AI can and can’t do for it before committing a budget.",
-    who: "For: Producers / Directors / Agencies",
+    title: "Commercials and Branded Films",
+    text: "A spot, campaign or product film from first frames to final master, delivered in the formats you need.",
+    who: "For: Brands / Agencies / Producers",
   },
   {
-    title: "Sequence Production",
-    text: "A commercial or film sequence from first frames to final master, composited, graded and delivered in the formats you need.",
-    who: "For: Brands / Agencies / Producers",
+    title: "Film and Episodic Sequences",
+    text: "Sequences built to cut with photographed plates. Every job starts with a test on one of your own shots, so you see the result before committing a budget.",
+    who: "For: Producers / Directors / VFX Supervisors",
   },
   {
     title: "Workflow R&D",
