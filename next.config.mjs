@@ -9,6 +9,9 @@ const nextConfig = {
       { source: "/systems", destination: "/about", permanent: false },
       { source: "/journal", destination: "/about", permanent: false },
       { source: "/careers", destination: "/about", permanent: false },
+      // Founder credits used to have a page each. They are now one section
+      // on the homepage.
+      { source: "/case-study/:id", destination: "/#founder-credits", permanent: false },
     ];
   },
 };

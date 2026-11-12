@@ -3,9 +3,10 @@ import "./page.css";
 import Hero from "@/components/Hero";
 import Row from "@/components/Row";
 import EndCta from "@/components/EndCta";
+import FounderWall from "@/components/FounderWall";
 import { founderCredits } from "@/lib/founder-credits";
 import { studioProjects } from "@/lib/studio-work";
-import { clients, reel } from "@/lib/site";
+import { clients, reel, founderReel } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
@@ -113,38 +114,7 @@ export default function Home() {
         </div>
       </section>
 
-      {founderCredits.length > 0 && (
-        <section className="v-sec v-sec--tight-top" id="founder-credits">
-          <div className="v-wrap">
-            <div className="v-tag" data-reveal style={{ paddingBottom: 12 }}>03 / Founder film credits</div>
-            <p className="v-founder-intro" data-reveal style={{ "--i": 1 } as React.CSSProperties}>
-              Our founder has more than 15 years of feature-film VFX experience, including compositing at MPC,
-              Framestore and FX3X. Our small core team runs every project and brings in specialist artists when a job
-              needs them. The people who pitch the work are the people who finish it.
-            </p>
-            <div className="v-rows">
-              {founderCredits.map((p, i) => (
-                <Row
-                  key={p.id}
-                  n={i + 1}
-                  href={`/case-study/${p.id}`}
-                  title={p.title}
-                  meta={`${p.role} / ${p.studio}`}
-                  img={p.hero_url}
-                  alt={`${p.title} film still`}
-                  credit
-                />
-              ))}
-            </div>
-            <div className="v-founder-note">
-              <p>These credits are our founder&rsquo;s own work in credited roles at other studios, not V01 projects.</p>
-              <Link className="v-btn" href="/about">
-                About the studio <span className="v-arr" aria-hidden="true">&rarr;</span>
-              </Link>
-            </div>
-          </div>
-        </section>
-      )}
+      {founderCredits.length > 0 && <FounderWall credits={founderCredits} reel={founderReel} />}
 
       <EndCta
         title={<>Have a shot in mind?</>}
