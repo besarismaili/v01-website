@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { navItems } from "@/lib/site";
+import { footerItems } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -12,7 +12,7 @@ export function Footer() {
           </div>
           <nav className="v-footer__col" aria-label="Footer">
             <h2>Studio</h2>
-            {navItems.map((i) => (
+            {footerItems.map((i) => (
               <Link key={i.href} href={i.href}>{i.label}</Link>
             ))}
           </nav>

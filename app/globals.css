@@ -329,6 +329,12 @@ html.js [data-reveal="wipe"].is-in{clip-path:inset(0 0 0 0)}
 .v-svc .v-link{margin-top:auto;color:var(--v-ink)}
 .v-svc__for{margin-top:auto;align-self:stretch;padding-top:14px;border-top:1px solid var(--v-rule-light);font-family:var(--v-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--v-ink-3)}
 
+/* numbered stages, side by side on wide screens (About "How a job runs", the test shot page) */
+.v-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px 24px;margin:0;padding:0;list-style:none}
+.v-step{display:flex;flex-direction:column;gap:12px;padding-top:18px;border-top:2px solid var(--v-blue)}
+.v-step__n{font-family:var(--v-mono);font-size:13px;color:var(--v-lime)}
+.v-step p{color:var(--v-grey-2)}
+
 /* image cards (work page, next projects) */
 /* work grid: six columns; each card says how many it takes via --span */
 .v-work-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:40px 24px}

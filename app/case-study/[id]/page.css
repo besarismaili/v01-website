@@ -15,6 +15,13 @@
 .v-case-pull{font-family:var(--v-display);font-weight:700;font-size:clamp(20px,3.6vw,52px);line-height:1.12;letter-spacing:-.01em;text-transform:uppercase;max-width:18em;text-wrap:balance}
 .v-case-approach{font-size:clamp(17px,1.5vw,20px);line-height:1.5;max-width:40em}
 
+/* what was shot, what was AI: three short lines under the approach */
+.v-made{display:flex;flex-direction:column;gap:18px;margin-top:clamp(32px,4vw,56px)}
+.v-made__list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin:0}
+.v-made__list>div{display:flex;flex-direction:column;gap:8px;padding-top:16px;border-top:2px solid var(--v-blue);min-width:0}
+.v-made__list dt{font-family:var(--v-display);font-weight:700;font-size:clamp(16px,1.5vw,20px);line-height:1.15;text-transform:uppercase}
+.v-made__list dd{margin:0;color:var(--v-grey-2)}
+
 .v-case-frames-head{display:flex;justify-content:space-between;gap:16px}
 .v-case-frames{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 24px}
 .v-case-frames figure{margin:0;display:flex;flex-direction:column;gap:10px}

@@ -1,0 +1,9 @@
+/* ===== AI use and rights ===== */
+
+/* one rule per row: the name on the left, the rule on the right */
+.v-rules{margin:0;border-bottom:2px solid var(--v-ink)}
+.v-rule{display:flex;flex-wrap:wrap;gap:8px 48px;padding-block:clamp(20px,2.4vw,32px);border-top:2px solid var(--v-ink)}
+.v-rule dt{flex:1 1 240px;color:var(--v-ink)}
+.v-rule dd{flex:3 1 420px;margin:0;max-width:42em;font-size:clamp(17px,1.5vw,20px);line-height:1.45;color:var(--v-ink)}
+.v-rules__note{margin-top:clamp(24px,3vw,40px)}
+.v-rules__note a{text-decoration:underline;text-underline-offset:3px;color:var(--v-ink)}

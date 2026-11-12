@@ -3,6 +3,7 @@ import Frame from "@/components/Frame";
 import EndCta from "@/components/EndCta";
 import Markers from "@/components/Markers";
 import WorkPager from "@/components/WorkPager";
+import Breakdown from "@/components/Breakdown";
 import { END_MARKERS } from "@/lib/markers";
 import type { StudioProject } from "@/lib/studio-work";
 import "@/app/case-study/[id]/page.css";
@@ -74,6 +75,7 @@ export default function FilmCaseStudy({ project }: { project: StudioProject }) {
         <div className="v-wrap">
           <div className="v-tag v-sec__tag" data-reveal>02 / Approach</div>
           <p className="v-case-approach" data-reveal style={{ "--i": 1 } as React.CSSProperties}>{project.approach}</p>
+          <Breakdown lines={project.breakdown} />
         </div>
       </section>
 

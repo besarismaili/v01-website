@@ -4,6 +4,7 @@ import EndCta from "@/components/EndCta";
 import Markers from "@/components/Markers";
 import WorkPager from "@/components/WorkPager";
 import WipeCompare from "@/components/WipeCompare";
+import Breakdown from "@/components/Breakdown";
 import { END_MARKERS } from "@/lib/markers";
 import { solaProject, solaReel, solaWipes } from "@/lib/sola";
 import "../../case-study/[id]/page.css";
@@ -28,7 +29,7 @@ export default function SolaCaseStudy() {
         meta={
           <>
             <span>Commercial</span><span aria-hidden="true">/</span>
-            <span>VFX</span><span aria-hidden="true">/</span>
+            <span>AI / VFX</span><span aria-hidden="true">/</span>
             <span>{solaProject.year}</span><span aria-hidden="true">/</span>
             <strong>Campaign</strong>
           </>
@@ -106,6 +107,7 @@ export default function SolaCaseStudy() {
             the live action instead of replacing it. Finishing stayed in the same discipline as
             feature compositing: edges, contact, light, and delivery.
           </p>
+          <Breakdown lines={solaProject.breakdown} />
         </div>
       </section>
 

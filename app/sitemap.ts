@@ -10,6 +10,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/work",
     "/about",
     "/contact",
+    "/test-shot",
+    "/ai-use",
     ...studioProjects.map((p) => p.href),
     ...vimeoFilms.map((f) => f.href),
   ];

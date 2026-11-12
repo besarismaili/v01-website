@@ -2,9 +2,4 @@
 .v-about-h{font-size:clamp(26px,3.8vw,54px)}
 .v-about-dark>p:not(:first-child){color:var(--v-grey-2)}
 main[data-page="about"] .v-copy strong{font-weight:600}
-
-/* how a job runs: four numbered stages, side by side on wide screens */
-.v-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px 24px;margin:0;padding:0;list-style:none}
-.v-step{display:flex;flex-direction:column;gap:12px;padding-top:18px;border-top:2px solid var(--v-blue)}
-.v-step__n{font-family:var(--v-mono);font-size:13px;color:var(--v-lime)}
-.v-step p{color:var(--v-grey-2)}
+.v-steps-more{margin-top:clamp(24px,3vw,40px)}
