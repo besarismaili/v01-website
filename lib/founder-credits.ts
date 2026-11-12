@@ -1,59 +1,64 @@
-// Feature films our founder worked on in credited roles at other studios.
+// Films and series our founder worked on in roles at other studios.
 // These are not VERSION ONE projects: every place that shows them must label
 // them as founder credits.
 //
-// They appear on the homepage as a wall of posters. To add a film, put its
-// poster in public/images/founder (portrait, 2:3) and add an entry here.
-// From twelve films up the wall splits into two rows.
+// They appear on the homepage as a wall of posters. Titles, years and roles
+// follow the founder's IMDb page (nm6289484, read 2026-11-12). Studios come
+// from the captions on the founder's own reels and earlier site copy; where
+// neither names one, it is left out rather than guessed.
+//
+// To add a title, put its poster in public/images/founder (600x900, 2:3) and
+// add an entry here. The wall shows the list as two rows, split in the
+// middle, so the order below is arranged to give each row a mix of titles.
 
 export type FounderCredit = {
   id: string;
   title: string;
   year: number;
   role: string;
-  studio: string;
+  studio?: string;
+  // Set for anything that is not a feature film.
+  kind?: "TV series" | "Short film";
   poster: string;
 };
 
+const poster = (id: string) => `/images/founder/${id}.jpg`;
+
 export const founderCredits: FounderCredit[] = [
-  {
-    id: "superman",
-    title: "Superman",
-    year: 2025,
-    role: "Compositor",
-    studio: "Framestore",
-    poster: "/images/founder/superman.jpg",
-  },
+  // first row
+  { id: "superman", title: "Superman", year: 2025, role: "Compositor", studio: "Framestore", poster: poster("superman") },
+  { id: "iron-man-3", title: "Iron Man 3", year: 2013, role: "Digital compositor", studio: "Framestore", poster: poster("iron-man-3") },
+  { id: "nope", title: "Nope", year: 2022, role: "Digital compositor", studio: "MPC", poster: poster("nope") },
+  { id: "maleficent", title: "Maleficent", year: 2014, role: "Paint & prep artist", studio: "MPC", poster: poster("maleficent") },
+  { id: "covert-affairs", title: "Covert Affairs", year: 2013, role: "Paint & prep artist", kind: "TV series", poster: poster("covert-affairs") },
+  { id: "apocalypse", title: "Apocalypse", year: 2017, role: "Compositor", poster: poster("apocalypse") },
+  { id: "starman", title: "Starman", year: 2016, role: "Lead VFX compositor", kind: "Short film", poster: poster("starman") },
+  // second row
   {
     id: "transformers-rise-of-the-beasts",
     title: "Transformers: Rise of the Beasts",
     year: 2023,
-    role: "Compositor",
+    role: "Digital compositor",
     studio: "MPC / Framestore",
-    poster: "/images/founder/transformers-rise-of-the-beasts.jpg",
-  },
-  {
-    id: "iron-man-3",
-    title: "Iron Man 3",
-    year: 2013,
-    role: "Compositor",
-    studio: "Framestore",
-    poster: "/images/founder/iron-man-3.jpg",
+    poster: poster("transformers-rise-of-the-beasts"),
   },
   {
     id: "captain-america-the-winter-soldier",
     title: "Captain America: The Winter Soldier",
     year: 2014,
-    role: "Compositor",
+    role: "Paint & prep artist",
     studio: "Framestore",
-    poster: "/images/founder/captain-america-the-winter-soldier.jpg",
+    poster: poster("captain-america-the-winter-soldier"),
   },
+  { id: "atlas", title: "Atlas", year: 2024, role: "Compositor", studio: "MPC", poster: poster("atlas") },
   {
-    id: "maleficent",
-    title: "Maleficent",
-    year: 2014,
+    id: "the-smashing-machine",
+    title: "The Smashing Machine",
+    year: 2025,
     role: "Compositor",
-    studio: "MPC",
-    poster: "/images/founder/maleficent.jpg",
+    studio: "Dream Machine FX",
+    poster: poster("the-smashing-machine"),
   },
+  { id: "lucky-7", title: "Lucky 7", year: 2013, role: "Digital compositor", kind: "TV series", poster: poster("lucky-7") },
+  { id: "the-event", title: "The Event", year: 2014, role: "Key roto", kind: "Short film", poster: poster("the-event") },
 ];

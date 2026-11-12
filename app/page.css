@@ -46,16 +46,22 @@
 
 /* founder film credits: a poster wall, optionally over a dimmed reel loop */
 .v-wall{position:relative;overflow:hidden}
+.v-wall__stage{position:relative}
+.v-wall__stage>.v-wrap{position:relative;width:100%}
+/* with a reel loop: a band of footage, text sitting on its lower edge */
+.v-wall--video{padding-top:0}
+.v-wall--video .v-wall__stage{display:flex;align-items:flex-end;min-height:clamp(300px,52vh,560px);margin-bottom:8px}
 .v-wall__media,.v-wall__scrim{position:absolute;inset:0;width:100%;height:100%}
-.v-wall__media{object-fit:cover}
-.v-wall__scrim{background:linear-gradient(180deg,var(--v-black) 0%,rgba(7,8,12,.74) 20%,rgba(7,8,12,.74) 80%,var(--v-black) 100%)}
-.v-wall>.v-wrap,.v-wall>.v-marquee{position:relative}
+.v-wall__media{object-fit:cover;object-position:50% 28%}
+.v-wall__scrim{background:linear-gradient(180deg,rgba(7,8,12,.45) 0%,rgba(7,8,12,.2) 30%,rgba(7,8,12,.62) 64%,var(--v-black) 100%)}
 .v-wall__label{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-bottom:12px}
 .v-marquee--posters{margin-top:4px}
 .v-marquee--posters+.v-marquee--posters{margin-top:24px}
 .v-marquee--posters .v-marquee__set{align-items:flex-start;gap:clamp(14px,1.6vw,24px);padding-right:clamp(14px,1.6vw,24px)}
 .v-marquee--rev .v-marquee__track{animation-direction:reverse}
 .v-poster{flex:none;width:clamp(140px,15vw,220px)}
+/* two rows: smaller posters, so more of the wall is on screen at once */
+.v-wall--rows2 .v-poster{width:clamp(118px,11vw,172px)}
 .v-poster img{display:block;width:100%;aspect-ratio:2/3;object-fit:cover;background:#14161C}
 .v-poster__title{display:block;margin-top:10px;font-family:var(--v-display);font-weight:700;font-size:12px;line-height:1.3;text-transform:uppercase;color:#fff}
 .v-poster__meta{display:block;margin-top:4px;font-family:var(--v-mono);font-size:11px;line-height:1.4;letter-spacing:.06em;text-transform:uppercase;color:var(--v-grey)}

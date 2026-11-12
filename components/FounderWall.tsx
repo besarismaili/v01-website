@@ -8,7 +8,8 @@ type Reel = { loop: string; poster?: string };
 
 // Homepage section for the founder's feature-film credits: a slow, endless
 // row of film posters, so the films are recognised at a glance. With a reel
-// loop set (lib/site.ts) it plays silently behind the posters, dimmed.
+// loop set (lib/site.ts) a band of that footage plays silently above the
+// posters, behind the section's label and intro.
 //
 // The loop is only downloaded once the section is close to the screen, pauses
 // when it scrolls away, and is skipped for visitors who ask for reduced motion.
@@ -48,36 +49,43 @@ export default function FounderWall({ credits, reel }: { credits: FounderCredit[
   return (
     <section
       ref={root}
-      className={`v-sec v-wall${hasLoop ? " v-wall--video" : " v-sec--tight-top"}`}
+      className={`v-sec v-wall${hasLoop ? " v-wall--video" : " v-sec--tight-top"}${rows.length > 1 ? " v-wall--rows2" : ""}`}
       id="founder-credits"
       aria-label="Founder film credits"
     >
-      {hasLoop && near && (
-        <video
-          ref={vid}
-          className="v-wall__media"
-          src={reel.loop}
-          poster={reel.poster || undefined}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-hidden="true"
-        />
-      )}
-      {hasLoop && <div className="v-wall__scrim" aria-hidden="true" />}
+      {/* The stage: with a loop it is a band of footage with the label and
+          intro over its lower edge; without one it is just the text. */}
+      <div className="v-wall__stage">
+        {hasLoop &&
+          (near ? (
+            <video
+              ref={vid}
+              className="v-wall__media"
+              src={reel.loop}
+              poster={reel.poster || undefined}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-hidden="true"
+            />
+          ) : (
+            reel.poster && <img className="v-wall__media" src={reel.poster} alt="" loading="lazy" />
+          ))}
+        {hasLoop && <div className="v-wall__scrim" aria-hidden="true" />}
 
-      <div className="v-wrap">
-        <div className="v-wall__label" data-reveal>
-          <span className="v-tag">03 / Founder film credits</span>
-          <span className="v-credit">Founder credits</span>
+        <div className="v-wrap">
+          <div className="v-wall__label" data-reveal>
+            <span className="v-tag">03 / Founder film credits</span>
+            <span className="v-credit">Founder credits</span>
+          </div>
+          <p className="v-founder-intro" data-reveal style={{ "--i": 1 } as React.CSSProperties}>
+            Our founder has more than 15 years of feature-film VFX experience, including compositing at MPC,
+            Framestore and FX3X. Our small core team runs every project and brings in specialist artists when a job
+            needs them. The people who pitch the work are the people who finish it.
+          </p>
         </div>
-        <p className="v-founder-intro" data-reveal style={{ "--i": 1 } as React.CSSProperties}>
-          Our founder has more than 15 years of feature-film VFX experience, including compositing at MPC,
-          Framestore and FX3X. Our small core team runs every project and brings in specialist artists when a job
-          needs them. The people who pitch the work are the people who finish it.
-        </p>
       </div>
 
       {rows.map((row, r) => (
@@ -88,10 +96,10 @@ export default function FounderWall({ credits, reel }: { credits: FounderCredit[
               <ul key={copy} className="v-marquee__set" aria-hidden={copy > 0 ? true : undefined}>
                 {row.map((c) => (
                   <li key={c.id} className="v-poster">
-                    <img src={c.poster} alt={copy === 0 ? `${c.title} film poster` : ""} loading="lazy" />
+                    <img src={c.poster} alt={copy === 0 ? `${c.title} poster` : ""} loading="lazy" />
                     <span className="v-poster__title">{c.title}</span>
                     <span className="v-poster__meta">
-                      {c.role} / {c.studio} / {c.year}
+                      {[c.role, c.studio, c.kind, c.year].filter(Boolean).join(" / ")}
                     </span>
                   </li>
                 ))}
