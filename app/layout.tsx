@@ -1,12 +1,18 @@
+import type { Metadata } from "next";
 import "./globals.css";
+import { SITE_URL, SITE_NAME, DEFAULT_SHARE_IMAGE } from "@/lib/seo";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import RevealObserver from "@/components/Reveal";
 
-export const metadata = {
-  metadataBase: new URL("https://v01.ca"),
+// Defaults for every page. Public pages add their own canonical address and
+// link preview through pageMeta() in lib/seo.
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "V01 — AI-Native VFX Studio",
   description: "AI-native VFX for production, not prototypes. Commercials and film sequences, finished to feature-film standards.",
+  openGraph: { type: "website", siteName: SITE_NAME, images: [DEFAULT_SHARE_IMAGE] },
+  twitter: { card: "summary_large_image", images: [DEFAULT_SHARE_IMAGE] },
 };
 
 // Marks the page as JS-capable so scroll reveals can hide content before it

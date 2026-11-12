@@ -1,11 +1,13 @@
 import Link from "next/link";
 import PageHead from "@/components/PageHead";
+import { pageMeta } from "@/lib/seo";
 import "./page.css";
 
-export const metadata = {
+export const metadata = pageMeta({
   title: "V01 — Contact",
   description: "Start a project with VERSION ONE. Email hello@v01.ca.",
-};
+  path: "/contact",
+});
 
 const ways = [
   {
