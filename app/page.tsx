@@ -42,11 +42,29 @@ export default function Home() {
   return (
     <main data-v data-page="home">
       <Hero reel={reel}>
-        <section className="v-wrap v-clients" aria-label="Clients and agencies">
+        <section className="v-wrap v-clients" id="clients" aria-label="Clients and agencies">
           <span className="v-tag v-tag--dim">Clients &amp; Agencies</span>
-          {clients.map((c) => (
-            <span key={c}>{c}</span>
-          ))}
+          <div className="v-marquee">
+            <div className="v-marquee__track">
+              {[0, 1, 2, 3].map((copy) => (
+                <ul
+                  key={copy}
+                  className="v-marquee__set"
+                  aria-hidden={copy > 0 ? true : undefined}
+                >
+                  {clients.map((c) => (
+                    <li key={c.name} className="v-marquee__item">
+                      {c.logo ? (
+                        <img src={c.logo} alt={c.name} style={{ height: c.h ?? 24 }} />
+                      ) : (
+                        <span className="v-marquee__word">{c.name}</span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              ))}
+            </div>
+          </div>
         </section>
       </Hero>
 
