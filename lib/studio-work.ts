@@ -147,7 +147,7 @@ export const mismatchProject: StudioProject = {
   year: 2026,
   runtime: "01:15",
   status: "Published",
-  director: "Besar Ismaili",
+  director: "VERSION ONE",
   summary:
     "A quirky AI-generated ad for Beige Flag: a lost argyle sock crosses the city and finds its perfect mismatch in a stained food container. Made in three days.",
   headline: "A love story for the wonderfully imperfect.",
@@ -184,7 +184,7 @@ export const dreamProject: StudioProject = {
   year: 2025,
   runtime: "00:55",
   status: "Published",
-  director: "Besar Ismaili",
+  director: "VERSION ONE",
   summary:
     "A camera-free brand film for Beki Cars about a lifelong dream made tangible through a 100% generative AI workflow.",
   headline: "A lifelong dream, made without a camera.",
