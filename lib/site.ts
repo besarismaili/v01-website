@@ -10,7 +10,22 @@ export const reel = {
   posterAlt: "Sola commercial key visual",
 };
 
-export const clients = ["Sola", "Shift", "Siebert", "TOML", "Beige Flag", "Beki Cars"];
+export type Client = {
+  name: string;
+  /** Optional logo, dropped in public/images/clients. No file = wordmark. */
+  logo?: string;
+  /** Optical height in px; marks and wordmarks need different sizes to balance. */
+  h?: number;
+};
+
+export const clients: Client[] = [
+  { name: "Sola", logo: "/images/clients/sola.png", h: 26 },
+  { name: "Shift" },
+  { name: "Siebert", logo: "/images/clients/siebert.png", h: 20 },
+  { name: "TOML" },
+  { name: "Beige Flag", logo: "/images/clients/beige-flag.png", h: 34 },
+  { name: "Beki Cars" },
+];
 
 export const navItems = [
   { label: "Work", href: "/work" },
