@@ -12,6 +12,14 @@ export const reel = {
   posterAlt: "Aerial view of a yacht at golden hour, from the Siebert film Bonds, Corporate Bonds.",
 };
 
+// Silent loop behind the founder credits section on the homepage, cut from
+// the founder's own feature-film reels. Leave `loop` empty to show the poster
+// wall on a plain background.
+export const founderReel = {
+  loop: "",
+  poster: "",
+};
+
 export type Client = {
   name: string;
   /** Optional logo, dropped in public/images/clients. No file = wordmark. */
