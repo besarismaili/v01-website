@@ -67,6 +67,13 @@ export const solaWipes = [
   },
 ] as const;
 
+export const solaReel = {
+  src: "/videos/work/sola/reel/sola-reel-2026.mp4",
+  poster: "/images/work/sola/reel-poster.jpg",
+  runtime: "0:58",
+  note: "Eight before/after breakdowns, then the finished pixels.",
+};
+
 export const solaProject = {
   id: "sola",
   href: "/work/sola",
