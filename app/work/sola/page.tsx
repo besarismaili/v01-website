@@ -35,7 +35,7 @@ export default function SolaCaseStudy() {
         <div className="v-wrap">
           <div className="v-reel-head">
             <span className="v-tag v-tag--lime">Project reel</span>
-            <span className="v-tag">{solaReel.runtime} / silent</span>
+            <span className="v-tag">{solaReel.runtime} / music</span>
           </div>
           <Frame>
             <video

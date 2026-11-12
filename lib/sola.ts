@@ -70,7 +70,7 @@ export const solaWipes = [
 export const solaReel = {
   src: "/videos/work/sola/reel/sola-reel-2026.mp4",
   poster: "/images/work/sola/reel-poster.jpg",
-  runtime: "0:58",
+  runtime: "0:56",
   note: "Eight before/after breakdowns, then the finished pixels.",
 };
 
