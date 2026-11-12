@@ -1,154 +1,138 @@
-import Link from "next/link";
+import PageHead from "@/components/PageHead";
+import Frame from "@/components/Frame";
+import EndCta from "@/components/EndCta";
+import Markers from "@/components/Markers";
+import WorkPager from "@/components/WorkPager";
+import { END_MARKERS } from "@/lib/markers";
 import type { StudioProject } from "@/lib/studio-work";
 import "@/app/case-study/[id]/page.css";
-import "@/app/work/film-case.css";
 
 export default function FilmCaseStudy({ project }: { project: StudioProject }) {
   return (
-    <main data-page="case">
-      <section className="wrap cs-head">
-        <div className="breadcrumb">
-          <Link href="/">V01</Link>
-          <span>/</span>
-          <Link href="/work">Work</Link>
-          <span>/</span>
-          <span>{project.title}</span>
-        </div>
-        <div className="cs-meta">
-          <span>Commercial · AI / VFX</span>
-          <span className="dot">·</span>
-          <span>{project.year}</span>
-          <span className="dot">·</span>
-          <span>{project.runtime}</span>
-        </div>
-        <h1>{project.title}</h1>
-        <p className="lede">{project.summary}</p>
-        <div className="cs-creds">
-          <div className="c">
-            <h5>Client</h5>
-            <p>{project.client}</p>
-          </div>
-          {project.agency && <div className="c">
-            <h5>Agency</h5>
-            <p>{project.agency}</p>
-          </div>}
-          <div className="c">
-            <h5>Category</h5>
-            <p>{project.category}</p>
-          </div>
-          <div className="c">
-            <h5>Year</h5>
-            <p>{project.year}</p>
-          </div>
-          <div className="c">
-            <h5>Role</h5>
-            <p>{project.role}</p>
-          </div>
+    <main data-v data-page="case">
+      <PageHead
+        crumbs={[{ label: "V01", href: "/" }, { label: "Work", href: "/work" }, { label: project.title }]}
+        title={project.title}
+        lede={project.summary}
+        meta={
+          <>
+            <span>Commercial</span><span aria-hidden="true">/</span>
+            <span>AI / VFX</span><span aria-hidden="true">/</span>
+            <span>{project.year}</span><span aria-hidden="true">/</span>
+            <strong>{project.runtime}</strong>
+          </>
+        }
+      />
+
+      <section className="v-straddle" aria-label="Film">
+        <div className="v-wrap">
+          <figure className="v-case-film">
+            <Frame>
+              {project.video_url ? (
+                <video src={project.video_url} poster={project.hero_url} controls playsInline preload="metadata" />
+              ) : (
+                <img src={project.hero_url} alt={project.gallery[0]?.alt || project.title} data-reveal="wipe" />
+              )}
+            </Frame>
+            {project.gallery[0] && <figcaption className="v-cap">{project.gallery[0].caption}</figcaption>}
+          </figure>
         </div>
       </section>
 
-      <section className="wrap sec">
-        <div className="cs-intro">
-          <div>
-            <div className="label">Overview</div>
-            <h2>{project.headline}</h2>
-          </div>
-          <div className="body">
-            <p>{project.overview}</p>
-            <div className="label">The Brief</div>
-            <p>{project.brief}</p>
-            <div className="pull">{project.pull}</div>
-            <div className="label">Approach</div>
-            <p>{project.approach}</p>
-          </div>
-        </div>
-      </section>
+      <div className="v-wrap v-case-facts">
+        <dl className="v-facts v-facts--dark">
+          <div><dt>Client</dt><dd>{project.client}</dd></div>
+          {project.agency && <div><dt>Agency</dt><dd>{project.agency}</dd></div>}
+          <div><dt>Category</dt><dd>{project.category}</dd></div>
+          <div><dt>Year</dt><dd>{project.year}</dd></div>
+          <div><dt>Role</dt><dd>{project.role}</dd></div>
+        </dl>
+      </div>
 
-      {project.video_url && (
-        <section className="wrap cs-hero">
-          <video
-            className="film-hero"
-            src={project.video_url}
-            poster={project.hero_url}
-            controls
-            playsInline
-            preload="metadata"
-          />
-        </section>
-      )}
-
-      <section className="wrap sec">
-        <div className="sec-head">
-          <div className="sec-title">Selected Frames</div>
-          <div className="sec-title">{project.runtime}</div>
-        </div>
-        <div className="film-gallery">
-          {project.gallery.map((g) => (
-            <figure className="film-still" key={g.src}>
-              <img src={g.src} alt={g.alt} />
-              <figcaption>{g.caption}</figcaption>
-            </figure>
-          ))}
-        </div>
-      </section>
-
-      <section className="wrap sec">
-        <div className="sec-head">
-          <div className="sec-title">Project Details</div>
-        </div>
-        <div className="deliv">
-          <div className="d">
-            <span className="l">Format</span>
-            <div>
-              <div className="v">{project.runtime}</div>
-              <div className="sub">Hero film</div>
+      <section className="v-sec v-sec--white">
+        <div className="v-wrap">
+          <div className="v-tag v-tag--ink v-sec__tag" data-reveal>01 / Overview</div>
+          <h2 className="v-h2 v-case-headline" data-reveal style={{ "--i": 1 } as React.CSSProperties}>{project.headline}</h2>
+          <div className="v-split v-case-intro">
+            <p className="v-split__a v-case-lead" data-reveal>{project.overview}</p>
+            <div className="v-split__a v-case-brief" data-reveal style={{ "--i": 1 } as React.CSSProperties}>
+              <h3 className="v-tag v-tag--ink">The brief</h3>
+              <p>{project.brief}</p>
             </div>
           </div>
-          <div className="d">
-            <span className="l">Craft</span>
-            <div>
-              <div className="v">{project.role}</div>
-              <div className="sub">{project.agency}</div>
-            </div>
+        </div>
+      </section>
+
+      <section className="v-sec v-sec--blue" aria-label="Idea">
+        <Markers points={END_MARKERS} />
+        <div className="v-wrap" style={{ position: "relative" }}>
+          <p className="v-case-pull" data-reveal>{project.pull}</p>
+        </div>
+      </section>
+
+      <section className="v-sec">
+        <div className="v-wrap">
+          <div className="v-tag v-sec__tag" data-reveal>02 / Approach</div>
+          <p className="v-case-approach" data-reveal style={{ "--i": 1 } as React.CSSProperties}>{project.approach}</p>
+        </div>
+      </section>
+
+      <section className="v-sec v-sec--tight-top">
+        <div className="v-wrap">
+          <div className="v-case-frames-head v-sec__tag" data-reveal>
+            <span className="v-tag">03 / Selected frames</span>
+            <span className="v-tag">{project.runtime}</span>
           </div>
-          <div className="d">
-            <span className="l">Contribution</span>
-            <div>
-              <div className="sub">
+          <div className="v-case-frames">
+            {project.gallery.map((g, i) => (
+              <figure key={g.src} data-reveal style={{ "--i": i % 3 } as React.CSSProperties}>
+                <img src={g.src} alt={g.alt} loading="lazy" />
+                <figcaption>
+                  <span>{String(i + 1).padStart(2, "0")}</span>
+                  <span>{g.caption}</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="v-sec v-sec--white">
+        <div className="v-wrap">
+          <div className="v-tag v-tag--ink v-sec__tag" data-reveal>04 / Project details</div>
+          <div className="v-details">
+            <div className="v-detail" data-reveal>
+              <span className="v-tag v-tag--ink">Format</span>
+              <span className="v-detail__big">{project.runtime}</span>
+              <span>Hero film</span>
+            </div>
+            <div className="v-detail" data-reveal style={{ "--i": 1 } as React.CSSProperties}>
+              <span className="v-tag v-tag--ink">Craft</span>
+              <span className="v-detail__big">{project.role}</span>
+              {project.agency && <span>{project.agency}</span>}
+            </div>
+            <div className="v-detail" data-reveal style={{ "--i": 2 } as React.CSSProperties}>
+              <span className="v-tag v-tag--ink">Contribution</span>
+              <span className="v-detail__text">
                 VERSION ONE delivered AI picture and finishing{project.agency ? ` for ${project.agency}` : ""} on {project.client}.
-              </div>
+              </span>
             </div>
-          </div>
-          <div className="d">
-            <span className="l">Deliverables</span>
-            <div>
-              <div className="sub">{project.deliverables}</div>
+            <div className="v-detail" data-reveal style={{ "--i": 3 } as React.CSSProperties}>
+              <span className="v-tag v-tag--ink">Deliverables</span>
+              <span className="v-detail__text">{project.deliverables}</span>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="wrap end-cta">
-        <div>
-          <h2>
-            Make something
-            <br />
-            worth replaying.
-          </h2>
-          <p>Bring the brief. We’ll shape the world, the workflow, and the finish.</p>
-          <div className="ctas">
-            <Link className="btn primary" href="/contact">
-              <span>Start a Project</span>
-              <span>→</span>
-            </Link>
-            <Link className="btn" href="/work">
-              <span>All Work</span>
-              <span>→</span>
-            </Link>
-          </div>
-        </div>
-        <img src={project.hero_url} alt="" />
-      </section>
+      <WorkPager currentId={project.id} />
+
+      <EndCta
+        title={<>Make something worth replaying.</>}
+        text="Bring the brief. We’ll shape the world, the workflow, and the finish."
+        primary={{ href: "/contact", label: "Start a project" }}
+        secondary={{ href: "/work", label: "All work" }}
+      />
     </main>
   );
 }

@@ -1,5 +1,10 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import PageHead from "@/components/PageHead";
+import Frame from "@/components/Frame";
+import EndCta from "@/components/EndCta";
+import Markers from "@/components/Markers";
+import { END_MARKERS } from "@/lib/markers";
 import { supabase } from "@/lib/supabase";
 import "./page.css";
 
@@ -37,74 +42,157 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ id: 
     : `Direction and finishing by ${project.director || "V01"}.`);
 
   return (
-    <main data-page="case">
-      <section className="wrap cs-head">
-        <div className="breadcrumb"><Link href="/">V01</Link><span>/</span><Link href="/work">Work</Link><span>/</span><span>{project.title}</span></div>
-        <div className="cs-meta">
-          <span>{study.eyebrow || (founder ? "Founder Prior Work" : project.category)}</span><span className="dot">·</span>
-          <span>{project.year}</span><span className="dot">·</span><span>{project.runtime || "Film"}</span>
-        </div>
-        <h1>{project.title}.</h1>
-        <p className="lede">{project.summary}</p>
-        <div className="cs-creds">
-          <div className="c"><h5>{founder ? "Role" : "Client"}</h5><p>{founder ? project.role : project.client}</p></div>
-          <div className="c"><h5>{founder ? "Studio" : "Director"}</h5><p>{founder ? project.studio : project.director || "V01"}</p></div>
-          <div className="c"><h5>Category</h5><p>{project.category}</p></div>
-          <div className="c"><h5>Year</h5><p>{project.year}</p></div>
-          <div className="c"><h5>Runtime</h5><p>{project.runtime || "—"}</p></div>
-        </div>
-        {founder && <div className="disclaimer">{study.disclaimer || "This credit is our founder’s own work at another studio. V01 was not engaged as a vendor on this production."}</div>}
-      </section>
-
-      <section className="wrap cs-hero">
-        {video ? (
-          <div className="video-frame">
-            <iframe src={`https://player.vimeo.com/video/${video}?title=0&byline=0&portrait=0`} title={`${project.title} video`} allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" allowFullScreen />
-          </div>
-        ) : (
-          <div className="ph" style={image ? { backgroundImage: `url(${image})` } : {}} data-label={!image ? `HERO FRAME — ${project.title.toUpperCase()}` : ""}>
-            {!image && <span className="ph-mid">[ FILM FRAME ]</span>}
+    <main data-v data-page="case">
+      <PageHead
+        crumbs={[{ label: "V01", href: "/" }, { label: "Work", href: "/work" }, { label: project.title }]}
+        title={<>{project.title}.</>}
+        lede={project.summary}
+        meta={
+          <>
+            <span>{study.eyebrow || (founder ? "Founder Prior Work" : project.category)}</span><span aria-hidden="true">/</span>
+            <span>{project.year}</span><span aria-hidden="true">/</span>
+            <strong>{project.runtime || "Film"}</strong>
+          </>
+        }
+      >
+        {founder && (
+          <div className="v-case-disclaimer">
+            <span className="v-credit">Founder credit</span>
+            <span>{study.disclaimer || "This credit is our founder’s own work at another studio. V01 was not engaged as a vendor on this production."}</span>
           </div>
         )}
+      </PageHead>
+
+      <section className="v-straddle" aria-label={video ? "Film" : "Film frame"}>
+        <div className="v-wrap">
+          <Frame>
+            {video ? (
+              <iframe
+                src={`https://player.vimeo.com/video/${video}?title=0&byline=0&portrait=0`}
+                title={`${project.title} video`}
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                allowFullScreen
+              />
+            ) : image ? (
+              <img src={image} alt={`${project.title} film frame`} data-reveal="wipe" />
+            ) : null}
+            {founder && <span className="v-chip v-chip--tl">Founder credit</span>}
+          </Frame>
+        </div>
       </section>
 
-      <section className="wrap sec">
-        <div className="cs-intro">
-          <div><div className="label">Overview</div><h2>{study.headline || project.summary}</h2></div>
-          <div className="body">
-            <p>{study.overview || project.summary}</p>
-            {study.brief && <><div className="label">The Brief</div><p>{study.brief}</p></>}
-            <div className="pull">{contribution}</div>
-            {study.approach && <><div className="label">Approach</div><p>{study.approach}</p></>}
+      <div className="v-wrap v-case-facts">
+        <dl className="v-facts v-facts--dark">
+          <div><dt>{founder ? "Role" : "Client"}</dt><dd>{founder ? project.role : project.client}</dd></div>
+          <div><dt>{founder ? "Studio" : "Director"}</dt><dd>{founder ? project.studio : project.director || "V01"}</dd></div>
+          <div><dt>Category</dt><dd>{project.category}</dd></div>
+          <div><dt>Year</dt><dd>{project.year}</dd></div>
+          <div><dt>Runtime</dt><dd>{project.runtime || "—"}</dd></div>
+        </dl>
+      </div>
+
+      <section className="v-sec v-sec--white">
+        <div className="v-wrap">
+          <div className="v-tag v-tag--ink v-sec__tag" data-reveal>01 / Overview</div>
+          <h2 className="v-h2 v-case-headline" data-reveal style={{ "--i": 1 } as React.CSSProperties}>{study.headline || project.summary}</h2>
+          <div className="v-split v-case-intro">
+            <p className="v-split__a v-case-lead" data-reveal>{study.overview || project.summary}</p>
+            {study.brief && (
+              <div className="v-split__a v-case-brief" data-reveal style={{ "--i": 1 } as React.CSSProperties}>
+                <h3 className="v-tag v-tag--ink">The brief</h3>
+                <p>{study.brief}</p>
+              </div>
+            )}
           </div>
         </div>
       </section>
 
-      <section className="wrap sec">
-        <div className="sec-head"><div className="sec-title">Project Details</div></div>
-        <div className="deliv">
-          <div className="d"><span className="l">Format</span><div><div className="v">{project.runtime || "Film"}</div><div className="sub">Vimeo master</div></div></div>
-          <div className="d"><span className="l">Craft</span><div><div className="v">{project.role || project.category}</div><div className="sub">{project.studio || project.client}</div></div></div>
-          <div className="d"><span className="l">Contribution</span><div><div className="sub">{contribution}</div></div></div>
-          <div className="d"><span className="l">Deliverables</span><div><div className="sub">{study.deliverables || "Hero film; master; selected stills."}</div></div></div>
-        </div>
-        {(project.source_url || project.video_url) && <div className="source-links">
-          {project.video_url && <a className="btn" href={project.video_url} target="_blank" rel="noreferrer"><span>View on Vimeo</span><span>↗</span></a>}
-          {project.source_url && project.source_url !== project.video_url && <a className="btn" href={project.source_url} target="_blank" rel="noreferrer"><span>Production source</span><span>↗</span></a>}
-        </div>}
-      </section>
-
-      <section className="wrap sec">
-        <div className="sec-head"><div className="sec-title">Next Work</div></div>
-        <div className="next-case">
-          {nextProjects?.map(np => <Link key={np.id} href={`/case-study/${np.id}`} className="nc">
-            {np.hero_url || np.thumbnail ? <img src={np.hero_url || np.thumbnail} alt={np.title} /> : <div className="ph"><span className="ph-mid">[ STILL ]</span></div>}
-            <div className="body"><span className="l">{np.credit_type === "Founder Prior Work" ? "Founder Credit" : np.category} · {np.year}</span><h4>{np.title}</h4><div className="meta">{np.client} · {np.runtime || "—"}</div><div className="arr"><span>View Project</span><span>→</span></div></div>
-          </Link>)}
+      <section className="v-sec v-sec--blue" aria-label="Contribution">
+        <Markers points={END_MARKERS} />
+        <div className="v-wrap" style={{ position: "relative" }}>
+          <p className="v-case-pull" data-reveal>{contribution}</p>
         </div>
       </section>
 
-      <section className="wrap end-cta"><div><h2>Make something<br/>worth replaying.</h2><p>Bring the brief. We’ll shape the world, the workflow, and the finish.</p><div className="ctas"><Link className="btn primary" href="/contact"><span>Start a Project</span><span>→</span></Link><Link className="btn" href="/work"><span>All Work</span><span>→</span></Link></div></div>{image ? <img src={image} alt="" /> : <div className="ph" />}</section>
+      {study.approach && (
+        <section className="v-sec">
+          <div className="v-wrap">
+            <div className="v-tag v-sec__tag" data-reveal>02 / Approach</div>
+            <p className="v-case-approach" data-reveal style={{ "--i": 1 } as React.CSSProperties}>{study.approach}</p>
+          </div>
+        </section>
+      )}
+
+      <section className="v-sec v-sec--white">
+        <div className="v-wrap">
+          <div className="v-tag v-tag--ink v-sec__tag" data-reveal>Project details</div>
+          <div className="v-details">
+            <div className="v-detail" data-reveal>
+              <span className="v-tag v-tag--ink">Format</span>
+              <span className="v-detail__big">{project.runtime || "Film"}</span>
+              <span>Vimeo master</span>
+            </div>
+            <div className="v-detail" data-reveal style={{ "--i": 1 } as React.CSSProperties}>
+              <span className="v-tag v-tag--ink">Craft</span>
+              <span className="v-detail__big">{project.role || project.category}</span>
+              <span>{project.studio || project.client}</span>
+            </div>
+            <div className="v-detail" data-reveal style={{ "--i": 2 } as React.CSSProperties}>
+              <span className="v-tag v-tag--ink">Contribution</span>
+              <span className="v-detail__text">{contribution}</span>
+            </div>
+            <div className="v-detail" data-reveal style={{ "--i": 3 } as React.CSSProperties}>
+              <span className="v-tag v-tag--ink">Deliverables</span>
+              <span className="v-detail__text">{study.deliverables || "Hero film; master; selected stills."}</span>
+            </div>
+          </div>
+          {(project.source_url || project.video_url) && (
+            <div className="v-case-source">
+              {project.video_url && (
+                <a className="v-btn v-btn--ink" href={project.video_url} target="_blank" rel="noreferrer">
+                  View on Vimeo <span className="v-arr" aria-hidden="true">&#8599;</span>
+                </a>
+              )}
+              {project.source_url && project.source_url !== project.video_url && (
+                <a className="v-btn v-btn--ink" href={project.source_url} target="_blank" rel="noreferrer">
+                  Production source <span className="v-arr" aria-hidden="true">&#8599;</span>
+                </a>
+              )}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {nextProjects && nextProjects.length > 0 && (
+        <section className="v-sec">
+          <div className="v-wrap">
+            <div className="v-tag v-sec__tag" data-reveal>Next work</div>
+            <div className="v-next-grid">
+              {nextProjects.map((np, i) => (
+                <Link key={np.id} href={`/case-study/${np.id}`} className="v-card" data-reveal style={{ "--i": i } as React.CSSProperties}>
+                  <span className="v-card__img">
+                    {(np.hero_url || np.thumbnail) && <img src={np.hero_url || np.thumbnail} alt={`${np.title} still`} loading="lazy" />}
+                  </span>
+                  <span className="v-card__title">{np.title}</span>
+                  <span className="v-card__meta">
+                    <span>{np.credit_type === "Founder Prior Work" ? "Founder credit" : np.category}</span>
+                    <span>{np.year}</span>
+                    {np.client && <span>{np.client}</span>}
+                    <span className="v-card__go">View project <span className="v-arr" aria-hidden="true">&rarr;</span></span>
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <EndCta
+        title={<>Make something worth replaying.</>}
+        text="Bring the brief. We’ll shape the world, the workflow, and the finish."
+        primary={{ href: "/contact", label: "Start a project" }}
+        secondary={{ href: "/work", label: "All work" }}
+      />
     </main>
   );
 }
