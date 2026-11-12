@@ -5,7 +5,7 @@ import Markers from "@/components/Markers";
 import WorkPager from "@/components/WorkPager";
 import WipeCompare from "@/components/WipeCompare";
 import { END_MARKERS } from "@/lib/markers";
-import { solaProject, solaWipes } from "@/lib/sola";
+import { solaProject, solaReel, solaWipes } from "@/lib/sola";
 import "../../case-study/[id]/page.css";
 import "./page.css";
 
@@ -31,11 +31,23 @@ export default function SolaCaseStudy() {
         }
       />
 
-      <section className="v-straddle" aria-label="Key visual">
+      <section className="v-straddle" aria-label="Project reel">
         <div className="v-wrap">
+          <div className="v-reel-head">
+            <span className="v-tag v-tag--lime">Project reel</span>
+            <span className="v-tag">{solaReel.runtime} / silent</span>
+          </div>
           <Frame>
-            <img src={solaProject.hero_url} alt="Sola commercial key visual" data-reveal="wipe" />
+            <video
+              src={solaReel.src}
+              poster={solaReel.poster}
+              controls
+              playsInline
+              preload="none"
+              aria-label="Sola project showreel"
+            />
           </Frame>
+          <p className="v-reel-note">{solaReel.note}</p>
         </div>
       </section>
 

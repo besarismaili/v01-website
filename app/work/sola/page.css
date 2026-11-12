@@ -169,3 +169,25 @@ main[data-page="case"] .wipe-frame:has(.wipe-range:focus-visible) .wipe-knob{
   main[data-page="case"] .wipe-tag.left{ left: 10px; }
   main[data-page="case"] .wipe-tag.right{ right: 10px; }
 }
+
+/* ===== Project reel ===== */
+main[data-page="case"] .v-reel-head{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding-bottom: 14px;
+}
+
+main[data-page="case"] .v-reel-note{
+  font-family: var(--v-mono);
+  font-size: 12px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--v-grey);
+  margin: 22px 0 0;
+}
+
+@media (max-width: 600px) {
+  main[data-page="case"] .v-reel-head{ flex-wrap: wrap; gap: 6px; }
+}
