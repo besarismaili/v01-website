@@ -1,9 +1,4 @@
-main[data-page="about"] .manifesto{display:grid;grid-template-columns:1fr 1.4fr;gap:36px;align-items:start}
-main[data-page="about"] .manifesto h2{font-family:var(--display);font-weight:600;font-size:42px;line-height:.95;margin:0 0 14px;text-transform:uppercase}
-main[data-page="about"] .manifesto p{font-family:var(--mono);font-size:14px;line-height:1.7;color:var(--fg);margin:0 0 18px;max-width:62ch}
-main[data-page="about"] .manifesto p strong{color:var(--fg);font-weight:500}
-main[data-page="about"] .manifesto p em{color:var(--fg-dim);font-style:normal}
-
-@media (max-width:980px){
-  main[data-page="about"] .manifesto{grid-template-columns:1fr}
-}
+/* ===== About ===== */
+.v-about-h{font-size:clamp(26px,3.8vw,54px)}
+.v-about-dark>p:not(:first-child){color:var(--v-grey-2)}
+main[data-page="about"] .v-copy strong{font-weight:600}

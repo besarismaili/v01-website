@@ -1,31 +1,25 @@
+/* ===== Work ===== */
 
-main[data-page="work"] .featured{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;padding:40px 0 0;border-top:1px solid var(--line)}
-main[data-page="work"] .featured .ph{aspect-ratio:16/10;width:100%}
-main[data-page="work"] .feat-meta{display:flex;flex-direction:column;justify-content:space-between;padding:6px 4px}
-main[data-page="work"] .feat-meta .num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--fg-mute);margin-bottom:14px}
-main[data-page="work"] .feat-meta h2{font-family:var(--display);font-weight:600;font-size:56px;line-height:.95;margin:0 0 14px;text-transform:uppercase}
-main[data-page="work"] .feat-meta .tags{display:flex;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-mute);margin-bottom:18px}
-main[data-page="work"] .feat-meta p{font-family:var(--mono);font-size:13px;line-height:1.65;color:var(--fg-dim);margin:0 0 22px;max-width:42ch}
+/* featured project: one large keyed-in frame, text beneath */
+.v-feat{display:flex;flex-direction:column;gap:28px}
+.v-feat__text{display:flex;flex-wrap:wrap;align-items:flex-start;gap:16px 64px}
+.v-feat__title{flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:10px}
+.v-feat__body{flex:1 1 420px;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.v-feat__body p{font-size:18px;line-height:1.5;color:#E4E6EB}
+@media (hover:hover){.v-feat:hover .v-link .v-arr{transform:translateX(6px)}}
 
-main[data-page="work"] .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-main[data-page="work"] .work-card{display:flex;flex-direction:column}
-main[data-page="work"] .work-card .ph{aspect-ratio:4/3;width:100%;margin-bottom:16px}
-main[data-page="work"] .work-card .row{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:6px}
-main[data-page="work"] .work-card h3{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:.02em;margin:0;text-transform:uppercase}
-main[data-page="work"] .work-card .yr{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--fg-mute)}
-main[data-page="work"] .work-card .meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-dim);margin-bottom:12px}
-main[data-page="work"] .work-card .link{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;display:flex;justify-content:space-between;padding-top:12px;border-top:1px solid var(--line-2)}
+.v-more-tag{padding-block:24px 28px;border-top:1px solid var(--v-rule)}
 
+/* six-column grid; each card says how many columns it takes via --span */
+.v-work-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:40px 24px}
+.v-work-grid>*{grid-column:span var(--span,2)}
 
-
-@media (max-width:980px){
-  main[data-page="work"] .featured{grid-template-columns:1fr;padding-bottom:40px}
-  main[data-page="work"] .work-grid{grid-template-columns:1fr 1fr}
-  main[data-page="work"] .feat-meta h2{font-size:44px}
+@media (max-width:900px){
+  .v-work-grid>*{grid-column:span 3}
 }
-
 @media (max-width:600px){
-  main[data-page="work"] .work-grid{grid-template-columns:1fr}
-  main[data-page="work"] .featured{padding-block:24px 32px}
-  main[data-page="work"] .feat-meta h2{font-size:38px}
+  .v-feat{gap:22px}
+  .v-feat__body p{font-size:16px}
+  .v-work-grid{gap:32px 0}
+  .v-work-grid>*{grid-column:span 6}
 }

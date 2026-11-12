@@ -1,39 +1,30 @@
 import Link from "next/link";
+import { navItems } from "@/lib/site";
 
 export function Footer() {
   return (
-    <footer>
-      <div className="wrap">
-        <div className="foot-top">
-          <div>
-            <div className="foot-logo">V01</div>
-            <p className="foot-about">
-              AI-native VFX for production, not prototypes. A studio working from Montreal and Prishtina.
-            </p>
+    <footer className="v-footer" data-v>
+      <div className="v-wrap">
+        <div className="v-footer__top">
+          <div className="v-footer__brand">
+            <Link href="/" className="v-footer__logo">V01</Link>
+            <p>AI-native VFX for production, not prototypes. A studio working from Montreal and Prishtina.</p>
           </div>
-          <div className="foot-col">
-            <h5>Studio</h5>
-            <ul>
-              <li><Link href="/work">Work</Link></li>
-              <li><Link href="/about">About</Link></li>
-              <li><Link href="/contact">Contact</Link></li>
-            </ul>
-          </div>
-          <div className="foot-col">
-            <h5>Contact</h5>
-            <ul>
-              <li><a href="mailto:hello@v01.ca">hello@v01.ca</a></li>
-              <li>Montreal, Canada</li>
-              <li>Prishtina, Kosovo</li>
-            </ul>
+          <nav className="v-footer__col" aria-label="Footer">
+            <h2>Studio</h2>
+            {navItems.map((i) => (
+              <Link key={i.href} href={i.href}>{i.label}</Link>
+            ))}
+          </nav>
+          <div className="v-footer__col">
+            <h2>Contact</h2>
+            <a href="mailto:hello@v01.ca">hello@v01.ca</a>
+            <a href="https://vimeo.com/besarismaili" target="_blank" rel="noreferrer">Vimeo</a>
+            <span style={{ paddingTop: 10 }}>Montreal, Canada</span>
+            <span>Prishtina, Kosovo</span>
           </div>
         </div>
-        <div className="foot-bottom">
-          <div className="socials" aria-label="Social">
-            <a href="https://vimeo.com/besarismaili" target="_blank" rel="noreferrer" aria-label="Vimeo"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M3 8c2-2 4-2 5 0s2 8 4 8 5-6 6-9-1-4-4-3"/></svg></a>
-          </div>
-          <div>&copy; 2026 VERSION ONE</div>
-        </div>
+        <div className="v-footer__bottom">&copy; 2026 VERSION ONE</div>
       </div>
     </footer>
   );

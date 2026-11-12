@@ -1,90 +1,60 @@
-import Link from "next/link";
+import PageHead from "@/components/PageHead";
+import Frame from "@/components/Frame";
+import EndCta from "@/components/EndCta";
 import type { VimeoFilm as Film } from "@/lib/vimeo-films";
 import "@/app/case-study/[id]/page.css";
 
 export default function VimeoFilm({ film }: { film: Film }) {
   return (
-    <main data-page="case">
-      <section className="wrap cs-head">
-        <div className="breadcrumb">
-          <Link href="/">V01</Link>
-          <span>/</span>
-          <Link href="/work">Work</Link>
-          <span>/</span>
-          <span>{film.title}</span>
-        </div>
-        <div className="cs-meta">
-          <span>{film.category}</span>
-          <span className="dot">·</span>
-          <span>{film.year}</span>
-          <span className="dot">·</span>
-          <span>{film.runtime}</span>
-        </div>
-        <h1>{film.title}</h1>
-        <p className="lede">{film.summary}</p>
-        <div className="cs-creds">
-          <div className="c">
-            <h5>Brand</h5>
-            <p>{film.brand}</p>
-          </div>
-          <div className="c">
-            <h5>Category</h5>
-            <p>{film.category}</p>
-          </div>
-          <div className="c">
-            <h5>Year</h5>
-            <p>{film.year}</p>
-          </div>
-          <div className="c">
-            <h5>Runtime</h5>
-            <p>{film.runtime}</p>
-          </div>
-          <div className="c">
-            <h5>Role</h5>
-            <p>{film.role}</p>
-          </div>
+    <main data-v data-page="case">
+      <PageHead
+        crumbs={[{ label: "V01", href: "/" }, { label: "Work", href: "/work" }, { label: film.title }]}
+        title={film.title}
+        lede={film.summary}
+        meta={
+          <>
+            <span>{film.category}</span><span aria-hidden="true">/</span>
+            <span>{film.year}</span><span aria-hidden="true">/</span>
+            <strong>{film.runtime}</strong>
+          </>
+        }
+      />
+
+      <section className="v-straddle" aria-label="Film">
+        <div className="v-wrap">
+          <Frame>
+            <iframe
+              src={`https://player.vimeo.com/video/${film.vimeo_id}?title=0&byline=0&portrait=0`}
+              title={`${film.title} film`}
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </Frame>
         </div>
       </section>
 
-      <section className="wrap cs-hero">
-        <div className="video-frame">
-          <iframe
-            src={`https://player.vimeo.com/video/${film.vimeo_id}?title=0&byline=0&portrait=0`}
-            title={`${film.title} film`}
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          />
-        </div>
-        <div className="source-links">
-          <a className="btn" href={`https://vimeo.com/${film.vimeo_id}`} target="_blank" rel="noreferrer">
-            <span>View on Vimeo</span>
-            <span>↗</span>
+      <div className="v-wrap v-case-facts">
+        <dl className="v-facts v-facts--dark">
+          <div><dt>Brand</dt><dd>{film.brand}</dd></div>
+          <div><dt>Category</dt><dd>{film.category}</dd></div>
+          <div><dt>Year</dt><dd>{film.year}</dd></div>
+          <div><dt>Runtime</dt><dd>{film.runtime}</dd></div>
+          <div><dt>Role</dt><dd>{film.role}</dd></div>
+        </dl>
+        <div className="v-case-source">
+          <a className="v-btn" href={`https://vimeo.com/${film.vimeo_id}`} target="_blank" rel="noreferrer">
+            View on Vimeo <span className="v-arr" aria-hidden="true">&#8599;</span>
           </a>
         </div>
-      </section>
+      </div>
 
-      <section className="wrap end-cta">
-        <div>
-          <h2>
-            Make something
-            <br />
-            worth replaying.
-          </h2>
-          <p>Bring the brief. We’ll shape the world, the workflow, and the finish.</p>
-          <div className="ctas">
-            <Link className="btn primary" href="/contact">
-              <span>Start a Project</span>
-              <span>→</span>
-            </Link>
-            <Link className="btn" href="/work">
-              <span>All Work</span>
-              <span>→</span>
-            </Link>
-          </div>
-        </div>
-        <img src={film.hero_url} style={{ objectPosition: film.poster_position }} alt="" />
-      </section>
+      <EndCta
+        title={<>Make something worth replaying.</>}
+        text="Bring the brief. We’ll shape the world, the workflow, and the finish."
+        primary={{ href: "/contact", label: "Start a project" }}
+        secondary={{ href: "/work", label: "All work" }}
+      />
     </main>
   );
 }
