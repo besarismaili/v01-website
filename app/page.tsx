@@ -26,8 +26,8 @@ const services = [
   {
     title: "Film and Episodic Sequences",
     text: "Environments, period reconstruction, crowds, dream sequences and missing coverage, built to cut with photographed plates and hold up to feature-film scrutiny. Every job starts with a test on one of your own shots.",
-    href: "/contact",
-    link: "Ask about a test shot",
+    href: "/test-shot",
+    link: "How the test shot works",
   },
   {
     title: "Workflow R&D",

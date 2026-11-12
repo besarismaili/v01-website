@@ -46,3 +46,10 @@ export const navItems = [
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
+
+// The footer lists the main pages plus the two reference pages.
+export const footerItems = [
+  ...navItems,
+  { label: "Test shot", href: "/test-shot" },
+  { label: "AI use and rights", href: "/ai-use" },
+];

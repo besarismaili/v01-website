@@ -1,5 +1,6 @@
 import PageHead from "@/components/PageHead";
 import Frame from "@/components/Frame";
+import Link from "next/link";
 import EndCta from "@/components/EndCta";
 import { pageMeta } from "@/lib/seo";
 import "./page.css";
@@ -81,6 +82,11 @@ export default function AboutPage() {
               </li>
             ))}
           </ol>
+          <p className="v-steps-more" data-reveal>
+            <Link className="v-link" href="/test-shot">
+              How the test shot works <span className="v-arr" aria-hidden="true">&rarr;</span>
+            </Link>
+          </p>
         </div>
       </section>
 

@@ -1,5 +1,8 @@
 import { solaProject } from "./sola";
 
+// One line of the "what was shot, what was AI" block on a case study.
+export type BreakdownLine = { label: string; text: string };
+
 export type StudioProject = {
   id: string;
   href: string;
@@ -25,6 +28,9 @@ export type StudioProject = {
   credit_type: string;
   role: string;
   deliverables: string;
+  // What was AI-generated, what was photographed and what the VFX work
+  // covered. Besar confirmed each of these on 2026-11-12.
+  breakdown: BreakdownLine[];
 };
 
 export const tbcbProject: StudioProject = {
@@ -62,6 +68,11 @@ export const tbcbProject: StudioProject = {
   credit_type: "V01 Work",
   role: "AI / VFX",
   deliverables: "30s hero film, 4K master, campaign stills.",
+  breakdown: [
+    { label: "AI-generated", text: "The whole picture: the yacht, the period cast, the helicopter, the props and the golden-hour light." },
+    { label: "Photographed", text: "Nothing." },
+    { label: "VFX and finishing", text: "Shot selection, compositing, grade and the 4K master." },
+  ],
 };
 
 export const tsvcProject: StudioProject = {
@@ -98,6 +109,11 @@ export const tsvcProject: StudioProject = {
   credit_type: "V01 Work",
   role: "AI / VFX",
   deliverables: "30s hero film, selected stills.",
+  breakdown: [
+    { label: "AI-generated", text: "The whole picture: mid-80s Miami Beach, the period cars, the police motorcade and the neon." },
+    { label: "Photographed", text: "Nothing." },
+    { label: "VFX and finishing", text: "Shot selection and finishing as a 30-second anamorphic spot." },
+  ],
 };
 
 export const tdbgProject: StudioProject = {
@@ -135,6 +151,11 @@ export const tdbgProject: StudioProject = {
   credit_type: "V01 Work",
   role: "AI / VFX",
   deliverables: "30-second film.",
+  breakdown: [
+    { label: "AI-generated", text: "The whole picture: the toy soldier, the convertible, the pool party and the miniature sets." },
+    { label: "Photographed", text: "Nothing." },
+    { label: "VFX and finishing", text: "Direction of the AI picture and the finish of the 30-second film." },
+  ],
 };
 
 export const mismatchProject: StudioProject = {
@@ -172,6 +193,11 @@ export const mismatchProject: StudioProject = {
   credit_type: "V01 Work",
   role: "Creative Direction, AI Production, VFX & Finish",
   deliverables: "75-second hero film, social master, campaign stills.",
+  breakdown: [
+    { label: "AI-generated", text: "The whole picture: the characters, the city and the animation." },
+    { label: "Photographed", text: "Nothing." },
+    { label: "VFX and finishing", text: "Edit, sound and final grade. Brief to master in three days." },
+  ],
 };
 
 export const dreamProject: StudioProject = {
@@ -209,6 +235,11 @@ export const dreamProject: StudioProject = {
   credit_type: "V01 Work",
   role: "Creative Direction, AI Production, VFX & Finish",
   deliverables: "55-second hero film, digital master, campaign stills.",
+  breakdown: [
+    { label: "AI-generated", text: "The whole picture. No camera was used." },
+    { label: "Photographed", text: "Nothing." },
+    { label: "VFX and finishing", text: "Compositing, edit and finish." },
+  ],
 };
 
 export const studioProjects = [
@@ -223,7 +254,7 @@ export const studioProjects = [
 // What the work cards say under each title: who it was for, how long it is,
 // and one fact about how it was made. Shown on the homepage and the Work page.
 export const workFacts: Record<string, { who: string; length: string; fact: string }> = {
-  sola: { who: "Sola, with Shift", length: "Multi-spot campaign", fact: "VFX and finishing on photographed plates" },
+  sola: { who: "Sola, with Shift", length: "Multi-spot campaign", fact: "AI and VFX on photographed plates" },
   tbcb: { who: "Siebert Financial, with TOML", length: "30 seconds", fact: "Fully generated picture" },
   tsvc: { who: "Siebert Financial, with TOML", length: "30 seconds", fact: "Fully generated picture" },
   tdbg: { who: "Siebert, with TOML", length: "30 seconds", fact: "Fully generated picture" },

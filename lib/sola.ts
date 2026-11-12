@@ -95,4 +95,17 @@ export const solaProject = {
   thumbnail: "/images/work/sola/hero.jpg",
   credit_type: "V01 Work",
   role: "VFX / Finishing",
+  // What was photographed, what the VFX work covered and where AI was used.
+  // The AI line is Besar's answer of 2026-11-12.
+  breakdown: [
+    { label: "Photographed", text: "Live-action plates of the court, the rooftop, the horse and the tree." },
+    {
+      label: "VFX",
+      text: "Environment replacements, CG product and sports elements tracked to the performance, screen inserts and campaign graphics.",
+    },
+    {
+      label: "AI",
+      text: "Many of the added and changed elements were made with generative AI inside the VFX work. Every shot got its own approach.",
+    },
+  ],
 };
