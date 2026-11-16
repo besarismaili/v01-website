@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 
 // The one public address of the site. The canonical tag, link previews,
-// robots.txt and the sitemap are all built from it.
-export const SITE_URL = "https://www.v01.mov";
+// robots.txt, the sitemap, /llms.txt and the structured data are all built
+// from it. Besar chose v01.ca on 2026-11-16; next.config.mjs sends the other
+// addresses here.
+export const SITE_URL = "https://v01.ca";
 export const SITE_NAME = "VERSION ONE";
 
 // Shown in link previews when a page has no still of its own.
