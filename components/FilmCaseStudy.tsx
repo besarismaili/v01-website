@@ -6,11 +6,26 @@ import WorkPager from "@/components/WorkPager";
 import Breakdown from "@/components/Breakdown";
 import { END_MARKERS } from "@/lib/markers";
 import type { StudioProject } from "@/lib/studio-work";
+import JsonLd from "@/components/JsonLd";
+import { workJsonLd } from "@/lib/seo";
 import "@/app/case-study/[id]/page.css";
 
 export default function FilmCaseStudy({ project }: { project: StudioProject }) {
   return (
     <main data-v data-page="case">
+      <JsonLd
+        data={workJsonLd({
+          title: project.title,
+          summary: project.summary,
+          href: project.href,
+          image: project.hero_url,
+          year: project.year,
+          category: project.category,
+          role: project.role,
+          client: project.client,
+          agency: project.agency,
+        })}
+      />
       <PageHead
         crumbs={[{ label: "V01", href: "/" }, { label: "Work", href: "/work" }, { label: project.title }]}
         title={project.title}

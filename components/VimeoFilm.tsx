@@ -2,11 +2,25 @@ import PageHead from "@/components/PageHead";
 import Frame from "@/components/Frame";
 import EndCta from "@/components/EndCta";
 import type { VimeoFilm as Film } from "@/lib/vimeo-films";
+import JsonLd from "@/components/JsonLd";
+import { workJsonLd } from "@/lib/seo";
 import "@/app/case-study/[id]/page.css";
 
 export default function VimeoFilm({ film }: { film: Film }) {
   return (
     <main data-v data-page="case">
+      <JsonLd
+        data={workJsonLd({
+          title: film.title,
+          summary: film.summary,
+          href: film.href,
+          image: film.hero_url,
+          year: film.year,
+          category: film.category,
+          role: film.role,
+          client: film.brand,
+        })}
+      />
       <PageHead
         crumbs={[{ label: "V01", href: "/" }, { label: "Work", href: "/work" }, { label: film.title }]}
         title={film.title}

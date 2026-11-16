@@ -6,8 +6,9 @@ import EndCta from "@/components/EndCta";
 import FounderWall from "@/components/FounderWall";
 import { founderCredits } from "@/lib/founder-credits";
 import { studioProjects, workFacts } from "@/lib/studio-work";
-import { clients, reel, founderReel } from "@/lib/site";
-import { pageMeta } from "@/lib/seo";
+import { clients, reel, founderReel, services } from "@/lib/site";
+import { pageMeta, studioJsonLd } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata = pageMeta({
   title: "V01 — AI-Native VFX Studio",
@@ -16,32 +17,12 @@ export const metadata = pageMeta({
   path: "/",
 });
 
-const services = [
-  {
-    title: "Commercials and Branded Films",
-    text: "Spots, campaign films and product films made in a VFX pipeline with AI built into every stage, supervised shot by shot and delivered as a finished master. The Perfect Mismatch went from brief to master in three days.",
-    href: "/work",
-    link: "See the work",
-  },
-  {
-    title: "Film and Episodic Sequences",
-    text: "Environments, period reconstruction, crowds, dream sequences and missing coverage, built to cut with photographed plates and hold up to feature-film scrutiny. Every job starts with a test on one of your own shots.",
-    href: "/test-shot",
-    link: "How the test shot works",
-  },
-  {
-    title: "Workflow R&D",
-    text: "Custom generative workflows for productions and VFX vendors that need them to fit inside an existing pipeline.",
-    href: "/contact",
-    link: "Get in touch",
-  },
-];
-
 export default function Home() {
   const projects = studioProjects;
 
   return (
     <main data-v data-page="home">
+      <JsonLd data={studioJsonLd()} />
       <Hero reel={reel}>
         <section className="v-wrap v-clients" id="clients" aria-label="Clients and agencies">
           <span className="v-tag v-tag--dim">Clients &amp; Agencies</span>
