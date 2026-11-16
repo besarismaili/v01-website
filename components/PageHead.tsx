@@ -2,6 +2,8 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import Markers from "@/components/Markers";
 import { HEAD_MARKERS } from "@/lib/markers";
+import { breadcrumbJsonLd } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 
 export type Crumb = { label: string; href?: string };
 
@@ -23,6 +25,7 @@ export default function PageHead({
 }) {
   return (
     <section className="v-head">
+      <JsonLd data={breadcrumbJsonLd(crumbs)} />
       <Markers points={HEAD_MARKERS} />
       <div className="v-wrap v-head__inner">
         <nav className="v-crumbs" aria-label="Breadcrumb">

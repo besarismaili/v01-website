@@ -1,6 +1,7 @@
 import PageHead from "@/components/PageHead";
 import EndCta from "@/components/EndCta";
 import { pageMeta } from "@/lib/seo";
+import { testShotTerms as terms } from "@/lib/site";
 import "@/app/case-study/[id]/page.css";
 
 export const metadata = pageMeta({
@@ -9,14 +10,6 @@ export const metadata = pageMeta({
     "Before a full job, VERSION ONE takes one of your shots to a finished result in 5 working days. The fee is quoted per shot and comes off the full job.",
   path: "/test-shot",
 });
-
-// The terms Besar set on 2026-11-12. Change them here and the page follows.
-const terms = [
-  { tag: "Time", big: "5 working days", text: "For one finished shot." },
-  { tag: "Fee", big: "Quoted per shot", text: "You get the price before we start." },
-  { tag: "If you go ahead", big: "Fee credited", text: "The test fee comes off the price of the full job." },
-  { tag: "Reviews", big: "2 rounds", text: "Two rounds of your notes are included." },
-];
 
 const steps = [
   {

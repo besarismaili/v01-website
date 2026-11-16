@@ -8,7 +8,8 @@ import Breakdown from "@/components/Breakdown";
 import { END_MARKERS } from "@/lib/markers";
 import { solaProject, solaReel, solaWipes } from "@/lib/sola";
 import "../../case-study/[id]/page.css";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, workJsonLd } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 import "./page.css";
 
 export const metadata = pageMeta({
@@ -22,6 +23,19 @@ export const metadata = pageMeta({
 export default function SolaCaseStudy() {
   return (
     <main data-v data-page="case">
+      <JsonLd
+        data={workJsonLd({
+          title: solaProject.title,
+          summary: solaProject.summary,
+          href: solaProject.href,
+          image: solaProject.hero_url,
+          year: solaProject.year,
+          category: solaProject.category,
+          role: solaProject.role,
+          client: solaProject.client,
+          agency: solaProject.agency,
+        })}
+      />
       <PageHead
         crumbs={[{ label: "V01", href: "/" }, { label: "Work", href: "/work" }, { label: "Sola" }]}
         title="Sola."
