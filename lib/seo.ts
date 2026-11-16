@@ -27,7 +27,7 @@ export const STUDIO = {
 };
 
 const ORG_ID = `${SITE_URL}/#organization`;
-const abs = (path: string) => (path.startsWith("http") ? path : `${SITE_URL}${path === "/" ? "" : path}`);
+const abs = (path: string) => (path.startsWith("http") ? path : `${SITE_URL}${path}`);
 
 // Structured data (schema.org JSON-LD) that tells search engines and AI tools
 // who runs the site. Placed once, on the homepage.
@@ -40,7 +40,7 @@ export function studioJsonLd() {
         "@id": ORG_ID,
         name: STUDIO.name,
         alternateName: STUDIO.shortName,
-        url: SITE_URL,
+        url: abs("/"),
         logo: { "@type": "ImageObject", url: abs(STUDIO.logo), width: 512, height: 512 },
         image: abs(DEFAULT_SHARE_IMAGE.url),
         description: STUDIO.description,
@@ -62,7 +62,7 @@ export function studioJsonLd() {
       {
         "@type": "WebSite",
         "@id": `${SITE_URL}/#website`,
-        url: SITE_URL,
+        url: abs("/"),
         name: STUDIO.name,
         alternateName: STUDIO.shortName,
         publisher: { "@id": ORG_ID },
@@ -102,7 +102,7 @@ export function workJsonLd(work: {
   client: string;
   agency?: string;
 }) {
-  const studio = { "@type": "Organization", "@id": ORG_ID, name: STUDIO.name, url: SITE_URL };
+  const studio = { "@type": "Organization", "@id": ORG_ID, name: STUDIO.name, url: abs("/") };
   const agency =
     work.agency && work.agency !== work.client ? [{ "@type": "Organization", name: work.agency }] : [];
   return {
