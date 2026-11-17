@@ -4,6 +4,7 @@ import { SITE_URL, SITE_NAME, DEFAULT_SHARE_IMAGE } from "@/lib/seo";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import RevealObserver from "@/components/Reveal";
+import { Clarity } from "@/components/Clarity";
 
 // Defaults for every page. Public pages add their own canonical address and
 // link preview through pageMeta() in lib/seo.
@@ -38,6 +39,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <Clarity />
         <Nav />
         {children}
         <Footer />

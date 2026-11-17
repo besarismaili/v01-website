@@ -110,4 +110,5 @@ export const footerItems = [
   ...navItems,
   { label: "Test shot", href: "/test-shot" },
   { label: "AI use and rights", href: "/ai-use" },
+  { label: "Privacy", href: "/privacy" },
 ];

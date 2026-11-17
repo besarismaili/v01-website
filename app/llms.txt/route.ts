@@ -67,6 +67,7 @@ ${earlier.join("\n")}
 
 ## Optional
 
+- [Privacy](${url("/privacy")}): What the website records when you visit and how to change that choice.
 - [Sitemap](${url("/sitemap.xml")}): Every public page on the site.
 `;
 }

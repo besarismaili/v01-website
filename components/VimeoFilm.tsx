@@ -37,8 +37,10 @@ export default function VimeoFilm({ film }: { film: Film }) {
       <section className="v-straddle" aria-label="Film">
         <div className="v-wrap">
           <Frame>
+            {/* dnt=1 stops Vimeo's player setting cookies or tracking the
+                visit, so the film pages need no consent prompt (see /privacy). */}
             <iframe
-              src={`https://player.vimeo.com/video/${film.vimeo_id}?title=0&byline=0&portrait=0`}
+              src={`https://player.vimeo.com/video/${film.vimeo_id}?title=0&byline=0&portrait=0&dnt=1`}
               title={`${film.title} film`}
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
               referrerPolicy="strict-origin-when-cross-origin"
