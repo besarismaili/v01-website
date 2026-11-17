@@ -2,7 +2,6 @@ import PageHead from "@/components/PageHead";
 import EndCta from "@/components/EndCta";
 import { pageMeta } from "@/lib/seo";
 import { aiUseRules as rules } from "@/lib/site";
-import "./page.css";
 
 export const metadata = pageMeta({
   title: "V01 — AI use and rights",

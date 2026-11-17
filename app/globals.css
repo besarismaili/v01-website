@@ -129,6 +129,8 @@ main[data-v]{background:var(--v-black);overflow-x:clip}
 .v-sec--white{background:#fff;color:var(--v-ink)}
 .v-sec--white p{color:var(--v-ink-2)}
 .v-sec--white .v-copy>p:first-child{color:var(--v-ink)}
+/* lime focus rings vanish on white, so white sections use ink */
+.v-sec--white :focus-visible{outline-color:var(--v-ink)}
 .v-sec--pure{background:#000}
 .v-sec--blue{position:relative;overflow:hidden;background:var(--v-blue)}
 .v-sec__tag{padding-bottom:clamp(20px,2.4vw,28px)}
@@ -319,6 +321,21 @@ html.js [data-reveal="wipe"].is-in{clip-path:inset(0 0 0 0)}
   .v-menu{opacity:0}.v-menu.is-open{opacity:1}
   .v-menu__links a,.v-menu.is-open .v-menu__links a{transform:none;transition:none;opacity:1}
 }
+
+/* rule lists: a name on the left, the rule on the right, one per row
+   (AI use and rights, Privacy) */
+.v-rules{margin:0;border-bottom:2px solid var(--v-ink)}
+.v-rule{display:flex;flex-wrap:wrap;gap:8px 48px;padding-block:clamp(20px,2.4vw,32px);border-top:2px solid var(--v-ink)}
+.v-rule dt{flex:1 1 240px;color:var(--v-ink)}
+.v-rule dd{flex:3 1 420px;margin:0;max-width:42em;font-size:clamp(17px,1.5vw,20px);line-height:1.45;color:var(--v-ink)}
+.v-rule dd a,.v-rules__note a{text-decoration:underline;text-underline-offset:3px;color:var(--v-ink)}
+.v-rules__note{margin-top:clamp(24px,3vw,40px)}
+
+/* Privacy: the recording switch inside the rule list */
+.v-choice__note{margin-bottom:20px}
+.v-choice{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.v-choice p,p.v-choice{color:var(--v-ink)}
+
 
 /* white service cards (home "What we do", contact "Ways to work together") */
 .v-svcs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
