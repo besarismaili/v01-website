@@ -1,31 +1,30 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   CHOICE_EVENT,
-  allowClarity,
   isLiveHost,
   onChoiceInOtherTab,
   readChoice,
-  refuseClarity,
   sendsGpc,
+  turnClarityOff,
+  turnClarityOn,
   type ClarityChoice,
 } from "@/lib/clarity";
 
-type State = ClarityChoice | "unset" | "gpc" | "elsewhere";
+type State = ClarityChoice | "gpc" | "elsewhere";
 
 function current(): State {
   if (!isLiveHost()) return "elsewhere";
   if (sendsGpc()) return "gpc";
-  return readChoice() ?? "unset";
+  return readChoice();
 }
 
-// The switch on /privacy: shows what this browser chose about Clarity and
-// lets the visitor change it, as easily as they gave it.
+// The switch on /privacy: shows whether this browser is recorded and lets the
+// visitor turn it off or back on.
 export default function PrivacyChoice() {
   // null until mounted: the choice lives in the browser, not on the server.
   const [state, setState] = useState<State | null>(null);
-  const allowRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const sync = () => setState(current());
@@ -47,48 +46,19 @@ export default function PrivacyChoice() {
   if (state === "gpc") {
     return (
       <p className="v-choice" role="status">
-        Your browser sends Global Privacy Control, so your visit is not recorded.
+        Your browser sends Global Privacy Control, so your visits are not recorded.
       </p>
     );
   }
 
-  const on = state === "granted";
+  const on = state === "on";
   return (
     <div className="v-choice">
-      <p role="status">
-        {on
-          ? "Recording is on in this browser."
-          : state === "denied"
-            ? "Recording is off in this browser."
-            : "You haven’t chosen yet, so nothing is recorded."}
-      </p>
-      <div className="v-btns">
-        {on ? (
-          <button type="button" className="v-btn v-btn--ink v-btn--mono" onClick={refuseClarity}>
-            Turn recording off
-          </button>
-        ) : (
-          <>
-            <button ref={allowRef} type="button" className="v-btn v-btn--ink v-btn--mono" onClick={allowClarity}>
-              Allow recording
-            </button>
-            {state === "unset" && (
-              <button
-                type="button"
-                className="v-btn v-btn--ink v-btn--mono"
-                onClick={() => {
-                  refuseClarity();
-                  // This button goes away once the choice is saved, so keep
-                  // keyboard focus on the one that stays.
-                  allowRef.current?.focus();
-                }}
-              >
-                No thanks
-              </button>
-            )}
-          </>
-        )}
-      </div>
+      <p role="status">{on ? "Recording is on in this browser." : "Recording is off in this browser."}</p>
+      {/* One button whose label changes, so keyboard focus stays on it. */}
+      <button type="button" className="v-btn v-btn--ink v-btn--mono" onClick={on ? turnClarityOff : turnClarityOn}>
+        {on ? "Turn recording off" : "Turn recording on"}
+      </button>
     </div>
   );
 }

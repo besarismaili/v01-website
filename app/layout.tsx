@@ -39,11 +39,11 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Clarity />
         <Nav />
         {children}
         <Footer />
         <RevealObserver />
+        <Clarity />
       </body>
     </html>
   );

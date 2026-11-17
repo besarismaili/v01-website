@@ -5,7 +5,7 @@ import { pageMeta, STUDIO } from "@/lib/seo";
 export const metadata = pageMeta({
   title: "V01 — Privacy",
   description:
-    "What the VERSION ONE website records when you visit: Microsoft Clarity recordings only if you allow them, and how to change your choice.",
+    "What the VERSION ONE website records when you visit with Microsoft Clarity, and how to turn it off.",
   path: "/privacy",
 });
 
@@ -15,12 +15,11 @@ const MS_PRIVACY = "https://www.microsoft.com/privacy/privacystatement";
 // set to. Say only what is true of the site today.
 const rules = [
   {
-    title: "Recording, only if you allow it",
+    title: "What we record",
     text: (
       <>
-        We use Microsoft Clarity to see how people use this site: the pages they view, how they click, scroll and move
-        around them, and their device, browser and country. Clarity does not load until you choose Allow. If you
-        choose No thanks, Clarity records nothing.
+        We use Microsoft Clarity to see how people use this site. It records the pages you view, how you click, scroll
+        and move around them, and your device, browser and country. You can turn it off at the bottom of this page.
       </>
     ),
   },
@@ -32,11 +31,10 @@ const rules = [
     title: "Cookies",
     text: (
       <>
-        If you allow recording, Clarity stores two cookies on this site: _clsk, which lasts a day and joins the pages
-        of one visit into one recording, and _clck, which lasts a year and lets Clarity recognise this browser when you
-        come back. Microsoft also sets its own cookies on its domains, such as CLID and MUID. We tell Clarity not to
-        use your visit for advertising, which Microsoft says stops it sharing the visit with Microsoft Advertising. We
-        keep your choice in your browser until you change it below.
+        In the European Economic Area, the UK and Switzerland, Clarity sets no cookies on this site, so each page you
+        view is recorded on its own. Elsewhere it stores two: _clsk, which lasts a day and joins the pages of one visit
+        into one recording, and _clck, which lasts a year and lets Clarity recognise this browser when you come back.
+        Microsoft may also set its own cookies on its domains, such as CLID and MUID.
       </>
     ),
   },
@@ -45,9 +43,10 @@ const rules = [
     text: (
       <>
         Clarity is a Microsoft service. Microsoft receives the recordings and handles them under the{" "}
-        <a href={MS_PRIVACY}>Microsoft Privacy Statement</a>, which can mean storing them outside your country. It keeps
-        most recordings for 30 days, and click data, heatmaps, recordings we mark as favourites and a random sample of
-        recordings for up to 9 months.
+        <a href={MS_PRIVACY}>Microsoft Privacy Statement</a>, which can mean storing them outside your country. Outside
+        the European Economic Area, the UK and Switzerland, Clarity’s standard settings also let Microsoft use the data
+        for advertising. Microsoft keeps most recordings for 30 days, and click data, heatmaps, recordings we mark as
+        favourites and a random sample of recordings for up to 9 months.
       </>
     ),
   },
@@ -80,7 +79,7 @@ export default function PrivacyPage() {
       <PageHead
         crumbs={[{ label: "V01", href: "/" }, { label: "Privacy" }]}
         title="Privacy."
-        lede="What this website records when you visit, and how to say no."
+        lede="What this website records when you visit, and how to turn it off."
       />
 
       <section className="v-sec v-sec--white">
@@ -96,9 +95,10 @@ export default function PrivacyPage() {
               <dt className="v-h3">Your choice</dt>
               <dd>
                 <p className="v-choice__note">
-                  Turning recording off stops new recordings and deletes Clarity’s cookies on this site. Microsoft’s own
-                  cookies can be cleared in your browser settings. Recordings already made can’t be deleted one by one,
-                  so they stay with Microsoft until they expire.
+                  Turning recording off stops Clarity in this browser and deletes its cookies on this site. We keep that
+                  choice in your browser. Microsoft’s own cookies can be cleared in your browser settings. Recordings
+                  already made can’t be deleted one by one, so they stay with Microsoft until they expire. Browsers that
+                  send Global Privacy Control are never recorded.
                 </p>
                 <PrivacyChoice />
                 <noscript>JavaScript is off in your browser, so nothing is recorded.</noscript>

@@ -336,21 +336,6 @@ html.js [data-reveal="wipe"].is-in{clip-path:inset(0 0 0 0)}
 .v-choice{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
 .v-choice p,p.v-choice{color:var(--v-ink)}
 
-/* the one-time Clarity question, bottom left. Two buttons of equal weight. */
-.v-consent{position:fixed;z-index:65;left:16px;right:16px;bottom:16px;max-width:400px;display:flex;flex-direction:column;gap:14px;padding:18px 20px 20px;background:var(--v-black);border:1px solid var(--v-ink-3);color:#fff;font-size:14px;line-height:1.45;box-shadow:0 12px 40px rgba(7,8,12,.5);animation:v-consent-in var(--v-base) var(--v-ease) both}
-.v-consent a{text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
-@media (hover:hover){.v-consent a:hover{color:var(--v-lime)}}
-.v-consent__btns{display:flex;gap:10px}
-.v-consent button{flex:1 1 0;min-height:44px;padding:0 14px;font-family:var(--v-mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:transparent;border:2px solid #fff;cursor:pointer;transition:background var(--v-fast) ease-out,color var(--v-fast) ease-out}
-@media (hover:hover){.v-consent button:hover{background:#fff;color:var(--v-ink)}}
-@media (min-width:600px){.v-consent{left:24px;bottom:24px}}
-@keyframes v-consent-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.v-consent{animation-name:v-consent-fade}}
-@keyframes v-consent-fade{from{opacity:0}to{opacity:1}}
-/* while the card is up, focused controls scroll to sit above it, and the end
-   of the page can scroll clear of it */
-html.v-asking{scroll-padding-bottom:260px}
-html.v-asking body{padding-bottom:240px}
 
 /* white service cards (home "What we do", contact "Ways to work together") */
 .v-svcs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
