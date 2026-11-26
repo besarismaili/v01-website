@@ -8,7 +8,7 @@
 .v-feat__body p{font-size:18px;line-height:1.5;color:#E4E6EB}
 @media (hover:hover){.v-feat:hover .v-link .v-arr{transform:translateX(6px)}}
 
-.v-more-tag{padding-block:24px 28px;border-top:1px solid var(--v-rule)}
+.v-more-tag{padding-top:24px;padding-bottom:28px;border-top:1px solid var(--v-rule)}
 
 @media (max-width:600px){
   .v-feat{gap:22px}

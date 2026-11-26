@@ -2,38 +2,38 @@
 
 /* hero: a full-bleed reel inside a thin blue border */
 .v-hero{background:var(--v-blue)}
-.v-hero__pad{position:relative;padding:14px;min-height:max(648px,100svh)}
+.v-hero__pad{position:relative;padding:14px;min-height:100vh;min-height:max(648px,100svh)}
 .v-hero__pin{position:absolute;width:10px;height:10px;background:var(--v-lime);animation:v-pop var(--v-fast) ease-out 1000ms both}
 .v-hero__pin--tl{left:2px;top:2px}.v-hero__pin--tr{right:2px;top:2px}
 .v-hero__pin--bl{left:2px;bottom:2px}.v-hero__pin--br{right:2px;bottom:2px}
-.v-hero__panel{position:relative;overflow:hidden;min-height:max(620px,calc(100svh - 28px));display:flex;flex-direction:column;justify-content:flex-end;background:var(--v-blue)}
+.v-hero__panel{position:relative;overflow:hidden;min-height:calc(100vh - 28px);min-height:max(620px,calc(100svh - 28px));display:flex;flex-direction:column;justify-content:flex-end;background:var(--v-blue)}
 /* the key-in: hold as a blue plate, then the reel wipes in left to right */
-.v-hero__media,.v-hero__scrim{position:absolute;inset:0;width:100%;height:100%;animation:v-keyin var(--v-slow) var(--v-ease) 400ms both}
+.v-hero__media,.v-hero__scrim{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;animation:v-keyin var(--v-slow) var(--v-ease) 400ms both}
 .v-hero__media{object-fit:cover}
 .v-hero__scrim{background:rgba(7,8,12,.6)}
-.v-hero__content{position:relative;padding:calc(var(--v-nav-h) + 40px) calc(var(--v-pad) - 14px) clamp(28px,3.4vw,48px)}
+.v-hero__content{position:relative;padding:calc(var(--v-nav-h) + 40px) calc(var(--v-pad) - 14px) 48px;padding:calc(var(--v-nav-h) + 40px) calc(var(--v-pad) - 14px) clamp(28px,3.4vw,48px)}
 .v-hero__content>*{animation:v-rise var(--v-base) var(--v-ease) both;animation-delay:calc(900ms + var(--i,0) * 80ms)}
 .v-hero__content .v-tag{padding-bottom:16px}
 .v-hero__content .v-h1{max-width:15em}
-.v-hero__row{display:flex;flex-wrap:wrap;align-items:flex-end;gap:24px 64px;margin-top:clamp(20px,3vw,40px)}
-.v-hero__row>p{flex:1 1 380px;font-size:clamp(16px,1.5vw,20px);line-height:1.45;max-width:32em}
+.v-hero__row{display:flex;flex-wrap:wrap;align-items:flex-end;gap:24px 64px;margin-top:40px;margin-top:clamp(20px,3vw,40px)}
+.v-hero__row>p{flex:1 1 380px;font-size:20px;font-size:clamp(16px,1.5vw,20px);line-height:1.45;max-width:32em}
 
 @keyframes v-keyin{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
 @keyframes v-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 @keyframes v-pop{from{transform:scale(0)}to{transform:scale(1)}}
 
 /* expanded reel player */
-.v-hero__panel.is-open{position:fixed;inset:0;z-index:90;min-height:0;background:#000}
+.v-hero__panel.is-open{position:fixed;top:0;right:0;bottom:0;left:0;z-index:90;min-height:0;background:#000}
 .v-hero__panel.is-open .v-hero__media{object-fit:contain;animation:none}
 .v-hero__panel.is-open .v-hero__scrim,.v-hero__panel.is-open .v-hero__content,.v-hero__panel.is-open .v-markers{display:none}
 .v-hero__close{position:absolute;right:16px;top:16px;z-index:2}
 
 /* clients strip, on the blue below the reel */
-.v-clients{display:block;padding-block:10px 26px}
+.v-clients{display:block;padding-top:10px;padding-bottom:26px}
 .v-marquee{position:relative;overflow:hidden;margin-top:14px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
 .v-marquee__track{display:flex;width:max-content;animation:v-marquee 46s linear infinite;will-change:transform}
 .v-marquee:hover .v-marquee__track,.v-marquee:focus-within .v-marquee__track{animation-play-state:paused}
-.v-marquee__set{display:flex;align-items:center;gap:clamp(36px,4.6vw,72px);margin:0;padding:0 clamp(36px,4.6vw,72px) 0 0;list-style:none}
+.v-marquee__set{display:flex;align-items:center;gap:72px;gap:clamp(36px,4.6vw,72px);margin:0;padding:0 72px 0 0;padding:0 clamp(36px,4.6vw,72px) 0 0;list-style:none}
 .v-marquee__item{display:flex;align-items:center;flex:none;opacity:.92;transition:opacity .25s ease}
 .v-marquee__item:hover{opacity:1}
 .v-marquee__item img{display:block;width:auto}
@@ -50,8 +50,8 @@
 .v-wall__stage>.v-wrap{position:relative;width:100%}
 /* with a reel loop: a band of footage, text sitting on its lower edge */
 .v-wall--video{padding-top:0}
-.v-wall--video .v-wall__stage{display:flex;align-items:flex-end;min-height:clamp(300px,52vh,560px);margin-bottom:8px}
-.v-wall__media,.v-wall__scrim{position:absolute;inset:0;width:100%;height:100%}
+.v-wall--video .v-wall__stage{display:flex;align-items:flex-end;min-height:560px;min-height:clamp(300px,52vh,560px);margin-bottom:8px}
+.v-wall__media,.v-wall__scrim{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%}
 .v-wall__media{object-fit:cover;object-position:50% 28%}
 .v-wall__scrim{background:linear-gradient(180deg,rgba(7,8,12,.45) 0%,rgba(7,8,12,.2) 30%,rgba(7,8,12,.62) 64%,var(--v-black) 100%)}
 .v-wall__label{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-bottom:12px}
@@ -61,13 +61,13 @@
 .v-marquee--posters .v-marquee__set{align-items:flex-start;gap:0;padding-right:0}
 .v-marquee--rev .v-marquee__track{animation-direction:reverse}
 .v-marquee.is-held .v-marquee__track{animation-play-state:paused}
-.v-poster{flex:none;width:clamp(140px,15vw,220px)}
+.v-poster{flex:none;width:220px;width:clamp(140px,15vw,220px)}
 /* two rows: smaller posters, so more of the wall is on screen at once */
-.v-wall--rows2 .v-poster{width:clamp(118px,11vw,172px)}
+.v-wall--rows2 .v-poster{width:172px;width:clamp(118px,11vw,172px)}
 .v-poster__btn{position:relative;display:block;width:100%;margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;text-align:left;cursor:pointer}
 .v-poster img{display:block;width:100%;aspect-ratio:2/3;object-fit:cover;background:#14161C}
 /* a poster's details lie over it, and show on hover, keyboard focus or a tap */
-.v-poster__info{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:12px 10px;background:linear-gradient(180deg,rgba(7,8,12,.55) 0%,rgba(7,8,12,.92) 70%);opacity:0;transition:opacity var(--v-fast) ease-out}
+.v-poster__info{position:absolute;top:0;right:0;bottom:0;left:0;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:12px 10px;background:linear-gradient(180deg,rgba(7,8,12,.55) 0%,rgba(7,8,12,.92) 70%);opacity:0;transition:opacity var(--v-fast) ease-out}
 .v-poster.is-open .v-poster__info,.v-poster__btn:focus-visible .v-poster__info{opacity:1}
 @media (hover:hover){.v-poster__btn:hover .v-poster__info{opacity:1}}
 .v-poster__btn:focus-visible{outline-offset:-2px}
@@ -76,7 +76,7 @@
 .v-poster__meta span{display:block}
 @media (prefers-reduced-motion:reduce){
   /* no drift: show each poster once, wrapped into a grid */
-  .v-marquee--posters{overflow:visible;padding-inline:var(--v-pad)}
+  .v-marquee--posters{overflow:visible;padding-left:var(--v-pad);padding-right:var(--v-pad)}
   .v-marquee--posters .v-marquee__track{width:auto}
   .v-marquee--posters .v-marquee__set{flex-wrap:wrap;padding-right:0}
   .v-poster__info{transition:none}
@@ -87,20 +87,20 @@
 .v-founder-note p{flex:1 1 420px;color:var(--v-grey-2)}
 
 @media (max-width:760px){
-  .v-hero__pad{padding:8px;min-height:max(576px,100svh)}
+  .v-hero__pad{padding:8px;min-height:100vh;min-height:max(576px,100svh)}
   .v-hero__pin{width:8px;height:8px}
   .v-hero__pin--tl{left:0;top:0}.v-hero__pin--tr{right:0;top:0}
   .v-hero__pin--bl{left:0;bottom:0}.v-hero__pin--br{right:0;bottom:0}
-  .v-hero__panel{min-height:max(560px,calc(100svh - 16px))}
+  .v-hero__panel{min-height:calc(100vh - 16px);min-height:max(560px,calc(100svh - 16px))}
   .v-hero__media,.v-hero__scrim{animation-delay:250ms}
   .v-hero__pin{animation-delay:850ms}
   .v-hero__content{padding:calc(var(--v-nav-h) + 24px) calc(var(--v-pad) - 8px) 20px}
   .v-hero__content>*{animation-delay:calc(750ms + var(--i,0) * 80ms)}
-  .v-hero__content .v-h1{font-size:clamp(24px,7.4vw,34px)}
+  .v-hero__content .v-h1{font-size:34px;font-size:clamp(24px,7.4vw,34px)}
   .v-hero__row .v-btns{width:100%;gap:8px}
-  .v-hero__row .v-btn{flex:1 1 140px;padding-inline:12px}
+  .v-hero__row .v-btn{flex:1 1 140px;padding-left:12px;padding-right:12px}
   .v-hero__row .v-btn--lime{flex-basis:100%}
-  .v-clients{padding-block:4px 18px}
+  .v-clients{padding-top:4px;padding-bottom:18px}
   .v-marquee__set{gap:28px;padding-right:28px}
   .v-marquee__word{font-size:13px}
   .v-founder-note .v-btn{width:100%}

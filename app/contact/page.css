@@ -1,7 +1,7 @@
 /* ===== Contact ===== */
 
 /* the one big action on the page */
-.v-mail{align-self:flex-start;display:inline-flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:clamp(8px,1.4vw,20px);padding:clamp(18px,2.2vw,30px) clamp(18px,2.6vw,36px);background:var(--v-lime);color:var(--v-ink);font-family:var(--v-display);font-weight:700;font-size:clamp(20px,3.4vw,48px);line-height:1;overflow-wrap:anywhere;transition:background var(--v-fast) ease-out,transform var(--v-fast) ease-out}
+.v-mail{align-self:flex-start;display:inline-flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:20px;margin-top:clamp(8px,1.4vw,20px);padding:30px 36px;padding:clamp(18px,2.2vw,30px) clamp(18px,2.6vw,36px);background:var(--v-lime);color:var(--v-ink);font-family:var(--v-display);font-weight:700;font-size:48px;font-size:clamp(20px,3.4vw,48px);line-height:1;overflow-wrap:anywhere;transition:background var(--v-fast) ease-out,transform var(--v-fast) ease-out}
 .v-mail .v-arr{display:inline-block;transition:transform var(--v-fast) ease-out}
 .v-mail:active{transform:scale(.98)}
 @media (hover:hover){
@@ -9,7 +9,7 @@
   .v-mail:hover .v-arr{transform:translateX(6px)}
 }
 
-.v-see-work{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin-top:clamp(32px,5vw,64px);font-size:clamp(18px,1.5vw,20px)}
+.v-see-work{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin-top:64px;margin-top:clamp(32px,5vw,64px);font-size:20px;font-size:clamp(18px,1.5vw,20px)}
 
 @media (max-width:700px){
   .v-mail{align-self:stretch;justify-content:space-between;min-height:68px}

@@ -1,0 +1,11 @@
+# Which browsers the build supports. The first four lines are Next.js's own
+# defaults. The last line is for smart-TV browsers (Samsung Tizen, LG webOS,
+# Android TV), which run old Chrome engines. Without it the CSS minifier
+# removes the plain fallback values written in front of clamp(), max() and
+# similar, and those TVs show pages without their pictures. It only keeps
+# fallbacks; current browsers look and behave the same.
+chrome >= 111
+edge >= 111
+firefox >= 111
+safari >= 16.4
+chrome >= 63
