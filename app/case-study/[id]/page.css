@@ -3,23 +3,23 @@
    campaign, the Vimeo films and the database-driven /case-study/[id]. */
 
 .v-case-film{margin:0}
-.v-case-facts{padding-block:8px clamp(32px,4vw,56px)}
+.v-case-facts{padding-top:8px;padding-bottom:56px;padding-bottom:clamp(32px,4vw,56px)}
 .v-case-facts .v-facts{margin-top:0}
 
 .v-case-headline{max-width:16em}
-.v-case-intro{margin-top:clamp(28px,4vw,56px)}
-.v-case-lead{font-size:clamp(17px,1.4vw,19px);line-height:1.5}
+.v-case-intro{margin-top:56px;margin-top:clamp(28px,4vw,56px)}
+.v-case-lead{font-size:19px;font-size:clamp(17px,1.4vw,19px);line-height:1.5}
 .v-case-brief{display:flex;flex-direction:column;gap:10px;border-top:2px solid var(--v-ink);padding-top:16px}
 .v-case-brief .v-tag{font-weight:700;color:var(--v-ink)}
 
-.v-case-pull{font-family:var(--v-display);font-weight:700;font-size:clamp(20px,3.6vw,52px);line-height:1.12;letter-spacing:-.01em;text-transform:uppercase;max-width:18em;text-wrap:balance}
-.v-case-approach{font-size:clamp(17px,1.5vw,20px);line-height:1.5;max-width:40em}
+.v-case-pull{font-family:var(--v-display);font-weight:700;font-size:52px;font-size:clamp(20px,3.6vw,52px);line-height:1.12;letter-spacing:-.01em;text-transform:uppercase;max-width:18em;text-wrap:balance}
+.v-case-approach{font-size:20px;font-size:clamp(17px,1.5vw,20px);line-height:1.5;max-width:40em}
 
 /* what was shot, what was AI: three short lines under the approach */
-.v-made{display:flex;flex-direction:column;gap:18px;margin-top:clamp(32px,4vw,56px)}
+.v-made{display:flex;flex-direction:column;gap:18px;margin-top:56px;margin-top:clamp(32px,4vw,56px)}
 .v-made__list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin:0}
 .v-made__list>div{display:flex;flex-direction:column;gap:8px;padding-top:16px;border-top:2px solid var(--v-blue);min-width:0}
-.v-made__list dt{font-family:var(--v-display);font-weight:700;font-size:clamp(16px,1.5vw,20px);line-height:1.15;text-transform:uppercase}
+.v-made__list dt{font-family:var(--v-display);font-weight:700;font-size:20px;font-size:clamp(16px,1.5vw,20px);line-height:1.15;text-transform:uppercase}
 .v-made__list dd{margin:0;color:var(--v-grey-2)}
 
 .v-case-frames-head{display:flex;justify-content:space-between;gap:16px}
@@ -31,12 +31,12 @@
 
 .v-details{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:32px 24px}
 .v-detail{display:flex;flex-direction:column;gap:8px;border-top:2px solid var(--v-ink);padding-top:16px;color:var(--v-ink-2)}
-.v-detail__big{font-family:var(--v-display);font-weight:800;font-size:clamp(22px,2.4vw,34px);line-height:1.05;color:var(--v-ink);overflow-wrap:anywhere}
+.v-detail__big{font-family:var(--v-display);font-weight:800;font-size:34px;font-size:clamp(22px,2.4vw,34px);line-height:1.05;color:var(--v-ink);overflow-wrap:anywhere}
 .v-detail__text{font-size:18px;line-height:1.4;color:var(--v-ink)}
 
 /* founder-credit pages */
 .v-case-disclaimer{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;max-width:70ch}
-.v-case-source{display:flex;flex-wrap:wrap;gap:12px;padding-top:clamp(24px,3vw,40px)}
+.v-case-source{display:flex;flex-wrap:wrap;gap:12px;padding-top:40px;padding-top:clamp(24px,3vw,40px)}
 .v-next-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 24px}
 
 @media (max-width:900px){
