@@ -29,6 +29,8 @@ const nextConfig = {
       // Founder credits used to have a page each. They are now one section
       // on the homepage.
       { source: "/case-study/:id", destination: "/#founder-credits", permanent: false },
+      // Addresses from the old v01.ca site that search engines still know.
+      { source: "/work/a-dream-in-your-hand", destination: "/work/dream", permanent: true },
     ];
   },
 };
